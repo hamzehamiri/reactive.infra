@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .Accordion-Master {
+            display: block;
+        }
+
+        .Accordion-Frame {
+            overflow: hidden;
+            background-color: #fff;
+            -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            -webkit-transition: margin .2s cubic-bezier(.4, 0, .2, 1);
+            transition: margin .2s cubic-bezier(.4, 0, .2, 1);
+            will-change: margin, height;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .Accordion-Frame:first-child {
+            border-radius: 16px 16px 0 0;
+        }
+
+        .Accordion-Frame:last-child {
+            border-radius: 0 0 16px 16px;
+        }
+
+        .Accordion-Frame-Open {
+            margin: 16px 6px;
+        }
+
+        .Accordion-Frame-Close {
+            margin: 2px 6px;
+        }
+
+        .Accordion-Title {
+            margin: 0;
+            font-size: 18px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            position: relative;
+            padding: 4px 14px;
+            background-color: #48d9f3;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .Accordion-Title:active {
+            background-color: #FF0000;
+        }
+
+        .Accordion-Title-Open {
+
+        }
+
+        .Accordion-Title-Close {
+            font-style: italic;
+        }
+
+        .Accordion-Frame-Icon {
+            align-content: center;
+            height: auto;
+            transition: all 1s;
+        }
+
+        .Accordion-Frame-Icon-Close {
+            transform: rotate(180deg);
+        }
+
+        .Accordion-Body {
+            overflow: hidden;
+            padding: 16px;
+            font-size: 12px;
+        }
+
+        .Accordion-Body-Open {
+
+        }
+
+        .Accordion-Body-Close {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="Accordion-Master">
+    <div class="Accordion-Frame Accordion-Frame-Open">
+        <div class="Accordion-Title Accordion-Title-Open">
+            <p>Super Mart of the West Open</p>
+            <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="Accordion-Frame-Icon"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#000000"/>
+            </svg>
+        </div>
+        <div class="Accordion-Body Accordion-Body-Open"> Content Open</div>
+    </div>
+    <div class="Accordion-Frame Accordion-Frame-Close">
+        <div class="Accordion-Title Accordion-Title-Close">
+            <p>Super Mart of the West Close 1</p>
+            <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="Accordion-Frame-Icon Accordion-Frame-Icon-Close"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#000000"/>
+            </svg>
+        </div>
+        <div class="Accordion-Body Accordion-Body-Close"> Content Close 1</div>
+    </div>
+    <div class="Accordion-Frame Accordion-Frame-Close">
+        <div class="Accordion-Title Accordion-Title-Close">
+            <p>Super Mart of the West Close 2</p>
+            <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="Accordion-Frame-Icon Accordion-Frame-Icon-Close"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M903.232 256l56.768 50.432L512 768 64 306.432 120.768 256 512 659.072z" fill="#000000"/>
+            </svg>
+        </div>
+        <div class="Accordion-Body Accordion-Body-Close"> Content Close 2</div>
+    </div>
+</div>
+
+</body>
+</html>

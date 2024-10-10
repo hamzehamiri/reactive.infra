@@ -1,0 +1,1454 @@
+.NoSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: B Lotus;
+    src: url('Resources/Themes/Normal/Fonts/Persian/B Lotus.ttf');
+}
+
+@font-face {
+    font-family: B Yekan;
+    src: url('Resources/Themes/Normal/Fonts/Persian/B Yekan.ttf');
+}
+
+.Grid-Div {
+    border: 1px;
+    overflow: scroll;
+    border-spacing: 0px;
+}
+
+.Grid-Select {
+    background-color: blue !important;
+}
+
+.Grid-Hover {
+    background-color: yellow !important;
+}
+
+.Grid-TDBody {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: B Lotus;
+}
+
+.Grid-TRBody {
+    color: #121212;
+}
+
+.Grid-TableHeader {
+    border-collapse: collapse;
+    position: relative;
+    width: 100%;
+    empty-cells: show;
+    table-layout: fixed;
+    overflow: hidden;
+}
+
+.Grid-TableHeaderTr {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+    background-color: lightgreen;
+}
+
+.Grid-TableBody {
+    border-collapse: collapse;
+    position: relative;
+    table-layout: fixed;
+}
+
+.Grid-Strip {
+    background-color: #d9c9c9;
+}
+
+.Grid-BodyDiv {
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: table-caption;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+    background-color: #f4f4f4;
+}
+
+.Grid-BodyChangeDetectorCell {
+    background-color: #e80101;
+}
+
+.Grid-HeaderDiv {
+    display: table-caption;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+    background-color: #f4f4f4;
+}
+
+.Grid-ButtonHeader {
+    position: absolute;
+    top: 1px;
+    overflow: hidden;
+}
+
+.Grid-ButtonHeader-Sort {
+    position: relative;
+    color: #737594;
+}
+
+.Grid-ButtonHeader-Sort:hover {
+    background-color: rgb(55, 10, 130);
+}
+
+.Grid-ButtonHeader-Funnel:hover {
+    background-color: rgb(55, 10, 130);
+}
+
+.Grid-ButtonHeader-DropDown:hover {
+    background-color: rgb(55, 10, 130);
+}
+
+.tree_node_master_div {
+    color: rgb(0 0 0);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 15px;
+}
+
+.tree_node_group_ul {
+    width: 100%;
+    position: relative;
+    margin: 0px;
+}
+
+.tree_node_group_li {
+    outline: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    transition: 1s all;
+    white-space: nowrap;
+}
+
+.tree_node_collapse_span {
+    width: 26px;
+    height: 21px;
+    vertical-align: top;
+    padding: 3px 3px 4px 3px;
+    margin-top: 1px;
+}
+
+.tree_node_collapse_span_img {
+    margin-top: 6px;
+    background-image: url("Resources/Themes/Normal/IMG/DevExpress/DXR.svg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    background-position: -146px -170px;
+    background-size: 538px auto;
+    width: 10px;
+    height: 10px;
+}
+
+.tree_node_label_div {
+    -webkit-tap-highlight-color: transparent;
+    margin-top: 1px;
+    padding: 3px 0px 4px 3px;
+    text-decoration: none;
+    outline: 0 none;
+    border: 1px solid transparent;
+    transition: 1s all;
+}
+
+.tree_node_label_div:hover {
+    background-color: rgb(55, 10, 130);
+}
+
+.tree_node_label_div_selected {
+    background-color: rgb(158, 219, 23);
+}
+
+.tree_node_checkbox {
+    cursor: default;
+    margin: 0 6px 0 0px;
+    line-height: 100%;
+    text-decoration: inherit;
+    background-position: -400px -76px;
+    background-size: 538px auto;
+    width: 18px;
+    height: 18px;
+    background-image: url("Resources/Themes/Normal/IMG/DevExpress/DXR.svg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tree_node_label_span {
+    white-space: nowrap;
+    line-height: 100%;
+    text-decoration: inherit;
+    cursor: inherit !important;
+    font-family: B Kourosh;
+    font-size: 1.3rem;
+}
+
+.tree_node_break_ul {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+    width: 0;
+    display: block;
+    line-height: 0;
+}
+
+.WebTree-Div {
+    border: 1px;
+}
+
+.WebTree-Select {
+    background-color: blue;
+}
+
+.WebTree-Hover {
+    background-color: yellow;
+}
+
+.WebTree-TD {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: left;
+}
+
+.WebTree-TD-Tree {
+    padding: 5px;
+    text-align: right;
+}
+
+.WebTree-TD-EXP {
+    padding: 8px 7px 3px;
+    text-align: center;
+    font-size: 2px;
+    line-height: 0;
+    animation: glowing 1300ms infinite;
+}
+
+.WebTree-TD-EMPTY {
+    vertical-align: top;
+    background: white none no-repeat top center;
+    padding: 0 11px;
+}
+
+.WebTree-TD-EXP-IMG {
+    cursor: pointer;
+    font-size: 12px;
+    width: 8px;
+    height: 8px;
+    background-image: url("Resources/Themes/Normal/IMG/Tree/down-arrow.svg");
+}
+
+.WebTree-TR {
+    color: red;
+}
+
+.WebTree-Table {
+    border-collapse: collapse;
+    position: absolute;
+    top: 5px;
+}
+
+.Tree-Header {
+    background-color: green;
+}
+
+.LevelUp-TD {
+    padding: 0 11px;
+}
+
+.Expand {
+    padding: 0 11px;
+}
+
+.Collapse {
+    padding: 0 11px;
+}
+
+.Popup-Div {
+    background: linear-gradient(to right, rgba(230, 233, 240, 0.5), rgba(238, 241, 245, 0.5));
+    border: 1px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    transform: rotate3d(1, 0, 0, 0deg) rotate3d(0, 1, 0, 0deg);
+    transition: transform 1s ease-in-out;
+}
+
+.Popup-Div-Drag {
+    transform: rotate3d(1, 0, 0, 30deg) rotate3d(0, 1, 0, 30deg);
+}
+
+.Web-TextEditor {
+    display: inline-flex;
+    position: relative;
+}
+
+.WebTextEditor-Input {
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: #495055;
+    padding: 15px 15px;
+    border: 2px solid #D9D9D9;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.WebTextEditor-SpanPlaceHolder {
+    position: absolute;
+    margin: 0px 19px;
+    padding: 0 0px;
+    font-family: B Lotus;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    top: 0px;
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    background: none;
+    pointer-events: none;
+}
+
+.WebTextEditor-SpanPlaceHolder-Focus {
+    transform: scale(0.8) translateY(-19px);
+    background: #fff;
+}
+
+.Web-CheckBoxEditor {
+    display: inline-flex;
+}
+
+.WebCheckBoxEditor-CheckBox {
+    padding: 0px;
+}
+
+.WebCheckBoxEditor-SpanPlaceHolder {
+    position: absolute;
+    margin: 0px 35px;
+    padding: 0 0px;
+    font-family: B Lotus;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    top: 0;
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    background: none;
+    pointer-events: none;
+}
+
+.WebSearchContainerUI {
+    background: #abc1ab;
+    width: auto;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.WebSearchLabelItem {
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    font-family: B Lotus;
+}
+
+.SearchUIButtonFloatAbleMaster {
+    transition: 0.5s all;
+    background: #8de30d;
+    display: flex;
+    overflow: hidden;
+}
+
+.SearchUIButtonFloatAbleDeleteIconButton {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/remove.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+}
+
+.SearchUIButtonFloatAbleDeleteIconButton:hover {
+    background-color: red;
+}
+
+.SearchUIButtonFloatAbleDeleteIconButtonActive {
+    height: 16px;
+    flex: 0 0 40%;
+}
+
+.SearchUIButtonFloatAbleDeleteIconButtonHide {
+    height: 0px;
+    flex: 0;
+}
+
+.WebAttachmentEditorAttachmentUIMaster {
+    background: green;
+}
+
+.WebAttachmentEditorAttachmentUIIcon {
+    color: #c010d3;
+}
+
+.WebAttachmentEditorAttachmentUILabel {
+    margin: 0px;
+    padding: 0px;
+    text-overflow: ellipsis;
+    text-align: left;
+    overflow: hidden;
+}
+
+.AttachmentUiIconButtonFloatAbleActive {
+    height: 16px;
+}
+
+.AttachmentUiIconButtonFloatAbleHide {
+    height: 0px;
+}
+
+.AttachmentUiIconButtonFloatAbleContainer {
+    transition: 0.5s all;
+    background: #8de30d;
+    display: flex;
+    overflow: hidden;
+}
+
+.DownloadIconButton {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/download.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+}
+
+.DownloadIconButton:hover {
+    background-color: red;
+}
+
+.DeleteIconButton {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/remove.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+}
+
+.DeleteIconButton:hover {
+    background-color: red;
+}
+
+.EditIconButton {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/edit.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+}
+
+.EditIconButton:hover {
+    background-color: red;
+}
+
+.PreviewIconButton {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/preview.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+}
+
+.PreviewIconButton:hover {
+    background-color: red;
+}
+
+.UploadIconButton {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/upload.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+}
+
+.UploadIconButton:hover {
+    background-color: red;
+}
+
+.WebTriggerEditor-InputTriggerField {
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: #495055;
+    border: none;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.Web-TriggerEditor {
+    display: inline-flex;
+    position: relative;
+    color: #495055;
+    border: 2px solid #D9D9D9;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+}
+
+.WebTriggerEditor-SpanPlaceHolder {
+    position: absolute;
+    margin: 0px 35px;
+    padding: 0 0px;
+    font-family: B Lotus;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    top: 0;
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    background: none;
+    pointer-events: none;
+    height: 100%;
+}
+
+.WebTriggerEditor-SpanPlaceHolder-Focus {
+    transform: scale(0.8) translateY(-15px);
+    background: #fff;
+}
+
+.WebTriggerEditor-WebTriggerEditorRemove {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Components/AttachmentUI/remove.svg");
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    border: none;
+    background-position: center;
+    height: 16px;
+    flex: 1;
+    transition: all 0.2s;
+}
+
+.WebTriggerEditor-WebTriggerEditorRemove:hover {
+    background-color: red;
+}
+
+.Web-DateEditor {
+    display: inline-flex;
+    position: relative;
+}
+
+.WebDateEditor-Input {
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: #495055;
+    border: none;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.WebDateEditor-Trigger {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Editors/date.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    background-position: center;
+}
+
+.ComboBoxEditor-Input {
+    padding: 0px;
+    border: 0px;
+    outline: none;
+}
+
+.ComboBoxEditor-Trigger {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Editors/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: 2rem;
+    border: none;
+    border-radius: 20px;
+    background-position: center;
+}
+
+.ComboBoxEditor-ItemTagP {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 4px 4px 4px;
+    margin: 0px;
+    font-family: B Lotus;
+}
+
+.Attachment-Trigger {
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Editors/attachments.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    border-radius: 20px;
+    background-position: center;
+}
+
+.WebTextPageNumberEditor-Input {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #495055;
+    padding: 0;
+    border: 2px solid #D9D9D9;
+    border-radius: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.WebTextPageNumberEditor-SpanPlaceHolder {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    font-family: Roboto, sans-serif;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    top: 0;
+    left: 17px;
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    background: none;
+    pointer-events: none;
+}
+
+.PopupCalendar {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    backdrop-filter: blur(5px);
+}
+
+.TableCalendar {
+    table-layout: fixed;
+}
+
+.DayNormal {
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.SelectDay {
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.NowDay {
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;;
+}
+
+.OtherMonthDay {
+    text-align: center;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.MonthYear {
+    text-align: center;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.BeforeBtn {
+    text-align: center;
+    background-image: url("Resources/Themes/Normal/IMG/Editors/left-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    border-radius: 20px;
+}
+
+.NextBtn {
+    text-align: center;
+    background-image: url("Resources/Themes/Normal/IMG/Editors/right-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    border-radius: 20px;
+}
+
+.PopupComboBox {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    transition: all .5s;
+}
+
+.GlobalFloatButton-Active {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.ProgressContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.ProgressBar {
+    position: absolute;
+    height: 100%;
+    background: red;
+}
+
+.ResizeContainer-Input {
+    border: 1px solid;
+    position: absolute;
+    opacity: 0;
+}
+
+.DragComponent-Div {
+    transition: 0.5s all;
+    opacity: 0;
+}
+
+.DragComponent-Div:hover {
+    opacity: 1;
+    background-color: rgb(55, 10, 130);
+}
+
+.DragComponent-Input {
+    opacity: 0;
+}
+
+.ListView-Div {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ListView-Container {
+    margin: 1px;
+    padding: 0px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.ListView-Item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 40px;
+    background: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    transition: 1s box-shadow;
+}
+
+.ListView-Item:hover {
+    box-shadow: 0 5px 35px 0px rgba(0, 0, 0, .1);
+    background-color: #cce8ff;
+    border-color: #84bcea;
+}
+
+.ListView-ItemHover {
+    box-shadow: 0 5px 35px 0px rgba(0, 0, 0, .1);
+    background-color: #cce8ff;
+    border-color: #84bcea;
+}
+
+.ListView-ItemSelected {
+    background-color: rgb(60, 60, 10);
+}
+
+.TabPanel-TabPanelMasterDiv {
+    background-color: transparent;
+}
+
+.TabPanel-TabItemContainer {
+    background-color: transparent;
+}
+
+.TabPanel-TabPanelTitle {
+    display: inline-block;
+    border-top: 1px solid #DAE0E7;
+    background: #F9F9F9;
+    list-style-type: none;
+}
+
+.TabItem-TabItemTitleMaster {
+    transition: all .25s;
+    margin: -1px 8px -1px 0;
+    border: 1px solid #DAE0E7;
+    background: #F9F9F9;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.TabItem-TabItemTitleMaster:hover {
+    background-color: rgb(190, 166, 234);
+}
+
+.TabItem-TabItemTitleMasterActive {
+    transition: all .25s;
+    margin: -1px 2px -1px 0;
+    border: 1px solid #DAE0E7;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    border-top: none;
+    background: #fff;
+}
+
+.TabItem-TabItemText {
+    transition: all .25s;
+    display: inline-block;
+    padding: 3px 8px 2px 8px;
+    font-family: B Lotus;
+}
+
+.TabItem-TabItemClose {
+    transition: all .25s;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0 14px 0 12px;
+    padding: 3px;
+    border-radius: 16px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.TabItem-TabItemClose:hover {
+    background: #DAE0E7;
+}
+
+.MaskResourceComponent {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+
+.ButtonEditor {
+    position: relative;
+    color: var(--textColor2);
+    border-radius: 26px;
+    background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+    background-size: 400%;
+    background-position: 0% 0%;
+    display: block;
+    min-height: 50px;
+    padding: 13px 24px;
+    font-family: "Lucida Grande", "Helvetica", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    transition-property: background, color;
+}
+
+.ButtonEditor::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 26px;
+    background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+    background-size: 500%;
+    background-position: 0% 0%;
+    filter: blur(10px);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s;
+}
+
+.ButtonEditor:hover {
+    animation: gradientRotate 2s infinite;
+}
+
+.ButtonEditor:hover::before {
+    opacity: 1;
+    animation: gradientRotate 2s infinite;
+}
+
+.BaseButton {
+    cursor: pointer;
+    transition: 1s all;
+}
+
+.BaseButton:hover {
+    background-color: rgb(55, 10, 130);
+}
+
+.PagingToolbar-Toolbar {
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+.PagingToolbar-FirstPage:hover {
+    background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+}
+
+.PagingToolbar-NextPage:hover {
+    background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+}
+
+.PagingToolbar-PreviousPage:hover {
+    background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+}
+
+.PagingToolbar-LastPage:hover {
+    background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+}
+
+.MasterDivToolbar {
+    box-shadow: inset -18px -9px 18px 7px rgba(0, 0, 0, .2);
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+.Menu-MenuMasterDiv {
+    padding: 0.5em 0;
+    margin: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: inherit;
+    font: 400 18px Roboto;
+    white-space: nowrap;
+    cursor: default;
+    transition: 0.3s;
+    background-color: whitesmoke;
+}
+
+.Menu-MenuItem {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    border-bottom: solid 1px #f2f5ff;
+    text-align: center;
+    position: relative;
+    flex-grow: 1;
+    align-items: stretch;
+}
+
+.Menu-MenuItem:last-child {
+    border: none;
+}
+
+.Menu-MenuItemText {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.LoginContainerDiv {
+    border-radius: 5px;
+}
+
+.LogoContainerDiv {
+    border-radius: 5px;
+}
+
+.btn_multi {
+    border-radius: 12px;
+    border: 1px solid;
+    overflow: hidden;
+    padding: 4px 0px 0px 0px;
+}
+
+.btn_single {
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.btn_table {
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.btn_form_table {
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.btn_active {
+    background-color: rgb(225, 213, 18);
+}
+
+.btn_general {
+    transition: 0.3s;
+}
+
+.btn_general:hover {
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: rgb(225, 213, 18);
+}
+
+.btn_refresh {
+    overflow: hidden;
+}
+
+.Accordion-Master {
+    display: block;
+}
+
+.Accordion-Frame {
+    overflow: hidden;
+    background-color: #fff;
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    -webkit-transition: margin .2s cubic-bezier(.4, 0, .2, 1);
+    transition: all .2s cubic-bezier(.4, 0, .2, 1);
+    will-change: margin, height;
+    border-top: 1px solid #e0e0e0;
+}
+
+.Accordion-Frame:first-child {
+    border-radius: 16px 16px 0 0;
+}
+
+.Accordion-Frame:last-child {
+    border-radius: 0 0 16px 16px;
+}
+
+.Accordion-Frame-Open {
+    margin: 7px 1px;
+}
+
+.Accordion-Frame-Close {
+    margin: 2px 1px;
+}
+
+.Accordion-Title {
+    margin: 0;
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    position: relative;
+    padding: 4px 14px;
+    background-color: #48d9f3;
+    display: flex;
+    justify-content: space-between;
+    font-family: B Lotus;
+}
+
+.Accordion-Title:active {
+    background-color: #FF0000;
+}
+
+.Accordion-Title-Close {
+    font-style: italic;
+}
+
+.Accordion-Frame-Icon {
+    align-content: center;
+    height: auto;
+    transition: all 1s;
+}
+
+.Accordion-Frame-Icon-Close {
+    transform: rotate(180deg);
+}
+
+.Accordion-Body {
+    overflow: hidden;
+    font-size: 12px;
+    transition: all 1s;
+}
+
+.Accordion-Body-Open {
+    display: block;
+}
+
+.Accordion-Body-Close {
+    display: none;
+}
+
+.Accordion-Body-Item {
+    margin: 0px;
+    transition: all 1s;
+    padding: 3px;
+    font-size: 18px;
+    font-family: B Lotus;
+}
+
+.Accordion-Body-Item:hover {
+    background-color: #FFCC00;
+}
+
+.PivotGridComponent_MasterTable {
+    table-layout: fixed;
+}
+
+.PivotGridComponent_MasterRowTr1 {
+    table-layout: auto;
+    height: 34px;
+}
+
+.PivotGridComponent_MasterRowTr2 {
+    table-layout: auto;
+    box-sizing: border-box;
+}
+
+.PivotGridComponent_MasterRowTr3 {
+    table-layout: auto;
+    box-sizing: border-box;
+}
+
+.PivotGridComponent_MasterRowTr4 {
+    table-layout: auto;
+    box-sizing: border-box;
+}
+
+.PivotGridComponent_MasterRowTr1_FilterField {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.PivotGridComponent_MasterRowTr2_DataField {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.PivotGridComponent_MasterRowTr2_ColumnField {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+}
+
+.PivotGridComponent_MasterRowTr3_RowField {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+}
+
+.PivotGridComponent_MasterRowTr3_ColumnGrid {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+}
+
+.PivotGridComponent_MasterRowTr4_RowGrid {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+}
+
+.PivotGridComponent_MasterRowTr4_DataGrid {
+    border-left: 0 none;
+    border-color: #e3e3e3;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3);
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+}
+
+.PivotFieldComponent_Master {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid;
+    padding: 5px;
+    margin: 0 8px 0 0;
+}
+
+.PivotFieldComponent_Title {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 5px;
+    margin: 0 8px 0 0;
+}
+
+.PivotFieldComponent_FilterIcon_None {
+    margin: 0 6px 0 0px;
+    line-height: 100%;
+    text-decoration: inherit;
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Editors/arrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    border-radius: 20px;
+    background-position: center;
+}
+
+.PivotFieldComponent_FilterIcon_Filter {
+    margin: 0 6px 0 0px;
+    line-height: 100%;
+    text-decoration: inherit;
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: url("Resources/Themes/Normal/IMG/Toolbar/Buttons/filter.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    border-radius: 20px;
+    background-position: center;
+}
+
+.DashboardGadgetContainer {
+    border: 1px solid;
+    border-radius: 12px;
+}
+
+.DashboardGadgetListViewContainer {
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    border-radius: 30px 30px 0px 0px;
+    box-shadow: -3px -14px 34px -8px rgba(0, 0, 0, 0.75);
+}
+
+.DashboardGadgetListViewItem {
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    white-space: nowrap;
+    width: 150px;
+    background-color: #eeeeee;
+    cursor: grab;
+}
+
+.DashboardGadgetListViewItemHover {
+    background-color: #FFCC00;
+}
+
+.DashboardGadgetListViewItemSelected {
+    background-color: #0800ff;
+}
+
+.DashboardLayoutListViewContainer {
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    white-space: nowrap;
+    border-radius: 30px 30px 0px 0px;
+    box-shadow: -3px -14px 34px -8px rgba(0, 0, 0, 0.75);
+}
+
+.DashboardLayoutListViewItem {
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    background-color: #eeeeee;
+}
+
+.DashboardLayoutListViewItemHover {
+    background-color: #FFCC00;
+}
+
+.DashboardLayoutListViewItemSelected {
+    background-color: #0800ff;
+}
+
+.ProfileContainerMaster {
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 10px;
+    background-color: rgb(244, 244, 244);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.WindowMasterElement {
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
+    background-color: #f4f4f4;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.WindowHeader {
+    background-color: #5eb7b7;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.WindowContent {
+    border-radius: 0px 0px 20px 20px;
+    overflow: hidden;
+}
+
+.AlertDialogMaster {
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
+    background-color: #f4f4f4;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.AlertDialogHeader_Error {
+    background-color: rgb(255 0 0);
+}
+
+.AlertDialogHeader_Info {
+    background-color: rgb(201, 255, 2);
+}
+
+.AlertDialogMessageContainer_Error {
+    border-radius: 0px 0px 20px 20px;
+    background-color: #f5d7b4;
+    overflow: auto;
+}
+
+.AlertDialogMessageContainer_Info {
+    border-radius: 0px 0px 20px 20px;
+    background-color: #9b9292;
+    overflow: auto;
+}
+
+@keyframes glowing {
+    0% {
+        background-color: #2ba805;
+        box-shadow: 0 0 5px #2ba805;
+    }
+    50% {
+        background-color: #49e819;
+        box-shadow: 0 0 20px #49e819;
+    }
+    100% {
+        background-color: #2ba805;
+        box-shadow: 0 0 5px #2ba805;
+    }
+}
+
+.Menu-MenuItem:hover {
+    background-color: rgb(55, 10, 130);
+}
+
+.Menu-Tree-Item {
+    border: 1px solid;
+}
+
+.Menu-Tree-Item:hover {
+    background-color: rgb(55, 10, 130);
+}

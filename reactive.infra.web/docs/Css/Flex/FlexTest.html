@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .Master {
+            display: flex;
+            flex-direction: column;
+            /*gap: 10px;*/
+            flex-flow: row wrap;
+            /*justify-content: space-around;*/
+        }
+
+        .Child1 {
+            background: tomato;
+            /*padding: 5px;*/
+            /*width: 200px;*/
+            height: 150px;
+            /*margin-top: 10px;*/
+            /*line-height: 150px;*/
+            /*color: white;*/
+            /*font-weight: bold;*/
+            /*font-size: 3em;*/
+            /*text-align: center;*/
+            /*border: 1px solid #0c0c0c;*/
+            flex: 1 10%;
+        }
+
+        .Child2 {
+            background: yellow;
+            /*padding: 5px;*/
+            /*width: 200px;*/
+            height: 150px;
+            /*margin-top: 10px;*/
+            /*line-height: 150px;*/
+            /*color: white;*/
+            /*font-weight: bold;*/
+            /*font-size: 3em;*/
+            /*text-align: center;*/
+            /*border: 1px solid #0d65ff;*/
+            flex: 1 90%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="Master">
+    <div class="Child1"></div>
+    <div class="Child2"></div>
+</div>
+
+</body>
+</html>

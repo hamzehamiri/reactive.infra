@@ -1,0 +1,53 @@
+https://stackoverflow.com/questions/56577196/spring-webflux-error-handler-how-to-get-the-reactor-context-of-the-request-in-t
+
+
+@Component
+public class MdcWebFilter implements WebFilter {
+
+    @NotNull
+    @Override
+    public Mono<Void> filter(@NotNull ServerWebExchange serverWebExchange,
+                             WebFilterChain webFilterChain) {
+
+        Mono<Void> filter = webFilterChain.filter(serverWebExchange);
+        return filter
+            .subscriberContext((context) -> {
+                //This code is executed before the query
+
+                Context contextTmp = context.put("whatever", "whichever");
+
+                //I save the context in an attribute attribute
+                serverWebExchange.getAttributes().put("context", contextTmp);
+
+                return contextTmp;
+            });
+    }
+}
+
+
+
+
+@Component
+@Order(-2)
+public class GlobalErrorWebExceptionHandler extends
+    AbstractErrorWebExceptionHandler {
+
+    public GlobalErrorWebExceptionHandler(ErrorAttributes errorAttributes, ResourceProperties resourceProperties, ApplicationContext applicationContext, ServerCodecConfigurer configurer) {
+        super(errorAttributes, resourceProperties, applicationContext);
+        this.setMessageWriters(configurer.getWriters());
+    }
+
+    @Override
+    protected RouterFunction<ServerResponse> getRoutingFunction(
+      ErrorAttributes errorAttributes) {
+        return RouterFunctions
+            .route(RequestPredicates.all(), request -> {
+                Throwable error = errorAttributes.getError(request);
+
+                //The context will be visible in the whole error handling flow
+                return ServerResponse.status(500).syncBody(error.getMessage())
+                   .subscriberContext((Context) request.attribute("context").orElse(Context.empty())));
+            });
+    }
+
+}

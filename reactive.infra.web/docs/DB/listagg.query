@@ -1,0 +1,8 @@
+https://softhints.com/group-by-and-string-concatenation-in-oracle-and-mysql/
+
+
+SELECT country,
+  LISTAGG(person, ', ') WITHIN GROUP (
+ORDER BY person) "names"
+FROM mytable
+GROUP BY country;

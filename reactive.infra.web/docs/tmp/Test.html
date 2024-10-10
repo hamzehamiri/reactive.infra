@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript">
+        window.onload = function () {
+            let dd = document.getElementById('test');
+            dd.addEventListener('keypress', (event) => {
+                if (event.keyCode > 1776 && event.keyCode < 1785) {
+                    dd.value = dd.value + String.fromCharCode(48 + (event.keyCode - 1776));
+                    event.preventDefault();
+                } else if (event.keyCode > 48 && event.keyCode < 57) {
+                    dd.value = dd.value + String.fromCharCode(event.keyCode);
+                    event.preventDefault();
+                } else {
+                    event.preventDefault();
+                }
+                console.log("sdfs");
+            });
+        }
+    </script>
+</head>
+<body>
+
+<label for="test">
+
+</label><input id="test"/>
+
+</body>
+</html>

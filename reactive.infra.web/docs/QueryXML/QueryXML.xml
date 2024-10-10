@@ -1,0 +1,36 @@
+<query>
+    <with>
+
+    </with>
+    <select core_table_id="10" >
+        <column uuid="ss1" core_table_id="10" id="1"/>
+        <column uuid="ss2" core_table_id="10" id="1"/>
+        <column uuid="ss3" core_table_id="10" id="1"/>
+    </select>
+    <from uuid="ss4" core_table_id="10">
+        <join_column uuid="" from_core_table_id="11" to_core_table_id="12">
+            <join_column_from>
+                <column core_table_id="11" id="1"/>
+            </join_column_from>
+            <join_column_to>
+                <column core_table_id="12" id="1"/>
+            </join_column_to>
+        </join_column>
+    </from>
+    <where>
+        <sql_comparator_operators>
+            <sql_comparator_operator name="and">
+                <sql_logical_operator core_table_id="10" id="1">
+                    <logical_operator name="equal">
+                        12
+                    </logical_operator>
+                </sql_logical_operator>
+                <sql_logical_operator core_table_id="10" id="2">
+                    <logical_operator name="equal">
+                        Test
+                    </logical_operator>
+                </sql_logical_operator>
+            </sql_comparator_operator>
+        </sql_comparator_operators>
+    </where>
+</query>

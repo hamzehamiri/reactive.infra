@@ -1,0 +1,1805 @@
+.TK-Aside:after, .TK-Drawer:after, .TK-Hat-Aside:after, .TK-container:after, .TK-row:after {
+    clear: both;
+    content: "";
+    display: table
+}
+
+.TK-Nav--Fluid .TK-container {
+    max-width: none
+}
+
+.TK-container {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1230px;
+    padding-left: 30px;
+    padding-right: 30px
+}
+
+@media only screen and (max-width: 1229px) {
+    .TK-container {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+}
+
+@media only screen and (max-width: 589px) {
+    .TK-container {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+}
+
+.TK-row {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 0;
+    margin-left: -15px;
+    margin-right: -15px
+}
+
+.TK-col-1, .TK-col-10, .TK-col-11, .TK-col-12, .TK-col-13, .TK-col-14, .TK-col-15, .TK-col-16, .TK-col-17, .TK-col-18, .TK-col-19, .TK-col-2, .TK-col-20, .TK-col-21, .TK-col-22, .TK-col-23, .TK-col-24, .TK-col-3, .TK-col-4, .TK-col-5, .TK-col-6, .TK-col-7, .TK-col-8, .TK-col-9 {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 14px;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    vertical-align: top
+}
+
+.TK-col-1 {
+    width: 4.166666666666666%
+}
+
+.TK-col--offset-1 {
+    margin-left: 4.166666666666666%
+}
+
+.TK-col-2 {
+    width: 8.333333333333332%
+}
+
+.TK-col--offset-2 {
+    margin-left: 8.333333333333332%
+}
+
+.TK-col-3 {
+    width: 12.5%
+}
+
+.TK-col--offset-3 {
+    margin-left: 12.5%
+}
+
+.TK-col-4 {
+    width: 16.666666666666664%
+}
+
+.TK-col-5 {
+    width: 20.833333333333336%
+}
+
+.TK-col-6 {
+    width: 25%
+}
+
+.TK-col-7 {
+    width: 29.166666666666668%
+}
+
+.TK-col-8 {
+    width: 33.33333333333333%
+}
+
+.TK-col-9 {
+    width: 37.5%
+}
+
+.TK-col-10 {
+    width: 41.66666666666667%
+}
+
+.TK-col-11 {
+    width: 45.83333333333333%
+}
+
+.TK-col-12 {
+    width: 50%
+}
+
+.TK-col-13 {
+    width: 54.166666666666664%
+}
+
+.TK-col-14 {
+    width: 58.333333333333336%
+}
+
+.TK-col-15 {
+    width: 62.5%
+}
+
+.TK-col-16 {
+    width: 66.66666666666666%
+}
+
+.TK-col-17 {
+    width: 70.83333333333334%
+}
+
+.TK-col-18 {
+    width: 75%
+}
+
+.TK-col-19 {
+    width: 79.16666666666666%
+}
+
+.TK-col-20 {
+    width: 83.33333333333334%
+}
+
+.TK-col-21 {
+    width: 87.5%
+}
+
+.TK-col-22 {
+    width: 91.66666666666666%
+}
+
+.TK-col-23 {
+    width: 95.83333333333334%
+}
+
+.TK-col-24 {
+    width: 100%
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dash [class^=TK-col], .TK-Drawer [class^=TK-col] {
+        display: block;
+        width: 100%
+    }
+}
+
+.TK-Nav--Loading, .TK-Nav--Loading .TK-Bar {
+    overflow: hidden
+}
+
+.TK-Nav--Loading .TK-Dropdown {
+    display: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    z-index: -1
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Nav--Loading, .TK-Nav--Loading .TK-Bar {
+        max-height: 60px
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Nav--Loading, .TK-Nav--Loading .TK-Bar {
+        max-height: 45px
+    }
+
+    .TK-Nav--Loading .TK-Drawer, .TK-Nav--Loading .TK-Drawer-Extension {
+        display: none !important
+    }
+}
+
+.TK-Dropdown {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: 100% top;
+    transform-origin: 100% top;
+    -webkit-transition: opacity .12s linear .12s, visibility .12s linear .12s, -webkit-transform .12s linear .12s;
+    transition: opacity .12s linear .12s, visibility .12s linear .12s, -webkit-transform .12s linear .12s;
+    transition: opacity .12s linear .12s, visibility .12s linear .12s, transform .12s linear .12s;
+    transition: opacity .12s linear .12s, visibility .12s linear .12s, transform .12s linear .12s, -webkit-transform .12s linear .12s;
+    visibility: hidden;
+    will-change: transform;
+    z-index: 100
+}
+
+.TK-Dropdown.TK-Dropdown--Active {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    visibility: visible
+}
+
+.TK-Dropdown {
+    -webkit-box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);
+    box-shadow: 0 2px 4px -2px rgba(0, 0, 0, .25);
+    list-style: none;
+    margin: 0;
+    padding: 10px 0
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Dropdown {
+        max-height: calc(100vh - 100px);
+        overflow-y: auto
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Drawer .TK-Dropdown {
+        padding-bottom: 15px;
+        padding-top: 5px
+    }
+}
+
+.TK-Dropdown-Link {
+    color: #000;
+    display: block;
+    font: 400 16px/20px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 5px 20px
+}
+
+.TK-Dropdown-Link.TK-Item--Selected, .TK-Dropdown-Link:focus, .TK-Dropdown-Link:hover {
+    color: #3d57d8
+}
+
+.TK-Dropdown-List {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.TK-Dropdown-List-Link {
+    color: #000;
+    display: block;
+    font: 400 16px/20px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 5px 0
+}
+
+.TK-Dropdown-List-Link.TK-Item--Selected, .TK-Dropdown-List-Link:focus, .TK-Dropdown-List-Link:hover {
+    color: #3d57d8
+}
+
+.TK-Dropdown-List-Link.TK-Item--Selected svg, .TK-Dropdown-List-Link:focus svg, .TK-Dropdown-List-Link:hover svg {
+    fill: #3d57d8
+}
+
+.TK-Dropdown--Full {
+    left: 0;
+    right: 0
+}
+
+.TK-Dropdown--Double {
+    min-width: 460px;
+    padding: 28px 8px
+}
+
+.TK-Dropdown--Double .TK-col-24:not(:last-child) {
+    margin-bottom: 20px
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Dropdown--Double .TK-container {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+
+    .TK-Dropdown--Double .TK-row {
+        margin-left: -10px;
+        margin-right: -10px
+    }
+
+    .TK-Dropdown--Double [class*=TK-col-] {
+        padding-left: 10px;
+        padding-right: 10px
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dropdown--Double {
+        padding-top: 15px !important
+    }
+}
+
+.TK-Dropdown--Small {
+    min-width: 200px
+}
+
+.TK-Dropdown--230 {
+    min-width: 230px
+}
+
+.TK-Dropdown--Medium {
+    min-width: 290px
+}
+
+.TK-Dropdown--Large {
+    min-width: 500px
+}
+
+.TK-Dropdown--XL {
+    min-width: 560px
+}
+
+.TK-Dropdown--2XL {
+    min-width: 600px
+}
+
+.TK-Dropdown--3XL {
+    min-width: 770px
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Dropdown--3XL .TK-row {
+        margin-left: -20px;
+        margin-right: -20px
+    }
+
+    .TK-Dropdown--3XL [class*=TK-col-] {
+        padding-left: 20px;
+        padding-right: 20px
+    }
+}
+
+.TK-Dropdown--2XL, .TK-Dropdown--3XL, .TK-Dropdown--Grande, .TK-Dropdown--XL {
+    background: #fff
+}
+
+.TK-Dropdown--2XL .TK-Dash-Title, .TK-Dropdown--3XL .TK-Dash-Title, .TK-Dropdown--Grande .TK-Dash-Title, .TK-Dropdown--XL .TK-Dash-Title {
+    margin-bottom: 10px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dropdown--2XL, .TK-Dropdown--3XL, .TK-Dropdown--Grande, .TK-Dropdown--XL {
+        padding-top: 15px !important
+    }
+}
+
+.TK-Dropdown--East {
+    right: 0
+}
+
+.TK-Dropdown--West {
+    left: 0
+}
+
+.TK-Dropdown--White {
+    background: #fff
+}
+
+.TK-Dropdown--Gray, .TK-Dropdown--Grey {
+    background: #f6f7f7
+}
+
+.TK-Drawer .TK-Dropdown--Gray, .TK-Drawer .TK-Dropdown--Grey {
+    background: #fff
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Dropdown--Full-Split .TK-col-12 {
+        width: 100%
+    }
+
+    .TK-Dropdown--Full-Split .TK-col-12 + .TK-col-12 {
+        margin-top: 10px
+    }
+
+    .TK-Dropdown--Full-Split .TK-Dropdown-List {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        column-count: 2
+    }
+}
+
+.TK-Dropdown--CTA {
+    padding: 0
+}
+
+.TK-Dropdown--CTA .TK-Dropdown-Link {
+    background: #fff;
+    border-top: 1px solid #e9e9e9;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase
+}
+
+.TK-Dropdown--CTA .TK-Dropdown-Link:focus, .TK-Dropdown--CTA .TK-Dropdown-Link:hover {
+    background: #f56147;
+    color: #fff
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dropdown--CTA .TK-Dropdown-Link {
+        background: transparent !important;
+        color: #f56147 !important;
+        font: 500 15px/50px Metric, Segoe UI, Ubuntu Mono, sans-serif !important;
+        padding: 0 15px !important
+    }
+
+    .TK-Dropdown--CTA .TK-Dropdown-Link:focus, .TK-Dropdown--CTA .TK-Dropdown-Link:hover {
+        color: #f34122 !important
+    }
+
+    .TK-Dropdown--Mobile {
+        display: none !important;
+        left: 0 !important;
+        position: relative !important;
+        right: 0 !important;
+        -webkit-transform: scaleY(1) !important;
+        transform: scaleY(1) !important;
+        -webkit-transition: none !important;
+        transition: none !important;
+        width: 100% !important
+    }
+
+    .TK-Dropdown--Mobile.TK-Dropdown--Active {
+        display: block !important
+    }
+
+    .TK-Dropdown--Double {
+        min-width: auto
+    }
+
+    .TK-Dropdown--Double .TK-container, .TK-Dropdown--Double .TK-row {
+        margin: 0;
+        padding: 0
+    }
+
+    .TK-Dropdown--Double [class*=TK-col-] + [class*=TK-col-] {
+        margin-top: 25px
+    }
+}
+
+.TK-Dash {
+    border-top: 1px solid #e5e5e5;
+    color: #626262;
+    font: 500 18px/26px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 40px 0 35px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dash {
+        padding: 30px 0 40px
+    }
+}
+
+.TK-Dash-Title {
+    color: #000;
+    display: block;
+    font: 600 16px Metric, Segoe UI, Ubuntu Mono, sans-serif !important;
+    margin: 0 0 5px;
+    text-transform: uppercase
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dash-Title {
+        font-size: 14px !important
+    }
+}
+
+.TK-Dash-Links {
+    display: block;
+    margin-bottom: 25px
+}
+
+.TK-Dash-Link {
+    color: #3d57d8;
+    display: block;
+    font: 500 20px/normal Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 3px 0 2px
+}
+
+.TK-Dash-Link.TK-Item--Selected, .TK-Dash-Link:focus, .TK-Dash-Link:hover {
+    color: #2b2bb2;
+    text-decoration: underline !important
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dash-Link {
+        font-size: 18px;
+        padding: 6px 0
+    }
+}
+
+.TK-Dash-Link--Indented {
+    font-size: 19px;
+    margin-left: 10px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dash-Link--Indented {
+        font-size: 16px
+    }
+}
+
+.TK-Dash-Featured-Link {
+    background: #2e6ded;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block !important;
+    font-family: Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    font-size: 15px;
+    line-height: 1;
+    padding: 13px 12px 13px 18px;
+    text-transform: uppercase
+}
+
+.TK-Dash-Featured-Link:focus, .TK-Dash-Featured-Link:hover {
+    background: #214fb0;
+    color: #fff
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Dash {
+        -webkit-box-shadow: inset 0 7px 7px -7px rgba(0, 0, 0, .15);
+        box-shadow: inset 0 7px 7px -7px rgba(0, 0, 0, .15);
+        right: auto;
+        width: 280px
+    }
+}
+
+.TK-BG {
+    position: relative
+}
+
+.TK-BG:before {
+    border: 1px solid #a3d8f1;
+    border-radius: 5px;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: -2px;
+    top: -17px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-BG:before {
+        display: none
+    }
+}
+
+.TK-Bundles {
+    padding: 0 20px 10px
+}
+
+.TK-Bundles .TK-Dash-Title {
+    margin-bottom: 25px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Bundles {
+        padding: 0
+    }
+
+    .TK-Bundles:before {
+        border: 1px solid #a3d8f1;
+        border-radius: 5px;
+        bottom: -17px;
+        content: "";
+        left: -5px;
+        pointer-events: none;
+        position: absolute;
+        right: -5px;
+        top: -17px
+    }
+}
+
+.TK-Bundle {
+    display: block;
+    margin: 0 0 20px;
+    overflow: hidden;
+    position: relative
+}
+
+.TK-Bundle.TK-Item--Selected .TK-Bundle-Title, .TK-Bundle:focus .TK-Bundle-Title, .TK-Bundle:hover .TK-Bundle-Title {
+    color: #2b2bb2;
+    text-decoration: underline !important
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Bundle {
+        margin-bottom: 40px
+    }
+}
+
+.TK-Bundle-Icon img {
+    display: block
+}
+
+.TK-Bundle-Title {
+    color: #3d57d8;
+    font: 500 30px/1 Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    margin-bottom: 10px;
+    margin-top: 0;
+    text-transform: none;
+    -webkit-transition: color .2s;
+    transition: color .2s
+}
+
+.TK-Bundle-Description {
+    color: #383f55;
+    font: 400 16px/1.1 Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    margin: 0 0 5px;
+    max-width: 300px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Bundle-Description {
+        font-size: 14px
+    }
+}
+
+.TK-Bundle-list {
+    color: #383f55 !important;
+    font: 400 16px/1.6em Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    list-style: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 0
+}
+
+.TK-Bundle-list li:before {
+    background: #00b5dc;
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+    height: 4px;
+    margin-right: 10px;
+    position: relative;
+    vertical-align: 1px;
+    width: 4px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Bundle-list {
+        font-size: 14px
+    }
+}
+
+.TK-Best-Value:after {
+    color: #d15223;
+    content: "Best Value";
+    font-weight: 700;
+    vertical-align: 4px
+}
+
+.TK-Best-Value:after, .TK-Beta:after, .TK-Complimentary:after, .TK-Experimental:after, .TK-New:after, .TK-Preview:after {
+    border: 1px solid;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 1;
+    margin-left: 5px;
+    padding: 1px 4px;
+    text-transform: uppercase
+}
+
+.TK-Beta:after, .TK-Complimentary:after, .TK-Experimental:after, .TK-New:after, .TK-Preview:after {
+    color: #148484;
+    content: "New";
+    vertical-align: .27em
+}
+
+.TK-Experimental:after {
+    color: #ffb621;
+    content: "Experimental"
+}
+
+.TK-Beta:after {
+    color: #00b5dc;
+    content: "Beta"
+}
+
+.TK-Preview:after {
+    color: #636363;
+    content: "Preview"
+}
+
+.TK-Complimentary:after {
+    color: #14c759;
+    content: "Complimentary"
+}
+
+.TK-Aside-Menu, .TK-Footer-List, .TK-Footer-List-Horizontal, .TK-Hat-Menu, .TK-Menu, .TK-Products-Menu {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.TK-Aside-Menu, .TK-Footer-List-Horizontal, .TK-Hat-Menu, .TK-Menu, .TK-Products-Menu {
+    font-size: 0
+}
+
+.TK-Aside-Menu-Item, .TK-Avatar, .TK-Footer-List-Horizontal-Item, .TK-Hat-Menu-Item, .TK-Menu-Item, .TK-Nav svg, .TK-Products-Menu-Item {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle
+}
+
+.TK-PRGS-Logo-Footer:focus, .TK-PRGS-Logo-Footer:hover, .TK-PRGS-Logo:focus, .TK-PRGS-Logo:hover, .TK-TLRK-Logo:focus, .TK-TLRK-Logo:hover {
+    opacity: .75
+}
+
+.TK-Aside-Menu-Button, .TK-Aside-Menu-Link, .TK-Menu-Item-Button, .TK-Menu-Item-Link, .TK-Products-Menu-Item-Button, .TK-Products-Menu-Item-Link {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%
+}
+
+.TK-Aside-Menu-Button:after, .TK-Aside-Menu-Link:after, .TK-Products-Menu-Item-Button:after, .TK-Products-Menu-Item-Link:after {
+    background: #e5e6e6;
+    content: "";
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 1px;
+    z-index: 0
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer:before, .TK-Aside-Menu-Button:before, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer:before, .TK-Aside-Menu-Link:before, .TK-Hat-Menu-Link:before, .TK-Menu-Item-Button:before, .TK-Menu-Item-Link:before, .TK-Products-Menu-Item-Button:before, .TK-Products-Menu-Item-Link:before {
+    bottom: 0;
+    content: "";
+    position: absolute;
+    z-index: 1
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Aside-Menu-Button:before, .TK-Aside-Menu-Link:before, .TK-Hat-Menu-Link:before, .TK-Menu-Item-Button:before, .TK-Menu-Item-Link:before {
+        border-bottom: 3px solid transparent;
+        left: 0;
+        right: 0
+    }
+
+    .TK-Aside-Menu-Button.TK-Item--Selected:before, .TK-Aside-Menu-Button:focus:before, .TK-Aside-Menu-Button:hover:before, .TK-Aside-Menu-Link.TK-Item--Selected:before, .TK-Aside-Menu-Link:focus:before, .TK-Aside-Menu-Link:hover:before, .TK-Hat-Menu-Link.TK-Item--Selected:before, .TK-Hat-Menu-Link:focus:before, .TK-Hat-Menu-Link:hover:before, .TK-Menu-Item-Button.TK-Item--Selected:before, .TK-Menu-Item-Button:focus:before, .TK-Menu-Item-Button:hover:before, .TK-Menu-Item-Link.TK-Item--Selected:before, .TK-Menu-Item-Link:focus:before, .TK-Menu-Item-Link:hover:before {
+        border-bottom-color: #3d57d8
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Aside-Menu-Button:before, .TK-Aside-Menu-Link:before, .TK-Hat-Menu-Link:before, .TK-Menu-Item-Button:before, .TK-Menu-Item-Link:before {
+        border-left: 4px solid transparent;
+        left: 0;
+        top: 0
+    }
+
+    .TK-Aside-Menu-Button.TK-Item--Selected:before, .TK-Aside-Menu-Button:focus:before, .TK-Aside-Menu-Button:hover:before, .TK-Aside-Menu-Link.TK-Item--Selected:before, .TK-Aside-Menu-Link:focus:before, .TK-Aside-Menu-Link:hover:before, .TK-Hat-Menu-Link.TK-Item--Selected:before, .TK-Hat-Menu-Link:focus:before, .TK-Hat-Menu-Link:hover:before, .TK-Menu-Item-Button.TK-Item--Selected:before, .TK-Menu-Item-Button:focus:before, .TK-Menu-Item-Button:hover:before, .TK-Menu-Item-Link.TK-Item--Selected:before, .TK-Menu-Item-Link:focus:before, .TK-Menu-Item-Link:hover:before {
+        border-left-color: #3d57d8
+    }
+}
+
+.TK-Nav *, .TK-Nav :after, .TK-Nav :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.TK-Nav a, .TK-Nav button {
+    display: block;
+    outline: none !important;
+    text-decoration: none !important;
+    -webkit-transition: color .1s linear, background .1s linear, opacity .1s linear;
+    transition: color .1s linear, background .1s linear, opacity .1s linear
+}
+
+.TK-Nav ::-moz-focus-inner {
+    border: 0 !important
+}
+
+.TK-Nav button[type=button] {
+    cursor: default !important
+}
+
+.TK-Nav {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    z-index: 42000
+}
+
+.TK-Nav--Shadow {
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .15);
+    box-shadow: 0 0 1px rgba(0, 0, 0, .15)
+}
+
+@media only screen and (min-width: 1240px) {
+    @supports (position:sticky) {
+        .TK-Nav {
+            position: sticky;
+            top: 0;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+    }
+}
+
+.TK-Hat {
+    background: #fff;
+    color: #000;
+    position: relative;
+    z-index: 42042
+}
+
+.TK-Hat-Brand {
+    float: left;
+    margin: 0;
+    width: 115px
+}
+
+.TK-Hat-Aside {
+    float: left
+}
+
+.TK-Hat-Menu-Item {
+    margin: 0 15px
+}
+
+.TK-Hat-Menu-Link {
+    color: #717275;
+    display: block;
+    font: 500 14px/40px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 0;
+    position: relative;
+    text-transform: uppercase
+}
+
+.TK-Hat-Menu-Link:focus, .TK-Hat-Menu-Link:hover {
+    color: #3d57d8
+}
+
+.TK-Bar {
+    background: #fff;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    color: #000;
+    position: relative;
+    z-index: 42000
+}
+
+.TK-Bar--Sticky {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0
+}
+
+.TK-TLRK-Brand {
+    float: left;
+    margin: 0;
+    width: 26px
+}
+
+.TK-TLRK-Brand--Full {
+    width: 157px
+}
+
+.TK-Drawer {
+    float: right;
+    position: relative
+}
+
+.TK-Menu, .TK-Products-Menu {
+    float: left
+}
+
+.TK-Menu-Item {
+    margin: 0 13px
+}
+
+.TK-Menu-Item.TK-Menu-Item--static {
+    position: static
+}
+
+.TK-Skip-Link {
+    color: #3d57d8;
+    clip: rect(0 0 0 0);
+    font-family: Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 160px;
+    padding: 0 2px 2px 0;
+    position: absolute;
+    text-transform: uppercase;
+    -webkit-transition: none;
+    transition: none;
+    white-space: nowrap
+}
+
+.TK-Skip-Link:active, .TK-Skip-Link:focus {
+    clip: auto;
+    z-index: 1
+}
+
+.TK-Skip-Link:hover {
+    text-decoration: underline !important
+}
+
+.TK-Nav-Skipper {
+    font-size: 0;
+    height: 0;
+    width: 0
+}
+
+.TK-Menu-Item-Button, .TK-Menu-Item-Link {
+    color: #000;
+    display: block;
+    font: 600 14px/60px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 0;
+    position: relative;
+    text-transform: uppercase
+}
+
+.TK-Menu-Item-Button:focus, .TK-Menu-Item-Button:hover, .TK-Menu-Item-Link:focus, .TK-Menu-Item-Link:hover {
+    color: #000
+}
+
+.TK-Products-Menu-Item-Button, .TK-Products-Menu-Item-Link {
+    color: #000;
+    display: block;
+    font: 300 20px/60px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 0 10px;
+    position: relative
+}
+
+.TK-Products-Menu-Item-Button:before, .TK-Products-Menu-Item-Link:before {
+    border-bottom: 3px solid transparent;
+    left: 0;
+    right: 0
+}
+
+.TK-Products-Menu-Item-Button.TK-Item--Selected:before, .TK-Products-Menu-Item-Button:focus:before, .TK-Products-Menu-Item-Button:hover:before, .TK-Products-Menu-Item-Link.TK-Item--Selected:before, .TK-Products-Menu-Item-Link:focus:before, .TK-Products-Menu-Item-Link:hover:before {
+    border-bottom-color: #3d57d8
+}
+
+.TK-Products-Menu-Item-Button:before, .TK-Products-Menu-Item-Link:before {
+    left: 10px;
+    right: 10px
+}
+
+.TK-Aside, .TK-Aside-Menu {
+    float: right
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Aside-Menu {
+        text-align: right
+    }
+
+    .TK-Aside-Menu--Min {
+        min-width: 242px
+    }
+
+    .TK-Aside-Menu--Max {
+        min-width: 288px
+    }
+
+    .TK-Aside-Menu > .TK-Aside-Menu-Item {
+        text-align: center
+    }
+
+    .TK-Aside-Menu > .TK-Aside-Menu-Item > .TK-Dropdown {
+        text-align: left
+    }
+}
+
+.TK-Aside-Menu-Button, .TK-Aside-Menu-Link {
+    color: #000;
+    display: block;
+    font: 600 14px/60px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    height: 60px;
+    margin: 0;
+    padding: 0 15px;
+    position: relative;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 1
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Small, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Small {
+    height: 40px;
+    line-height: 40px
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--No-Sep:after, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--No-Sep:after {
+    content: none
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer:before, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer:before {
+    border-bottom: 3px solid transparent;
+    border-left: none;
+    left: 0;
+    right: 0
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer.TK-Item--Selected:before, .TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer:focus:before, .TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer:hover:before, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer.TK-Item--Selected:before, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer:focus:before, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer:hover:before {
+    border-bottom-color: #3d57d8
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg {
+    fill: currentColor
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line {
+    stroke: #000;
+    stroke-width: 10;
+    stroke-linecap: round;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transition: all .2s;
+    transition: all .2s
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line:first-child, .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line:first-child {
+    -webkit-transform: translateY(-20px) rotate(0deg);
+    transform: translateY(-20px) rotate(0deg)
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line:nth-child(2), .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line:nth-child(2) {
+    opacity: 1
+}
+
+.TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line:nth-child(3), .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line:nth-child(3) {
+    -webkit-transform: translateY(20px) rotate(0deg);
+    transform: translateY(20px) rotate(0deg)
+}
+
+.TK-Drawer--Active ~ .TK--Mobile .TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line:first-child, .TK-Drawer--Active ~ .TK--Mobile .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line:first-child {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.TK-Drawer--Active ~ .TK--Mobile .TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line:nth-child(2), .TK-Drawer--Active ~ .TK--Mobile .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line:nth-child(2) {
+    opacity: 0
+}
+
+.TK-Drawer--Active ~ .TK--Mobile .TK-Aside-Menu-Button.TK-Aside-Menu-Button--Toggle-Drawer svg line:nth-child(3), .TK-Drawer--Active ~ .TK--Mobile .TK-Aside-Menu-Link.TK-Aside-Menu-Link--Toggle-Drawer svg line:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.TK-Aside-Menu-Button-Text, .TK-Aside-Menu-Link-Text {
+    display: none;
+    vertical-align: middle
+}
+
+.TK-Avatar {
+    height: 20px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 20px
+}
+
+.TK-Avatar-Media {
+    border-radius: 50%;
+    display: inline-block;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    overflow: hidden;
+    vertical-align: top;
+    width: 100%
+}
+
+.TK-Button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #eb0249;
+    border: none;
+    color: #fff;
+    display: inline-block !important;
+    font: 500 15px/40px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    padding: 0 15px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle
+}
+
+.TK-Button:focus, .TK-Button:hover {
+    background: #b90138;
+    color: #fff
+}
+
+.TK-Button:active {
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, .2);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, .2)
+}
+
+.TK-Button + .TK-Button {
+    margin-left: 5px
+}
+
+.TK-Button.TK-Button--Sec {
+    background: none;
+    border: 2px solid rgba(148, 215, 255, .5);
+    color: #000;
+    line-height: 36px;
+    -webkit-transition: .2s ease;
+    transition: .2s ease
+}
+
+.TK-Button.TK-Button--Sec:hover {
+    border: 2px solid #94d7ff
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Button {
+        border-radius: 2px;
+        min-width: 100px
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Button + .TK-Button {
+        margin-left: 13px;
+        margin-top: 0
+    }
+}
+
+.TK-Arrow {
+    border-color: transparent;
+    border-style: solid;
+    border-top-color: inherit;
+    border-width: 4px 3px;
+    color: inherit;
+    display: inline-block;
+    font-size: 0;
+    font-style: normal;
+    height: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    width: 0
+}
+
+.TK-Nav-Overlay {
+    background: rgba(0, 0, 0, .5);
+    border: 0;
+    bottom: -100px;
+    font-size: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: -100px;
+    -webkit-transition: opacity .12s linear .12s, visibility .12s linear .12s !important;
+    transition: opacity .12s linear .12s, visibility .12s linear .12s !important;
+    visibility: hidden;
+    width: 100%;
+    z-index: 0
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Nav-Overlay.TK-Nav-Overlay--Active {
+        opacity: 1;
+        visibility: visible
+    }
+}
+
+.TK--Auth, .TK--Not-Auth {
+    min-width: 45px
+}
+
+.TK-Static {
+    position: static !important
+}
+
+.TK--Mobile {
+    display: none
+}
+
+.TK-Support-Icon {
+    margin-right: 5px;
+    vertical-align: -1px !important
+}
+
+.TK-Nav-Ya-No-Products {
+    display: block;
+    font-size: 16px
+}
+
+.TK-Nav-Ya-No-Products > span {
+    display: block
+}
+
+.TK-Item-New:after {
+    color: #01a99d;
+    content: "New";
+    display: block;
+    font-size: 11px;
+    left: 0;
+    line-height: 1;
+    position: absolute;
+    text-transform: uppercase;
+    top: 11px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Item-New:after {
+        float: left;
+        padding-right: 3px;
+        position: relative
+    }
+}
+
+.TK-External svg {
+    margin-left: .5em;
+    vertical-align: -.1em
+}
+
+@media only screen and (min-width: 1240px) {
+    .TK-Dropdown-Link-Spacer {
+        border-top: 1px solid #e2e4e4;
+        display: block;
+        padding: 10px 0 0
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Hat-Brand {
+        min-width: 100px;
+        width: 100px
+    }
+
+    .TK-Aside-Menu-Button--Search a, .TK-Aside-Menu-Button--Toggle-Drawer, .TK-TLRK-Logo > svg {
+        height: 45px
+    }
+
+    .TK-Aside-Menu-Button--Search a, .TK-Aside-Menu-Button--Toggle-Drawer, .TK-Products-Menu-Item-Button {
+        line-height: 45px
+    }
+
+    .TK-Aside-Menu-Button--Search a:after, .TK-Aside-Menu-Button--Search a:before, .TK-Drawer .TK-Aside-Menu-Button--Search {
+        display: none !important
+    }
+
+    .TK-Aside-Menu-Button:after, .TK-Products-Menu-Item-Button:after {
+        top: 12px
+    }
+
+    .TK-Products-Menu-Item-Button, .TK-Products-Menu-Item-Link {
+        font-size: 18px
+    }
+
+    .TK-Drawer {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background: #fff;
+        -webkit-box-shadow: inset 0 7px 7px -7px rgba(0, 0, 0, .15);
+        box-shadow: inset 0 7px 7px -7px rgba(0, 0, 0, .15);
+        contain: layout;
+        display: block;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 45px;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right top;
+        transform-origin: right top;
+        -webkit-transition: opacity .1s linear, visibility .1s linear, -webkit-transform .1s linear;
+        transition: opacity .1s linear, visibility .1s linear, -webkit-transform .1s linear;
+        transition: opacity .1s linear, visibility .1s linear, transform .1s linear;
+        transition: opacity .1s linear, visibility .1s linear, transform .1s linear, -webkit-transform .1s linear;
+        visibility: hidden;
+        width: 280px;
+        will-change: opacity, visibility, transform
+    }
+
+    .TK-Drawer--Active {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        visibility: visible
+    }
+
+    .TK-Drawer-Extension {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background: #fff;
+        bottom: 0;
+        contain: layout;
+        height: 100vh;
+        opacity: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right top;
+        transform-origin: right top;
+        -webkit-transition: opacity .1s linear, visibility .1s linear, -webkit-transform .1s linear;
+        transition: opacity .1s linear, visibility .1s linear, -webkit-transform .1s linear;
+        transition: opacity .1s linear, visibility .1s linear, transform .1s linear;
+        transition: opacity .1s linear, visibility .1s linear, transform .1s linear, -webkit-transform .1s linear;
+        visibility: hidden;
+        width: 280px;
+        will-change: opacity, visibility, transform;
+        z-index: 0;
+        z-index: -1
+    }
+
+    .TK-Drawer--Active + .TK-Drawer-Extension {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        visibility: visible
+    }
+
+    .TK-Dash {
+        border-top: none
+    }
+
+    .TK-Dash .TK-container {
+        padding: 0 30px
+    }
+
+    .TK-Drawer .TK-Dropdown {
+        -webkit-box-shadow: none;
+        box-shadow: none
+    }
+
+    .TK-Aside-Menu:not(.TK-Aside-Menu--Hat), .TK-Menu, .TK-Menu-Item {
+        display: block;
+        float: none
+    }
+
+    .TK-Drawer .TK-col-4, .TK-Drawer .TK-col-5 {
+        margin-bottom: 25px
+    }
+
+    .TK-Drawer .TK-Aside-Menu-Item, .TK-Drawer .TK-Menu-Item {
+        border-bottom: 1px solid #e9e9e9;
+        display: block;
+        margin: 0
+    }
+
+    .TK-Drawer .TK-Aside-Menu-Button, .TK-Drawer .TK-Aside-Menu-Link, .TK-Drawer .TK-Menu-Item-Button, .TK-Drawer .TK-Menu-Item-Link {
+        font: 600 14px/40px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+        height: auto;
+        padding: 0 15px
+    }
+
+    .TK-Drawer .TK-Dash-Link {
+        font-size: 16px;
+        line-height: 26px;
+        padding: 2px 15px
+    }
+
+    .TK-Drawer .TK-Dropdown-Link {
+        font-size: 16px;
+        padding: 5px 23px
+    }
+
+    .TK-Drawer .TK-Dropdown-Link, .TK-Drawer .TK-Dropdown-List-Link {
+        color: #225eff
+    }
+
+    .TK-Dash-Footer {
+        margin: 10px 0 0
+    }
+
+    .TK-Dash-Featured-Link {
+        display: block !important;
+        text-align: center
+    }
+
+    .TK-Button--CTA, .TK-Button--CTA-Sec {
+        border-radius: 5px;
+        margin: 8px 13px;
+        width: calc(100% - 26px)
+    }
+
+    .TK-Button--CTA {
+        line-height: 40px
+    }
+
+    .TK-Button--CTA-Sec {
+        border: 2px solid #225eff;
+        line-height: 35px !important;
+        margin-bottom: 0;
+        text-align: center
+    }
+
+    .TK-Button--CTA-Sec svg, .TK-Button--CTA-Sec:after, .TK-Button--CTA-Sec:before {
+        display: none
+    }
+
+    .TK-Button--CTA-Sec:focus, .TK-Button--CTA-Sec:hover {
+        border-color: #214fb0
+    }
+
+    .TK-Drawer-Title {
+        color: #878787;
+        font: 500 15px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+        margin: 0;
+        padding: 15px;
+        text-transform: uppercase
+    }
+
+    .TK-Aside-Menu-Button-Text, .TK-Aside-Menu-Link-Text {
+        display: inline-block;
+        padding: 0 5px
+    }
+
+    .TK-Progress-Menu .TK-Drawer-Title {
+        font: 500 12px/1 Metric, Segoe UI, Ubuntu Mono, sans-serif;
+        padding: 15px 15px 0
+    }
+
+    .TK-Progress-Menu .TK-Aside-Menu-Link {
+        font-size: 14px;
+        font-weight: 500px
+    }
+}
+
+@media only screen and (max-width: 409px) {
+    .TK-Aside {
+        position: absolute;
+        right: 0
+    }
+}
+
+@media only screen and (max-width: 379px) {
+    .TK-TLRK-Brand--Full {
+        width: 106px
+    }
+
+    .TK-TLRK-Brand--Full .TK-TLRK-Logo > svg {
+        width: 102px
+    }
+}
+
+.TK-Counter {
+    background: #48bfe8;
+    border-radius: 50%;
+    color: #fff;
+    font: 700 10px/14px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    height: 14px;
+    position: absolute;
+    text-align: center;
+    -webkit-transition: opacity 256ms linear, visibility 256ms linear, background 256ms linear;
+    transition: opacity 256ms linear, visibility 256ms linear, background 256ms linear;
+    width: 14px;
+    z-index: 42
+}
+
+.TK-Counter, .TK-Counter--Hidden {
+    opacity: 0;
+    visibility: hidden
+}
+
+.TK-Counter--Visible {
+    opacity: 1;
+    visibility: visible
+}
+
+.TK-Counter--Empty {
+    background: #767676
+}
+
+.TK-Counter--SC {
+    left: 24px;
+    top: 18px
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK-Counter--SC {
+        top: 12px
+    }
+}
+
+.TK-Footer-Copy > a, .TK-Footer-Featured-Link, .TK-Footer-Link, .TK-Footer-Link-Tiny, .TK-Footer-Phone-Link, .TK-Footer-Social-Link {
+    text-decoration: none !important;
+    -webkit-transition: opacity .1s linear;
+    transition: opacity .1s linear;
+    will-change: opacity
+}
+
+.TK-Footer-Copy > a:focus, .TK-Footer-Copy > a:hover, .TK-Footer-Featured-Link:focus, .TK-Footer-Featured-Link:hover, .TK-Footer-Link-Tiny:focus, .TK-Footer-Link-Tiny:hover, .TK-Footer-Link:focus, .TK-Footer-Link:hover, .TK-Footer-Phone-Link:focus, .TK-Footer-Phone-Link:hover, .TK-Footer-Social-Link:focus, .TK-Footer-Social-Link:hover {
+    opacity: .7
+}
+
+.TK-Footer *, .TK-Footer :after, .TK-Footer :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.TK-Footer {
+    background: #e7ebf5;
+    color: #616161;
+    font: 400 14px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    margin: 0;
+    padding: 50px 0 30px
+}
+
+.TK-Footer-H {
+    color: #616161;
+    font: 500 14px Metric, Segoe UI, Ubuntu Mono, sans-serif !important;
+    margin: 0 0 10px !important;
+    text-transform: uppercase
+}
+
+.TK-Footer-Featured-Item {
+    margin: 0 0 25px
+}
+
+.TK-Footer-Featured-Link {
+    color: #000 !important;
+    font: 500 24px/1.25 Metric, Segoe UI, Ubuntu Mono, sans-serif
+}
+
+.TK-Footer-List--inner {
+    margin: 25px 0 0;
+    padding: 0
+}
+
+.TK-Footer-List-Item {
+    display: block;
+    margin: 0 0 5px
+}
+
+.TK-Footer-List-Horizontal-Item-Effect + .TK-Footer-List-Horizontal-Item-Effect {
+    border-left: 1px solid #ccc;
+    margin-left: 5px;
+    padding-left: 5px
+}
+
+.TK-Footer-Link {
+    color: #000 !important;
+    font: 500 18px/1.25 Metric, Segoe UI, Ubuntu Mono, sans-serif
+}
+
+.TK-Footer-Link-Horizontal {
+    padding-right: 1.7em
+}
+
+.TK-Footer-Link-Tiny {
+    color: #000 !important;
+    font: 500 13px/1 Metric, Segoe UI, Ubuntu Mono, sans-serif
+}
+
+.TK-Footer-Phone-Link {
+    color: #616161 !important;
+    font: 400 15px/1.3 Metric, Segoe UI, Ubuntu Mono, sans-serif
+}
+
+.TK-Footer-List-Social {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start
+}
+
+.TK-tar .TK-Footer-List-Social {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end
+}
+
+.TK-Footer-Social-Link {
+    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: .5rem 20px 0 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    min-height: 42px;
+    width: 35px
+}
+
+.TK-Footer-List-Horizontal-Item:first-child .TK-Footer-Social-Link {
+    margin-left: 0
+}
+
+.TK-Footer-Social-Link-Count {
+    color: #000
+}
+
+.TK-PRGS-Logo-Footer {
+    display: inline-block;
+    height: 30px;
+    width: 130px
+}
+
+.TK-Footer-About {
+    font: 500 16px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    margin-bottom: 15px;
+    margin-top: 0
+}
+
+.TK-Footer-Copy {
+    color: #616161;
+    font: 400 14px Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    margin: 0 0 5px
+}
+
+.TK-Footer-Copy > a {
+    color: #333 !important
+}
+
+.TK-Footer-Power {
+    margin: 10px 0 0
+}
+
+.TLRK-CCPA a {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #225eff;
+    border-radius: 5px;
+    color: #000;
+    display: inline-block;
+    font-family: Metric, Segoe UI, Ubuntu Mono, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 8px 0 0;
+    padding: 6px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-transition: .2s ease;
+    transition: .2s ease
+}
+
+.TLRK-CCPA a:focus, .TLRK-CCPA a:hover {
+    background-color: transparent;
+    border: 2px solid #0037cb;
+    color: #000 !important
+}
+
+.TK-row--M1 {
+    margin-bottom: 10px
+}
+
+.TK-row--M2 {
+    margin-bottom: 20px
+}
+
+.TK-row--M3 {
+    margin-bottom: 30px;
+    margin-top: 10px
+}
+
+@media only screen and (max-width: 979px) {
+    .TK-Footer {
+        padding: 40px 0 30px
+    }
+
+    .TK-Footer [class^=TK-col] {
+        width: 100%
+    }
+
+    .TK-Footer-List--inner {
+        margin-top: 15px
+    }
+
+    .TK-Footer-List-Social, .TK-tar .TK-Footer-List-Social {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+    }
+
+    .TK-Footer-About, .TK-Footer-Copy, .TK-Footer-List, .TK-Footer-List-Horizontal, .TK-Footer-Power, .TK-row--M1, .TLRK-CCPA {
+        text-align: center
+    }
+
+    .TK-row--M1 {
+        margin: 20px 0 15px
+    }
+
+    .TK-Footer-Copy:last-of-type {
+        margin: 0 0 20px
+    }
+}
+
+@media only screen and (max-width: 1239px) {
+    .TK--Mobile {
+        display: block !important
+    }
+
+    .TK--Desktop {
+        display: none !important
+    }
+}
+
+.TK--Footer-Mobile {
+    display: none
+}
+
+@media only screen and (max-width: 979px) {
+    .TK--Footer-Mobile {
+        display: block !important
+    }
+
+    .TK--Footer-Desktop {
+        display: none !important
+    }
+}
+
+.TK-dn {
+    display: none !important
+}
+
+.TK-vam {
+    vertical-align: middle
+}
+
+.TK-wsn {
+    white-space: nowrap
+}
+
+.TK-tar {
+    text-align: right
+}
+
+.TK-mb15 {
+    margin-bottom: 15px
+}
+
+.TK-bn {
+    border: none !important
+}
+
+.TK-bbn {
+    border-bottom: none !important
+}
+
+.TK-c-black {
+    color: #000 !important
+}
+
+.TK-fs16 {
+    font-size: 16px !important
+}
+
+.TK-Print {
+    display: none !important
+}
+
+@media print {
+    .TK-Print {
+        display: block !important
+    }
+
+    .TK-Hat {
+        border: none
+    }
+
+    .TK-Aside-Menu--Hat, .TK-Bar, .TK-Footer .TK-col-8, .TK-Hat-Aside, .TK-No-Print, .TK-PRGS-Logo {
+        display: none !important
+    }
+
+    .TK-Footer .TK-col-16 {
+        width: 100% !important
+    }
+}

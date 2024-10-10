@@ -1,0 +1,6 @@
+bin\mysqld.exe --initialize-insecure
+bin\mysqld.exe
+
+mysql -u root -h localhost -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY '1';
+FLUSH PRIVILEGES;

@@ -1,0 +1,99 @@
+.RadComboBox_Silk {
+    color: #333
+}
+
+.RadComboBox_Silk .rcbInner {
+    border-color: #c4c4c4;
+    color: #3b3b3b;
+    background-color: #fff
+}
+
+.RadComboBox_Silk .rcbActionButton {
+    border-color: #c4c4c4;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3)
+}
+
+.RadComboBox_Silk .rcbHovered {
+    border-color: #0092ab;
+    color: black;
+    background-color: #fff
+}
+
+.RadComboBox_Silk .rcbHovered .rcbActionButton {
+    border-color: #0092ab;
+    color: #fff;
+    background-color: #0092ab;
+    background-image: linear-gradient(#00acca, #0092ab)
+}
+
+.RadComboBox_Silk .rcbFocused, .RadComboBox_Silk .rcbExpanded {
+    border-color: #1193aa;
+    color: #333;
+    background-color: #fff
+}
+
+.RadComboBox_Silk .rcbFocused .rcbActionButton, .RadComboBox_Silk .rcbExpanded .rcbActionButton {
+    border-color: #1193aa;
+    color: #fff;
+    background-color: #14afca;
+    background-image: none
+}
+
+.RadComboBox_Silk .rcbReadOnly {
+    border-color: #c4c4c4;
+    color: #5f5f5f;
+    background-color: #e3e3e3;
+    background-image: linear-gradient(white, #e3e3e3)
+}
+
+.RadComboBox_Silk .rcbReadOnly.rcbHovered {
+    border-color: #0092ab;
+    color: #fff;
+    background-color: #0092ab;
+    background-image: linear-gradient(#00acca, #0092ab)
+}
+
+.RadComboBox_Silk .rcbReadOnly.rcbFocused, .RadComboBox_Silk .rcbReadOnly.rcbExpanded {
+    border-color: #1193aa;
+    color: #fff;
+    background-color: #14afca;
+    background-image: none
+}
+
+.RadComboBoxDropDown_Silk {
+    border-color: #d9d9d9;
+    color: #292929;
+    background-color: #fff
+}
+
+.RadComboBoxDropDown_Silk .rcbSeparator {
+    color: #5f5f5f;
+    background-color: #e3e3e3
+}
+
+.RadComboBoxDropDown_Silk .rcbHovered {
+    color: #333;
+    background-color: #bceff8
+}
+
+.RadComboBoxDropDown_Silk .rcbSelected {
+    color: #fff;
+    background-color: #81cfdc
+}
+
+.RadComboBoxDropDown_Silk .rcbLoading {
+    color: #333;
+    background-color: #bceff8
+}
+
+.RadComboBoxDropDown_Silk .rcbItem em {
+    color: #333;
+    background-color: #bceff8
+}
+
+.RadComboBoxDropDown_Silk .rcbCheckAllItemsHovered {
+    color: #333;
+    background-color: #bceff8
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Path from Source to Destination</title>
+</head>
+<body>
+<!-- SVG container -->
+<svg id="svgCanvas" width="400" height="400" style="border: 1px solid black;"></svg>
+
+<script>
+    // Define source and destination points
+    const source = { x: 50, y: 50 };
+    const destination = { x: 350, y: 350 };
+
+    // Create a new SVG path element
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+    // Define the path's data
+    const d = `M ${source.x},${source.y} L ${destination.x},${destination.y}`;
+
+    // Set the attributes for the path element
+    path.setAttribute("d", d);  // Path definition
+    path.setAttribute("stroke", "blue");  // Stroke color
+    path.setAttribute("stroke-width", "2");  // Stroke width
+    path.setAttribute("fill", "none");  // No fill
+
+    // Append the path to the SVG container
+    document.getElementById("svgCanvas").appendChild(path);
+</script>
+</body>
+</html>

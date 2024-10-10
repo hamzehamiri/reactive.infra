@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <style id="compiled-css" type="text/css">
+
+        #canvas {
+            border: 1px solid red;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(window).load(function () {
+
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var $canvas = $("#canvas");
+            var canvasOffset = $canvas.offset();
+            var offsetX = canvasOffset.left;
+            var offsetY = canvasOffset.top;
+            var scrollX = $canvas.scrollLeft();
+            var scrollY = $canvas.scrollTop();
+
+            var circle = {
+                cx: 95,
+                cy: 50,
+                radius: 20,
+                blurColor: "#FF8C00",
+                hoverColor: "red",
+                wasInside: false,
+            }
+
+            drawCircle(circle, false);
+
+            function drawCircle(circle, isInside) {
+                ctx.beginPath();
+                ctx.arc(circle.cx, circle.cy, circle.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = isInside ? circle.hoverColor : circle.blurColor;
+                ctx.fill();
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#2d2d2d';
+                ctx.stroke();
+                circle.wasInside = isInside;
+            }
+
+            function handleMouseMove(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var mouseX = parseInt(e.clientX - offsetX);
+                var mouseY = parseInt(e.clientY - offsetY);
+
+                var dx = mouseX - circle.cx;
+                var dy = mouseY - circle.cy;
+                var isInside = dx * dx + dy * dy <= circle.radius * circle.radius;
+
+                if (isInside && !circle.wasInside) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawCircle(circle, isInside);
+                } else if (!isInside && circle.wasInside) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawCircle(circle, isInside);
+                }
+            }
+
+            $("#canvas").mousemove(function (e) {
+                handleMouseMove(e);
+            });
+        });
+
+    </script>
+</head>
+<body>
+<h4>Hover mouse over circle.</h4>
+<canvas id="canvas" width="300" height="300"></canvas>
+</body>
+</html>

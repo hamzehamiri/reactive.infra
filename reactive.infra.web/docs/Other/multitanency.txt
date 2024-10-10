@@ -1,0 +1,15 @@
+https://betterprogramming.pub/multi-tenancy-support-with-spring-boot-liquibase-and-postgresql-d41942dc0639
+
+
+https://www.springcloud.io/post/2022-01/webflux-get-request-anywhere/#gsc.tab=0
+
+
+https://www.amitph.com/spring-webflux-filters/
+
+
+https://egkatzioura.com/2021/06/21/keeping-track-of-requests-and-responses-on-spring-webflux/
+
+
+**************
+https://www.bytefish.de/blog/spring_boot_multitenancy_webflux.html
+*************

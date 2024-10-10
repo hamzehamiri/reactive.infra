@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script id="shaderVs" type="x-shader/x-vertex">
+        attribute vec4 a_Position;
+        attribute vec4 a_Color;
+        varying highp vec4 v_Color;
+        void main() {
+            gl_Position = a_Position;
+            v_Color = a_Color;
+        }
+    </script>
+
+    <script id="shaderFs" type="x-shader/x-fragment">
+        varying highp vec4 v_Color;
+        void main() {
+            gl_FragColor = v_Color;
+        }
+    </script>
+
+</head>
+<body>
+
+<canvas id="myCanvas" width="640" height="480"></canvas>
+
+
+<script type="application/javascript">
+    function initVertexBuffers(webGLContext) {
+        // Vertices
+        let dim = 3;
+        let vertices = new Float32Array([
+            0, 0.5, 0, // Vertice #1
+            -0.5, -0.5, 0, // Vertice #2
+            0.5, -0.5, 0 // Vertice #3
+        ]);
+        let colors = new Float32Array([
+            1.0, 0.0, 0.0, // Color #1 (red)
+            0.0, 1.0, 0.0, // Color #2 (green)
+            0.0, 0.0, 1.0, // Color #3 (blue)
+        ]);
+
+        // Create a buffer object for vertices and assign to a_Position variable
+        let vertexBuffer = webGLContext.createBuffer();
+        let a_Position = webGLContext.getAttribLocation(webGLContext.program, 'a_Position');
+
+        webGLContext.bindBuffer(webGLContext.ARRAY_BUFFER, vertexBuffer);
+        webGLContext.bufferData(webGLContext.ARRAY_BUFFER, vertices, webGLContext.STATIC_DRAW);
+
+        webGLContext.vertexAttribPointer(a_Position, dim, webGLContext.FLOAT, false, 0, 0);
+        webGLContext.enableVertexAttribArray(a_Position);
+
+        // Create colors buffer
+        let trianglesColorBuffer = webGLContext.createBuffer();
+        let a_Color = webGLContext.getAttribLocation(webGLContext.program, 'a_Color');
+
+        webGLContext.bindBuffer(webGLContext.ARRAY_BUFFER, trianglesColorBuffer);
+        webGLContext.bufferData(webGLContext.ARRAY_BUFFER, colors, webGLContext.STATIC_DRAW);
+
+        webGLContext.vertexAttribPointer(a_Color, dim, webGLContext.FLOAT, false, 0, 0);
+        webGLContext.enableVertexAttribArray(a_Color);
+
+        // Return number of vertices
+        return vertices.length / dim;
+    }
+
+    function makeShader(webGLContext, src, type) {
+        let shader = webGLContext.createShader(type);
+        webGLContext.shaderSource(shader, src);
+        webGLContext.compileShader(shader);
+        if (!webGLContext.getShaderParameter(shader, webGLContext.COMPILE_STATUS)) {
+            alert("Error compiling shader: " + webGLContext.getShaderInfoLog(shader));
+            return;
+        }
+        return shader;
+    }
+
+    function initShaders(webGLContext, shaderVs, shaderFs) {
+        let vertexShader = makeShader(webGLContext, shaderVs, webGLContext.VERTEX_SHADER);
+        let fragmentShader = makeShader(webGLContext, shaderFs, webGLContext.FRAGMENT_SHADER);
+
+        // Create program
+        let glProgram = webGLContext.createProgram();
+
+        // Attach and link shaders to the program
+        webGLContext.attachShader(glProgram, vertexShader);
+        webGLContext.attachShader(glProgram, fragmentShader);
+        webGLContext.linkProgram(glProgram);
+        if (!webGLContext.getProgramParameter(glProgram, webGLContext.LINK_STATUS)) {
+            alert("Unable to initialize the shader program");
+            return false;
+        }
+
+        // Use program
+        webGLContext.useProgram(glProgram);
+        webGLContext.program = glProgram;
+
+        return true;
+    }
+
+    let canvasEl = document.getElementById('myCanvas');
+    let webGLContext = canvasEl.getContext("webgl");
+
+    let shaderVs = document.getElementById('shaderVs').innerHTML;
+    let shaderFs = document.getElementById('shaderFs').innerHTML;
+
+    if (!initShaders(webGLContext, shaderVs, shaderFs)) {
+        console.log('Failed to intialize shaders.');
+    } else {
+        // Write the positions of vertices to a vertex shader
+        let n = initVertexBuffers(webGLContext);
+        if (n < 0) {
+            console.log('Failed to set the positions of the vertices');
+        } else {
+            // Clear canvas
+            webGLContext.clearColor(0.0, 0.0, 0.0, 1.0);
+            webGLContext.clear(webGLContext.COLOR_BUFFER_BIT);
+
+            // Draw
+            webGLContext.drawArrays(webGLContext.TRIANGLES, 0, n);
+        }
+    }
+</script>
+</body>
+</html>

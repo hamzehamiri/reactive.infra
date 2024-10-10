@@ -1,0 +1,5 @@
+SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(format => 'ALL'));
+
+EXPLAIN PLAN FOR select /*+ INDEX(IDX_PLT_MALK_PLAK_NEW)*/ * from PLT_MALK_PLAK p where p.PLAK_NUM_SEQ = '1';
+
+EXPLAIN PLAN FOR select * from PLT_MALK_PLAK p where p.PLAK_NUM_SEQ = '1';

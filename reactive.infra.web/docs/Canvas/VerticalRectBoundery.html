@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="TestVert" width="400" height="600"></canvas>
+<script type="application/javascript">
+    let canvas = document.getElementById('TestVert');
+    let ctx = canvas.getContext('2d');
+
+    let path1 = new Path2D();
+    path1.moveTo(75, 50);
+    path1.lineTo(100, 75);
+    path1.lineTo(100, 25);
+    path1.closePath();
+
+    let path2 = new Path2D();
+    path2.moveTo(125, 50);
+    path2.lineTo(150, 75);
+    path2.lineTo(150, 25);
+    path2.closePath();
+
+    let beamPath2D = new Path2D();
+    beamPath2D.addPath(path1);
+    beamPath2D.addPath(path2);
+
+    var angle = 0;
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'blue';
+
+        ctx.save();
+        ctx.translate(75, 50);
+        ctx.rotateY(angle);
+        ctx.translate(-75, -50);
+
+        ctx.fill(beamPath2D);
+
+        ctx.restore();
+
+        angle += 0.01;
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
+</body>
+</html>

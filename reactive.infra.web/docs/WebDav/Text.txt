@@ -1,0 +1,108 @@
+To implement a WebDAV server that works seamlessly with Microsoft Word 2019, you need to understand the WebDAV protocol and how Microsoft Word interacts with it. Here’s a step-by-step guide on the handshake process and how to handle WebDAV requests and responses:
+
+Step-by-Step Handshake Process
+Client Initialization:
+When a user attempts to open a document from a WebDAV server, Microsoft Word sends an OPTIONS request to the server to determine the capabilities supported by the server.
+OPTIONS /path/to/document.docx HTTP/1.1
+Host: your-webdav-server.com
+
+Server Response:
+The server responds with the allowed methods and WebDAV capabilities.
+HTTP/1.1 200 OK
+Allow: OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, COPY, MOVE
+DAV: 1, 2
+
+Fetching Document Properties:
+Microsoft Word sends a PROPFIND request to retrieve properties of the document, such as its size, creation date, and modification date.
+PROPFIND /path/to/document.docx HTTP/1.1
+Host: your-webdav-server.com
+Depth: 0
+
+Server Response:
+The server responds with the properties of the document.
+HTTP/1.1 207 Multi-Status
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<multistatus xmlns="DAV:">
+    <response>
+        <href>/path/to/document.docx</href>
+        <propstat>
+            <prop>
+                <getcontentlength>12345</getcontentlength>
+                <getlastmodified>Mon, 10 Jul 2024 07:15:52 GMT</getlastmodified>
+            </prop>
+            <status>HTTP/1.1 200 OK</status>
+        </propstat>
+    </response>
+</multistatus>
+
+Locking the Document:
+To prevent simultaneous edits, Microsoft Word sends a LOCK request to lock the document.
+LOCK /path/to/document.docx HTTP/1.1
+Host: your-webdav-server.com
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<lockinfo xmlns="DAV:">
+    <lockscope><exclusive/></lockscope>
+    <locktype><write/></locktype>
+    <owner>
+        <href>mailto:user@example.com</href>
+    </owner>
+</lockinfo>
+
+Server Response:
+The server responds with a lock token.
+HTTP/1.1 200 OK
+Content-Type: application/xml; charset="utf-8"
+Content-Length: xxx
+
+<?xml version="1.0" encoding="utf-8" ?>
+<prop xmlns="DAV:">
+    <lockdiscovery>
+        <activelock>
+            <locktoken>
+                <href>opaquelocktoken:1234-5678-90ab-cdef</href>
+            </locktoken>
+        </activelock>
+    </lockdiscovery>
+</prop>
+
+Editing the Document:
+Microsoft Word sends a GET request to download the document for editing.
+GET /path/to/document.docx HTTP/1.1
+Host: your-webdav-server.com
+
+Server Response:
+The server responds with the document content.
+HTTP/1.1 200 OK
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+Content-Length: 12345
+
+[Document content]
+
+Saving the Document:
+After editing, Microsoft Word sends a PUT request to save the document back to the server.
+PUT /path/to/document.docx HTTP/1.1
+Host: your-webdav-server.com
+Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+Content-Length: 12345
+
+[Updated document content]
+
+Server Response:
+The server confirms the save operation.
+HTTP/1.1 201 Created
+
+Unlocking the Document:
+Finally, Microsoft Word sends an UNLOCK request to release the lock on the document.
+UNLOCK /path/to/document.docx HTTP/1.1
+Host: your-webdav-server.com
+Lock-Token: <opaquelocktoken:1234-5678-90ab-cdef>
+
+Server Response:
+The server confirms the unlock operation.
+HTTP/1.1 204 No Content

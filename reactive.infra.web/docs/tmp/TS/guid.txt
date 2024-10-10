@@ -1,0 +1,4 @@
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+npm install -g typescript
+== > tsc sample.ts ==> sample.js

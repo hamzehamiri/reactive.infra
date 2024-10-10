@@ -1,0 +1,27 @@
+<process-definition>
+    <start-state>
+        <transition to="before-save"/>
+    </start-state>
+    <state name="before-save">
+        <transition to="save">
+            <action registerId='testClass1' class='org.hamzeh.erp.workflow.samples.BeforeSaveWorkFlowAction'/>
+        </transition>
+        <event type='node-enter'>
+            <action registerId='testClass2' class='org.hamzeh.erp.workflow.samples.LogBeforeSaveWorkFlowAction'/>
+        </event>
+        <event type='node-leave'>
+            <action registerId='testClass2' class='org.hamzeh.erp.workflow.samples.LogBeforeSaveWorkFlowAction'/>
+        </event>
+    </state>
+    <state name="save">
+        <transition to="after-save">
+            <action registerId='testClass3' class='org.hamzeh.erp.workflow.samples.SaveWorkFlowAction'/>
+        </transition>
+    </state>
+    <state name="after-save">
+        <transition to="end">
+            <action registerId='testClass4' class='org.hamzeh.erp.workflow.samples.AfterSaveWorkFlowAction'/>
+        </transition>
+    </state>
+    <end-state name="end"/>
+</process-definition>

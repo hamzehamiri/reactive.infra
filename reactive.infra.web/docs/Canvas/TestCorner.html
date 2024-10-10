@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canv" width="400" height="400"></canvas>
+<script type="application/javascript">
+    var canvas = document.getElementById('canv');
+    var ctx = canvas.getContext('2d');
+
+    // Define the paths for the four circles
+    var circle1 = new Path2D();
+    circle1.arc(50, 50, 20, 0, 2 * Math.PI);
+
+    var circle2 = new Path2D();
+    circle2.arc(canvas.width - 50, 50, 20, 0, 2 * Math.PI);
+
+    var circle3 = new Path2D();
+    circle3.arc(50, canvas.height - 50, 20, 0, 2 * Math.PI);
+
+    var circle4 = new Path2D();
+    circle4.arc(canvas.width - 50, canvas.height - 50, 20, 0, 2 * Math.PI);
+
+    // Draw the frame
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 10;
+    ctx.stroke(50, 50, canvas.width - 100, canvas.height - 100);
+
+    // Draw the circles
+    ctx.fillStyle = 'blue';
+    ctx.fill(circle1);
+    ctx.fill(circle2);
+    ctx.fill(circle3);
+    ctx.fill(circle4);
+
+    var angle = 0;
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.save();
+        ctx.translate(75, 50);
+        ctx.rotate(angle);
+        ctx.translate(-75, -50);
+
+        ctx.fill(path);
+
+        ctx.restore();
+
+        angle += 0.01;
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+
+
+</script>
+</body>
+</html>

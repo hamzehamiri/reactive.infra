@@ -1,0 +1,25 @@
+bin\mongod.exe --port 27017 --replSet rs0 --dbpath=DB0 --config bin\mongo.cfg
+
+Config.cfg
+storage:
+  dbPath: D://MongoDB5//DB0
+net:
+  bindIp: localhost
+  port: 27017
+systemLog:
+  destination: file
+  path: D://MongoDB5//DB0/mongod.log
+  logAppend: true
+replication:
+  replSetName: rs0
+
+bin\mongod.exe --config Config.cfg
+
+
+Convert a Standalone to a Replica Set
+Step 1 : mongo --port 27017
+
+Step 2 : rs.initiate()
+
+rs.add({ host: "localhost:27027" })
+rs.add({ host: "localhost:27037" })

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query>
+    <select id="10">
+        <column core_table_column_id="10" core_table_id="1" uuid="8e0b3269-9411-4d69-ad13-342e7a33e90c"/>
+        <query>
+            <select id="10">
+                <column core_table_id="1" uuid="4a49bd0d-f656-4ce8-a90d-5e51056af448"/>
+            </select>
+            <from core_table_id="11"/>
+            <where id="11">
+                <sql_comparator_operators>
+                    <sql_comparator_operator operator="and">
+                        <sql_logical_operator operator="&gt;=">
+                            <from_column core_table_id="1" uuid="4a49bd0d-f656-4ce8-a90d-5e51056af448"/>
+                            <value value="100"/>
+                        </sql_logical_operator>
+                    </sql_comparator_operator>
+                </sql_comparator_operators>
+            </where>
+        </query>
+    </select>
+    <from core_table_id="11"/>
+    <joins>
+        <join id="12">
+            <from_column core_table_column_id="10" core_table_id="1" uuid="8e0b3269-9411-4d69-ad13-342e7a33e90c"/>
+            <to_column core_table_column_id="11" core_table_id="2" uuid="a35742d8-1702-4f88-b1ba-d1d7ae57e9cc"/>
+            <operation/>
+        </join>
+    </joins>
+    <where id="11">
+        <sql_comparator_operators>
+            <sql_comparator_operator operator="and">
+                <sql_logical_operator operator="=">
+                    <from_column core_table_column_id="10" core_table_id="1" uuid="8e0b3269-9411-4d69-ad13-342e7a33e90c"/>
+                    <value value="100"/>
+                </sql_logical_operator>
+                <sql_logical_operator operator="=">
+                    <from_column core_table_column_id="10" core_table_id="1" uuid="8e0b3269-9411-4d69-ad13-342e7a33e90c"/>
+                    <value value="200"/>
+                </sql_logical_operator>
+            </sql_comparator_operator>
+        </sql_comparator_operators>
+    </where>
+    <groups>
+        <column core_table_column_id="11" core_table_id="2" uuid="a35742d8-1702-4f88-b1ba-d1d7ae57e9cc"/>
+    </groups>
+</query>

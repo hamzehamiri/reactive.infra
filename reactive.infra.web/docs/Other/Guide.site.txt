@@ -1,0 +1,9 @@
+https://github.com/pgjdbc/r2dbc-postgresql/issues/401
+
+https://groups.google.com/g/r2dbc/c/nyIXQ0EQddQ
+
+
+Mono<InputStreamResource> download(String name) {
+        return Mono.fromCallable(() -> {
+            InputStream response = minioClient.getObject(GetObjectArgs.builder().bucket(defaultBucketName).object(name).build());
+https://ashrithgn.medium.com/if-you-have-landed-on-this-page-means-either-you-working-with-spring-boot-web-flux-trying-to-16495c21dd02

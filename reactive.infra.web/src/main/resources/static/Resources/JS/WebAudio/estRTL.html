@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript">
+        document.onload= function(){
+            alert('f');
+            var uu = new XMLHttpRequest('/u1/u2');
+            uu.send({u1 : '222'});
+        };
+        function p1(){
+            var uu = new XMLHttpRequest();
+            uu.open('/weberp/EnvironmentService');
+            uu.onreadystatechange = function(event){
+                event.data;
+            };
+            uu.send({processid : '222'});
+        }
+    </script>
+</head>
+<body>
+<!--<input id="inputId" type="text" onkeypress="return replace('inputId',event,'/','/&rlm;');" />-->
+<!--<textarea id="inputId2" type="text" onkeypress="return replace('inputId2',event,'/','/&rlm;');" />-->
+<input id="test1" type="button" onclick="p1()"/>
+<!--<script type="text/javascript">-->
+
+<!--    function replace(id, evt, a, b) {-->
+<!--        var keyCode = evt.which ? evt.which : evt.keyCode;-->
+<!--        var expr = String.fromCharCode(keyCode);-->
+<!--        if (expr == a) {-->
+<!--            var st = document.getElementById(id).value;-->
+<!--            var st2 = st.substring(0, st.length);-->
+<!--            document.getElementById(id).value = st2 + b;-->
+<!--            return false;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+</body>
+</html>

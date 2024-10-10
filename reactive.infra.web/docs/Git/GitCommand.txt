@@ -1,0 +1,18 @@
+--- Update And Fetch New Module
+git pull --recurse-submodules
+git submodule update --init --recursive
+
+
+--- Fetch All Module
+git clone http://git.parsa/plate/workspace.git
+cd workspace
+git submodule update --init --recursive
+
+
+-- Stash SubModule 
+git submodule foreach 'git stash'
+git submodule foreach 'git checkout master; git pull'
+
+
+git config --global user.email "solidworkerh@gmail.com"
+git config --global user.name "HamzehAmiri"

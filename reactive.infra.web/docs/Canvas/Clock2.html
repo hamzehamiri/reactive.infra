@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="clock" width="400" height="400"></canvas>
+<script type="application/javascript">
+    var canvas = document.getElementById("clock");
+    var context = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    context.translate(radius, radius);
+    radius = radius * 0.90;
+    Clock();
+
+    function Clock() {
+        Face(context, radius);
+        Numbers(context, radius);
+        Time(context, radius);
+    }
+
+    function Face(context, radius) {
+        var gradient = context.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+        gradient.addColorStop(0, '#555555');
+        gradient.addColorStop(0.5, 'lightblue');
+        gradient.addColorStop(1, '#555555');
+
+        context.beginPath();
+        context.arc(0, 0, radius, 0, 2 * Math.PI);
+        context.fillStyle = 'white';
+        // context.fill();
+        context.strokeStyle = gradient;
+        context.lineWidth = 20;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+        context.fillStyle = '#555555';
+        context.fill();
+        context.closePath()
+    }
+
+    function Numbers(context, radius) {
+        var angle;
+        var number;
+        context.font = radius * 0.15 + "px Verdana";
+        context.textBaseline = "middle";
+        context.textAlign = "center";
+        for (number = 1; number < 13; number++) {
+            angle = number * Math.PI / 6;
+            context.rotate(angle);
+            context.translate(0, -radius * 0.85);
+            context.rotate(-angle);
+            context.fillText(number.toString(), 0, 0);
+            context.rotate(angle);
+            context.translate(0, radius * 0.85);
+            context.rotate(-angle);
+        }
+    }
+
+    function Time(context, radius) {
+        var Present_Time = new Date();
+        var hours = Present_Time.getHours();
+        var minutes = Present_Time.getMinutes();
+        var seconds = Present_Time.getSeconds();
+        hours = hours % 12;
+        hours = (hours * Math.PI / 6) +
+            (minutes * Math.PI / (6 * 60)) +
+            (seconds * Math.PI / (360 * 60));
+        Hands(context, hours, radius * 0.5, radius * 0.07);
+        minutes = (minutes * Math.PI / 30) + (seconds * Math.PI / (30 * 60));
+        Hands(context, minutes, radius * 0.8, radius * 0.07);
+        seconds = (seconds * Math.PI / 30);
+        Hands(context, seconds, radius * 0.9, radius * 0.02);
+    }
+
+    function Hands(context, pos, length, width) {
+        context.beginPath();
+        context.lineWidth = width;
+        context.lineCap = "round";
+        context.moveTo(0, 0);
+        context.rotate(pos);
+        context.lineTo(0, -length);
+        context.stroke();
+        context.rotate(-pos);
+        context.closePath();
+    }
+
+</script>
+</body>
+</html>

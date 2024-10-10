@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 24px;
+            display: flex;
+            width: 100%;
+        }
+
+        .accordion {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .accordion-item {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        .accordion-header {
+            margin-bottom: 0;
+        }
+
+        .accordion-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            color: #212529;
+            text-align: left;
+            background-color: #fff;
+            border: 0;
+            border-radius: 0;
+            overflow-anchor: none;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease;
+            color: #0c63e4;
+            background-color: #e7f1ff;
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+        }
+
+        .accordion-collapse {
+
+        }
+
+        .collapse {
+
+        }
+
+        .show {
+
+        }
+
+        .accordion-body {
+            padding: 1rem 1.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<main class="main">
+    <div class="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button"> Accordion Item #1</button>
+            </h2>
+            <div class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <strong>This is the second item's accordion body. Page1</strong> It is hidden by default, until the
+                    collapse plugin adds the appropriate classes that we use to style each element. These classes
+                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
+                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
+                    overflow.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button"> Accordion Item #2</button>
+            </h2>
+            <div class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <strong>This is the second item's accordion body. Page 2</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

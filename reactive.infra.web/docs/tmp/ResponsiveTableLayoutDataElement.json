@@ -1,0 +1,26 @@
+{
+  "ResponsiveTableLayoutDataElement": [
+    {
+      "pageType": {
+        "fromWidth": 1,
+        "toWidth": 1000,
+        "isMobile": true
+      },
+      "columnIndex": 1,
+      "rowIndex": 1,
+      "colSpan": 1,
+      "rowSpan": 1
+    },
+    {
+      "pageType": {
+        "fromWidth": 1001,
+        "toWidth": 2000,
+        "isMobile": true
+      },
+      "columnIndex": 1,
+      "rowIndex": 1,
+      "colSpan": 1,
+      "rowSpan": 1
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "components": [
+    {
+      "label": "نام",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jb7v2f",
+        "columns": null
+      },
+      "id": "Field_1lx3r1z",
+      "key": "textfield_5a1ggi"
+    },
+    {
+      "label": "نام خانوادگی",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1bi2zzq",
+        "columns": null
+      },
+      "id": "Field_1lbm5ai",
+      "key": "textfield_r4eyc"
+    },
+    {
+      "values": [
+        {
+          "label": "Value",
+          "value": "value"
+        }
+      ],
+      "label": "Radio group",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1a2qao9",
+        "columns": null
+      },
+      "id": "Field_1ikemdu",
+      "key": "radio_fcuvtv"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1uy8hzj",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "schemaVersion": 16
+}

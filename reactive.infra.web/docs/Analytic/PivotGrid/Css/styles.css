@@ -1,0 +1,20 @@
+.RadPivotGrid_Metro .rpgContentZoneDiv td {
+    white-space: nowrap;
+}
+
+.checkBoxesLabel {
+    color: #555555;
+    font-size: 12px;
+    line-height: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+ul.checkbox-list {
+    margin:10px 0 0 0;
+}
+
+.demo-container {
+    font: 400 14px/1.4 Arial,Helvetica,sans-serif;
+    font-style: normal;
+}

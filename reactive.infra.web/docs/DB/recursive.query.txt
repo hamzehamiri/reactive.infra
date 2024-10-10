@@ -1,0 +1,41 @@
+https://www.dcodeman.com/connect-by-and-with-recursive-queries-in-oracle/
+
+
+WITH ref (lvl, Empno, Ename, Mgr, Sal) AS
+(
+    SELECT 1 AS lvl, Empno, Ename, Mgr, Sal
+    FROM emp
+    WHERE Ename = 'KING'
+      AND Sal > 2500
+    UNION ALL
+    SELECT ref.lvl+1, emp.Empno, emp.Ename, emp.Mgr, emp.Sal
+    FROM emp, ref
+    WHERE emp.Sal > 2500
+      AND ref.empno = emp.mgr
+)
+SELECT * FROM ref;
+
+       LVL	EMPNO ENAME		MGR	   SAL
+---------- ---------- ---------- ---------- ----------
+	 1	 7839 KING			  5000
+	 2	 7698 BLAKE	       7839	  2850
+	 2	 7566 JONES	       7839	  2975
+	 3	 7788 SCOTT	       7566	  3000
+	 3	 7902 FORD	       7566	  3000
+
+
+
+
+SELECT LEVEL lvl, Empno, Ename, Mgr, Sal
+FROM Emp
+WHERE Sal > 2500
+START WITH Ename = 'KING'
+CONNECT BY PRIOR Empno = Mgr;
+
+       LVL	EMPNO ENAME		MGR	   SAL
+---------- ---------- ---------- ---------- ----------
+	 1	 7839 KING			  5000
+	 2	 7566 JONES	       7839	  2975
+	 3	 7788 SCOTT	       7566	  3000
+	 3	 7902 FORD	       7566	  3000
+	 2	 7698 BLAKE	       7839	  2850

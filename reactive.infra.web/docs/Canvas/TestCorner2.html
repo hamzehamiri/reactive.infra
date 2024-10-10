@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="CanvaAsli" width="400" height="600"></canvas>
+<script type="application/javascript">
+    var canvas = document.getElementById('CanvaAsli');
+    var ctx = canvas.getContext('2d');
+
+    var path = new Path2D();
+    path.moveTo(75, 50);
+    path.lineTo(100, 75);
+    path.lineTo(100, 25);
+    path.closePath();
+
+    ctx.fillStyle = 'blue';
+    ctx.fill(path);
+
+    var angle = 0;
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.save();
+        ctx.translate(75, 50);
+        ctx.rotate(angle);
+        ctx.translate(-75, -50);
+
+        ctx.fill(path);
+
+        ctx.restore();
+
+        angle += 0.01;
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+</script>
+</body>
+</html>

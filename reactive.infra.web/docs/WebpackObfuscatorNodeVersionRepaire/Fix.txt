@@ -1,0 +1,14 @@
+export NODE_OPTIONS=--openssl-legacy-provider
+On the Windows command prompt:
+
+set NODE_OPTIONS=--openssl-legacy-provider
+On PowerShell:
+
+$env:NODE_OPTIONS = "--openssl-legacy-provider"
+In package.json
+
+Reconfigure this script for npm run serve as below;
+
+"scripts": {
+    "serve": "vue-cli-service serve --openssl-legacy-provider",
+ },

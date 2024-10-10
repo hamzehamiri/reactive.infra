@@ -1,0 +1,2 @@
+FROM maven:3.9.8-eclipse-temurin-22-alpine AS build
+COPY ci_settings.xml /root/.m2/settings.xml

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1d0y3kq" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="Process_002m06v" name="Asli" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="نقطه شروع">
+      <bpmn:outgoing>Flow_0qyoem7</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0qyoem7" sourceRef="StartEvent_1" targetRef="Activity_0ospwze" />
+    <bpmn:userTask id="Activity_0ospwze" name="ایجاد درخواست مرخصی">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="Form_1uy8hzj" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0qyoem7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1597ek5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_11rfakb">
+      <bpmn:incoming>Flow_1597ek5</bpmn:incoming>
+      <bpmn:outgoing>Flow_08drkrc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1597ek5" sourceRef="Activity_0ospwze" targetRef="Gateway_11rfakb" />
+    <bpmn:endEvent id="Event_19h4viu">
+      <bpmn:incoming>Flow_08drkrc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_08drkrc" sourceRef="Gateway_11rfakb" targetRef="Event_19h4viu" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_002m06v">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="177" y="142" width="41" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_11rfakb_di" bpmnElement="Gateway_11rfakb" isMarkerVisible="true">
+        <dc:Bounds x="475" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15vcvw6_di" bpmnElement="Activity_0ospwze">
+        <dc:Bounds x="290" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_19h4viu_di" bpmnElement="Event_19h4viu">
+        <dc:Bounds x="612" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0qyoem7_di" bpmnElement="Flow_0qyoem7">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="290" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1597ek5_di" bpmnElement="Flow_1597ek5">
+        <di:waypoint x="390" y="117" />
+        <di:waypoint x="475" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08drkrc_di" bpmnElement="Flow_08drkrc">
+        <di:waypoint x="525" y="117" />
+        <di:waypoint x="612" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

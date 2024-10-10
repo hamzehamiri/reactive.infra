@@ -1,0 +1,1 @@
+D:/DBS/mysql-8.0.32-winx64/bin/mysqldump.exe portal --complete-insert  --user=root --password=root --host=127.0.0.1 --port=3306 --result-file=D:/Test.sql

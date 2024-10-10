@@ -1,0 +1,41 @@
+https://bryteflow.com/sql-server-change-tracking-for-real-time-sql-server-replication/
+
+
+To enable Change Tracking
+1. At DB level:
+ALTER DATABASE databasename
+SET CHANGE_TRACKING = ON
+(CHANGE_RETENTION = 7 DAYS, AUTO_CLEANUP = ON)
+
+For Example:
+
+ALTER DATABASE Adventureworks2019
+SET CHANGE_TRACKING = ON
+(CHANGE_RETENTION = 7 DAYS, AUTO_CLEANUP = ON)
+
+2. At table level:
+USE <databasename>
+GO
+ALTER TABLE tablename
+ENABLE CHANGE_TRACKING
+WITH (TRACK_COLUMNS_UPDATED = ON);
+
+For Example:
+
+USE Adventureworks2019
+GO
+ALTER TABLE DimCustomer
+ENABLE CHANGE_TRACKING
+WITH (TRACK_COLUMNS_UPDATED = ON);
+
+Checks to see if Change Tracking has been enabled:
+1. Check if Change Tracking has been enabled at database level
+SELECT *
+FROM sys.change_tracking_databases
+WHERE database_id = DB_ID(‘databasename’);
+
+For example:
+
+SELECT *
+FROM sys.change_tracking_databases
+WHERE database_id = DB_ID(‘Adventureworks2019’);

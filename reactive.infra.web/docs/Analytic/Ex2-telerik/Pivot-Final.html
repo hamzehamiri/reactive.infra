@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .rpgTable {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        .rpgFilterZone {
+            border-left: 0 none;
+
+            border-color: #e3e3e3;
+            color: #5f5f5f;
+            background-color: #e3e3e3;
+            background-image: linear-gradient(white, #e3e3e3);
+        }
+
+        .rpgDataZone {
+            vertical-align: middle;
+            white-space: nowrap;
+
+            border-left: 0 none;
+        }
+
+        .rpgFieldItem {
+
+        }
+
+        .rpgColumnsZone {
+
+        }
+
+        .rpgRowsZone {
+
+        }
+
+        .rpgColumnHeaderZone {
+
+        }
+    </style>
+</head>
+<body>
+
+<table id="ctl00_ContentPlaceholder1_RadPivotGrid1_OT" class="rpgTable">
+    <tbody>
+    <tr>
+        <td class="rpgFilterZone" colspan="4">Drop Filter Fields Here</td>
+    </tr>
+    <tr>
+        <td class="rpgDataZone" colspan="2"><span
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl01_ctl00_rc_TotalPrice" class="rpgFieldItem"
+                title="Drag to reorder" style="cursor: move;"><span
+                title="TotalPrice">TotalPrice</span></span><span
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl01_ctl00_rc_Quantity" class="rpgFieldItem"
+                title="Drag to reorder" style="cursor: move;"><span title="Quantity">Quantity</span></span></td>
+        <td class="rpgColumnsZone" colspan="2"><span
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl01_ctl01_rc_Year" class="rpgFieldItem"
+                title="Drag to reorder" style="cursor: move;"><span title="Year">Year</span><a
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl01_ctl01_rc_Year_Year_FilterPictButton"
+                title="Open filter window" class="rpgIcon rpgFilterIcon"
+                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl01$ctl01$rc_Year$Year_FilterPictButton','')"></a></span><span
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl01_ctl01_rc_Quarter" class="rpgFieldItem"
+                title="Drag to reorder" style="cursor: move;"><span title="Quarter">Quarter</span><a
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl01_ctl01_rc_Quarter_Quarter_FilterPictButton"
+                title="Open filter window" class="rpgIcon rpgFilterIcon"
+                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl01$ctl01$rc_Quarter$Quarter_FilterPictButton','')"></a></span>
+        </td>
+    </tr>
+    <tr>
+        <td id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_RowZone1" class="rpgRowsZone" colspan="1"><span
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_RowZone1_rc_Category" class="rpgFieldItem"
+                title="Drag to reorder" style="cursor: move;"><span title="Category">Category</span><a
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_RowZone1_rc_Category_Category_FilterPictButton"
+                title="Open filter window" class="rpgIcon rpgFilterIcon"
+                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl02$RowZone1$rc_Category$Category_FilterPictButton','')"></a></span>
+        </td>
+        <td id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_RowZone2" class="rpgRowsZone" colspan="1"><span
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_RowZone2_rc_ProductName" class="rpgFieldItem"
+                title="Drag to reorder" style="cursor: move;"><span title="ProductName">ProductName</span><a
+                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_RowZone2_rc_ProductName_ProductName_FilterPictButton"
+                title="Open filter window" class="rpgIcon rpgFilterIcon"
+                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl02$RowZone2$rc_ProductName$ProductName_FilterPictButton','')"></a></span>
+        </td>
+        <td id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone" class="rpgColumnHeaderZone">
+            <div class="rpgColumnHeaderDiv" style="width: 1002px;">
+                <table id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_CHT" class="rpgTable"
+                       style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 87px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 74px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 74px;">
+                        <col style="width: 107px;">
+                        <col style="width: 74px;">
+                    </colgroup>
+                    <thead>
+                    <tr style="display:none;">
+                        <th scope="col"><span style="display: none">empty</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="col" class="rpgColumnHeader" colspan="8"><a
+                                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_ctl00_ColumnExpandCollapseButton_0_0"
+                                title="Collapse" class="rpgIcon rpgCollapseIcon"
+                                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl02$ColumnHeaderZone$ctl01$ctl00$ColumnExpandCollapseButton_0_0','')"> </a>1997
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_01"
+                            class="rpgColumnHeaderTotal" rowspan="3">1997 Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_02"
+                            class="rpgColumnHeaderTotal" rowspan="3">1997 Sum of Quantity
+                        </th>
+                        <th scope="col" class="rpgColumnHeader" colspan="4"><a
+                                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_ctl03_ColumnExpandCollapseButton_10_0"
+                                title="Collapse" class="rpgIcon rpgCollapseIcon"
+                                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl02$ColumnHeaderZone$ctl01$ctl03$ColumnExpandCollapseButton_10_0','')"> </a>1998
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_04"
+                            class="rpgColumnHeaderTotal" rowspan="3">1998 Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_05"
+                            class="rpgColumnHeaderTotal" rowspan="3">1998 Sum of Quantity
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_06"
+                            class="rpgColumnHeaderGrandTotal" rowspan="3">Total Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl01_07"
+                            class="rpgColumnHeaderGrandTotal" rowspan="3">Total Sum of Quantity
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="rpgColumnHeader" colspan="2">Quarter 1</th>
+                        <th scope="col" class="rpgColumnHeader" colspan="2">Quarter 2</th>
+                        <th scope="col" class="rpgColumnHeader" colspan="2">Quarter 3</th>
+                        <th scope="col" class="rpgColumnHeader" colspan="2">Quarter 4</th>
+                        <th scope="col" class="rpgColumnHeader" colspan="2">Quarter 1</th>
+                        <th scope="col" class="rpgColumnHeader" colspan="2">Quarter 2</th>
+                    </tr>
+                    <tr>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_20"
+                            class="rpgColumnHeader">Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_21"
+                            class="rpgColumnHeader">Sum of Quantity
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_22"
+                            class="rpgColumnHeader">Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_23"
+                            class="rpgColumnHeader">Sum of Quantity
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_24"
+                            class="rpgColumnHeader">Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_25"
+                            class="rpgColumnHeader">Sum of Quantity
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_26"
+                            class="rpgColumnHeader">Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_27"
+                            class="rpgColumnHeader">Sum of Quantity
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_28"
+                            class="rpgColumnHeader">Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_29"
+                            class="rpgColumnHeader">Sum of Quantity
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_210"
+                            class="rpgColumnHeader">Sum of TotalPrice
+                        </th>
+                        <th scope="col"
+                            id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_ctl03_211"
+                            class="rpgColumnHeader">Sum of Quantity
+                        </th>
+                    </tr>
+                    <tr id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_ColumnHeaderZone_FakeRow"
+                        class="rpgDimensionRow">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+        <td class="rpgVerticalScroll" rowspan="2" style="width: 17px;">
+            <div id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl02_Vertical" class="rpgVerticalScrollDiv"
+                 style="height: 351px; width: 17px; overflow: hidden scroll;">
+                <div style="height: 684.37px; width: 17px;">
+
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rpgRowHeaderZone" colspan="2">
+            <div id="ctl00_ContentPlaceholder1_RadPivotGrid1_RowHeaderZoneDiv" class="rpgRowHeaderZoneDiv"
+                 style="height: 219px;">
+                <table id="ctl00_ContentPlaceholder1_RadPivotGrid1_RHT" class="rpgTable">
+                    <colgroup>
+                        <col>
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr style="display: none; height: 0px;">
+                        <th scope="col"><span style="display: none">empty</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader" rowspan="10"><a
+                                id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl05_ctl00_RowExpandCollapseButton_0_0"
+                                title="Collapse" class="rpgIcon rpgCollapseIcon"
+                                href="javascript:__doPostBack('ctl00$ContentPlaceholder1$RadPivotGrid1$ctl05$ctl00$RowExpandCollapseButton_0_0','')"> </a>Beverages
+                        </td>
+                        <td class="rpgRowHeaderField rpgRowHeader">Chartreuse verte</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Côte de Blaye</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Guaraná Fantástica</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Ipoh Coffee</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Lakkalikööri</td>
+                    </tr>
+                    <tr style="height: 57px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Laughing Lumberjack Lager</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Outback Lager</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Rhönbräu Klosterbier</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Sasquatch Ale</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderField rpgRowHeader">Steeleye Stout</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgRowHeaderGrandTotal" colspan="2">Grand Total</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+        <td class="rpgContentZone">
+            <div id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl04_ContentZoneDiv" class="rpgContentZoneDiv"
+                 style="height: 219px; width: 1002px;">
+                <table id="ctl00_ContentPlaceholder1_RadPivotGrid1_ctl04_DT" class="rpgTable"
+                       style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 87px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 74px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 69px;">
+                        <col style="width: 95px;">
+                        <col style="width: 74px;">
+                        <col style="width: 107px;">
+                        <col style="width: 74px;">
+                    </colgroup>
+                    <thead>
+                    <tr style="display: none; height: 0px;">
+                        <th scope="col"><span style="display: none">empty</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$662.40</td>
+                        <td class="rpgDataCell">46</td>
+                        <td class="rpgDataCell">$450.00</td>
+                        <td class="rpgDataCell">25</td>
+                        <td class="rpgDataCell">$1,152.00</td>
+                        <td class="rpgDataCell">64</td>
+                        <td class="rpgDataCell">$2,664.00</td>
+                        <td class="rpgDataCell">148</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$4,928.40</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">283</td>
+                        <td class="rpgDataCell">$3,996.00</td>
+                        <td class="rpgDataCell">222</td>
+                        <td class="rpgDataCell">$360.00</td>
+                        <td class="rpgDataCell">20</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$4,356.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">242</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$9,284.40</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">525</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$27,193.20</td>
+                        <td class="rpgDataCell">129</td>
+                        <td class="rpgDataCell">$16,864.00</td>
+                        <td class="rpgDataCell">64</td>
+                        <td class="rpgDataCell">$3,952.50</td>
+                        <td class="rpgDataCell">15</td>
+                        <td class="rpgDataCell">$3,952.50</td>
+                        <td class="rpgDataCell">15</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$51,962.20</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">223</td>
+                        <td class="rpgDataCell">$61,922.50</td>
+                        <td class="rpgDataCell">235</td>
+                        <td class="rpgDataCell">$6,587.50</td>
+                        <td class="rpgDataCell">25</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$68,510.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">260</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$120,472.20</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">483</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$550.80</td>
+                        <td class="rpgDataCell">153</td>
+                        <td class="rpgDataCell">$675.00</td>
+                        <td class="rpgDataCell">150</td>
+                        <td class="rpgDataCell">$351.00</td>
+                        <td class="rpgDataCell">78</td>
+                        <td class="rpgDataCell">$180.00</td>
+                        <td class="rpgDataCell">40</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$1,756.80</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">421</td>
+                        <td class="rpgDataCell">$1,737.00</td>
+                        <td class="rpgDataCell">386</td>
+                        <td class="rpgDataCell">$720.00</td>
+                        <td class="rpgDataCell">160</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$2,457.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">546</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$4,213.80</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">967</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$1,398.40</td>
+                        <td class="rpgDataCell">38</td>
+                        <td class="rpgDataCell">$4,600.00</td>
+                        <td class="rpgDataCell">100</td>
+                        <td class="rpgDataCell">$4,140.00</td>
+                        <td class="rpgDataCell">90</td>
+                        <td class="rpgDataCell">$1,380.00</td>
+                        <td class="rpgDataCell">30</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$11,518.40</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">258</td>
+                        <td class="rpgDataCell">$4,140.00</td>
+                        <td class="rpgDataCell">90</td>
+                        <td class="rpgDataCell">$4,416.00</td>
+                        <td class="rpgDataCell">96</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$8,556.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">186</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$20,074.40</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">444</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$1,353.60</td>
+                        <td class="rpgDataCell">94</td>
+                        <td class="rpgDataCell">$3,744.00</td>
+                        <td class="rpgDataCell">208</td>
+                        <td class="rpgDataCell">$2,610.00</td>
+                        <td class="rpgDataCell">145</td>
+                        <td class="rpgDataCell">&nbsp;</td>
+                        <td class="rpgDataCell">&nbsp;</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$7,707.60</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">447</td>
+                        <td class="rpgDataCell">$4,320.00</td>
+                        <td class="rpgDataCell">240</td>
+                        <td class="rpgDataCell">$2,664.00</td>
+                        <td class="rpgDataCell">148</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$6,984.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">388</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$14,691.60</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">835</td>
+                    </tr>
+                    <tr style="height: 57px;">
+                        <td class="rpgDataCell">&nbsp;</td>
+                        <td class="rpgDataCell">&nbsp;</td>
+                        <td class="rpgDataCell">$518.00</td>
+                        <td class="rpgDataCell">37</td>
+                        <td class="rpgDataCell">$350.00</td>
+                        <td class="rpgDataCell">25</td>
+                        <td class="rpgDataCell">$42.00</td>
+                        <td class="rpgDataCell">3</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$910.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">65</td>
+                        <td class="rpgDataCell">$1,316.00</td>
+                        <td class="rpgDataCell">94</td>
+                        <td class="rpgDataCell">$280.00</td>
+                        <td class="rpgDataCell">20</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$1,596.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">114</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$2,506.00</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">179</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$1,260.00</td>
+                        <td class="rpgDataCell">105</td>
+                        <td class="rpgDataCell">$630.00</td>
+                        <td class="rpgDataCell">42</td>
+                        <td class="rpgDataCell">$3,465.00</td>
+                        <td class="rpgDataCell">231</td>
+                        <td class="rpgDataCell">$525.00</td>
+                        <td class="rpgDataCell">35</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$5,880.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">413</td>
+                        <td class="rpgDataCell">$2,685.00</td>
+                        <td class="rpgDataCell">179</td>
+                        <td class="rpgDataCell">$1,035.00</td>
+                        <td class="rpgDataCell">69</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$3,720.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">248</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$9,600.00</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">661</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$458.80</td>
+                        <td class="rpgDataCell">74</td>
+                        <td class="rpgDataCell">$2,418.00</td>
+                        <td class="rpgDataCell">312</td>
+                        <td class="rpgDataCell">$984.25</td>
+                        <td class="rpgDataCell">127</td>
+                        <td class="rpgDataCell">$906.75</td>
+                        <td class="rpgDataCell">117</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$4,767.80</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">630</td>
+                        <td class="rpgDataCell">$2,875.25</td>
+                        <td class="rpgDataCell">371</td>
+                        <td class="rpgDataCell">$232.50</td>
+                        <td class="rpgDataCell">30</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$3,107.75</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">401</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$7,875.55</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">1031</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$616.00</td>
+                        <td class="rpgDataCell">55</td>
+                        <td class="rpgDataCell">$700.00</td>
+                        <td class="rpgDataCell">50</td>
+                        <td class="rpgDataCell">$784.00</td>
+                        <td class="rpgDataCell">56</td>
+                        <td class="rpgDataCell">$140.00</td>
+                        <td class="rpgDataCell">10</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$2,240.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">171</td>
+                        <td class="rpgDataCell">$420.00</td>
+                        <td class="rpgDataCell">30</td>
+                        <td class="rpgDataCell">$3,010.00</td>
+                        <td class="rpgDataCell">215</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$3,430.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">245</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$5,670.00</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">416</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell">$1,483.20</td>
+                        <td class="rpgDataCell">103</td>
+                        <td class="rpgDataCell">$2,394.00</td>
+                        <td class="rpgDataCell">133</td>
+                        <td class="rpgDataCell">$1,710.00</td>
+                        <td class="rpgDataCell">95</td>
+                        <td class="rpgDataCell">$270.00</td>
+                        <td class="rpgDataCell">15</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$5,857.20</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">346</td>
+                        <td class="rpgDataCell">$2,628.00</td>
+                        <td class="rpgDataCell">146</td>
+                        <td class="rpgDataCell">$2,106.00</td>
+                        <td class="rpgDataCell">117</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">$4,734.00</td>
+                        <td class="rpgDataCell rpgColumnTotalDataCell">263</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">$10,591.20</td>
+                        <td class="rpgDataCell rpgColumnGrandTotalDataCell">609</td>
+                    </tr>
+                    <tr style="height: 37px;">
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$143,954.30</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">6009</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$204,352.02</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">7582</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$219,765.57</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">8392</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$75,661.26</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">2577</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$643,733.15</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">24560</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$307,335.12</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">10179</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$145,771.62</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">5121</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">$453,106.74</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell">15300</td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell rpgColumnGrandTotalDataCell">
+                            $1,096,839.89
+                        </td>
+                        <td class="rpgDataCell rpgRowGrandTotalDataCell rpgColumnGrandTotalDataCell">39860</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="rpgHorizontalScroll" colspan="4">
+            <div id="ctl00_ContentPlaceholder1_RadPivotGrid1_HzSD"
+                 style="width: 1288px; height: 17px; overflow: scroll hidden;">
+                <div style="width: 1921.72px; height: 17px;">
+
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

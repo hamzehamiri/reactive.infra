@@ -1,0 +1,1 @@
+pg_dump -E UTF8 -U postgres erp > erp

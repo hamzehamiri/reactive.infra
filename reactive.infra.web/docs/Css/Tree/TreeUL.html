@@ -1,0 +1,250 @@
+<html>
+
+<head>
+    <style>
+        .tree_node_group_ul {
+            position: relative;
+        }
+
+        .tree_node_group_li {
+            /*overflow-y: hidden;*/
+            outline: none;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .tree_node_collapse_span {
+            width: 26px;
+            height: 21px;
+            vertical-align: top;
+            float: left;
+        }
+
+        .tree_node_collapse_span_img {
+            margin-left: 10px;
+            margin-top: 8px;
+            background-image: url(DXR.svg);
+            background-repeat: no-repeat;
+            background-color: transparent;
+            cursor: pointer;
+            border: 0;
+            overflow-clip-margin: content-box;
+            overflow: clip;
+            background-position: -146px -170px;
+            /*background-position: -110px -170px;*/
+            background-size: 538px auto;
+            width: 10px;
+            height: 10px;
+        }
+
+        .tree_node_label_div {
+            -webkit-tap-highlight-color: transparent;
+            margin-top: 1px;
+            float: left;
+            padding: 3px 3px 4px 3px;
+            text-decoration: none;
+            outline: 0 none;
+            border: 1px solid transparent;
+        }
+
+        .tree_node_checkbox {
+            cursor: default;
+            margin: 0 6px 0 0px;
+            line-height: 100%;
+            text-decoration: inherit;
+            background-position: -400px -76px;
+            /*background-position: -40px -98px;*/
+            background-size: 538px auto;
+            width: 18px;
+            height: 18px;
+            background-image: url(DXR.svg);
+            background-repeat: no-repeat;
+            background-color: transparent;
+            display: inline-block;
+            vertical-align: middle;
+            content: "dxRippleTargetExternal" !important;
+        }
+
+        .tree_node_label_span {
+            white-space: nowrap;
+            line-height: 100%;
+            padding: 2px 0;
+            text-decoration: inherit;
+            cursor: inherit !important;
+        }
+
+        .tree_node_break_ul {
+            clear: both;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+            width: 0;
+            display: block;
+            line-height: 0;
+        }
+
+        .cholmang {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div style="width: 180px; overflow: auto;">
+    <ul class="tree_node_group_ul">
+        <li class="tree_node_group_li">
+        <span class="tree_node_collapse_span">
+            <img class="tree_node_collapse_span_img"/>
+        </span>
+            <div class="tree_node_label_div">
+                <span class="tree_node_checkbox"></span>
+                <span class="tree_node_label_span">Parent 1</span>
+            </div>
+            <b class="tree_node_break_ul"></b>
+
+            <ul class="tree_node_group_ul">
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 1</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                    <ul class="tree_node_group_ul">
+                        <li class="tree_node_group_li">
+                            <div class="cholmang">
+                            <span class="tree_node_collapse_span">
+                                <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                            </span>
+                                <div class="tree_node_label_div">
+                                    <span class="tree_node_checkbox"></span>
+                                    <span class="tree_node_label_span">Child 1</span>
+                                </div>
+                            </div>
+                            <b class="tree_node_break_ul"></b>
+                        </li>
+
+                        <!-- If Same Level Child -->
+
+                        <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                            <div class="tree_node_label_div">
+                                <span class="tree_node_checkbox"></span>
+                                <span class="tree_node_label_span">Child 2</span>
+                            </div>
+                            <b class="tree_node_break_ul"></b>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- If Same Level Child -->
+
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 2</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+            </ul>
+            <ul class="tree_node_group_ul">
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 1</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+
+                <!-- If Same Level Child -->
+
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 2</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+            </ul>
+        </li>
+        <li class="tree_node_group_li">
+        <span class="tree_node_collapse_span">
+            <img class="tree_node_collapse_span_img"/>
+        </span>
+            <div class="tree_node_label_div">
+                <span class="tree_node_checkbox"></span>
+                <span class="tree_node_label_span">Parent 1</span>
+            </div>
+            <b class="tree_node_break_ul"></b>
+
+            <ul class="tree_node_group_ul">
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 1</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+
+                <!-- If Same Level Child -->
+
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 2</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+            </ul>
+            <ul class="tree_node_group_ul">
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 1</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+
+                <!-- If Same Level Child -->
+
+                <li class="tree_node_group_li">
+                <span class="tree_node_collapse_span">
+                    <img class="tree_node_collapse_span_img"/> <!-- If HasChild -->
+                </span>
+                    <div class="tree_node_label_div">
+                        <span class="tree_node_checkbox"></span>
+                        <span class="tree_node_label_span">Child 2</span>
+                    </div>
+                    <b class="tree_node_break_ul"></b>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

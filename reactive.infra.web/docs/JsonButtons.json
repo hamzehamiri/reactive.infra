@@ -1,0 +1,39 @@
+[
+  {
+    "classButton": "btn_new",
+    "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/new.svg"
+  },
+  {
+    "classButton": "btn_save",
+    "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/save.png"
+  },
+  {
+    "classButton": "btn_filter",
+    "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/filter.svg"
+  },
+  {
+    "master": {
+      "classButton": "btn_multi"
+    },
+    "form_view": {
+      "classButton": "btn_single",
+      "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/form.svg"
+    },
+    "table_view": {
+      "classButton": "btn_table",
+      "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/table-line.svg"
+    },
+    "table_form_view": {
+      "classButton": "btn_form_table",
+      "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/form-table.svg"
+    }
+  },
+  {
+    "classButton": "btn_refresh",
+    "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/refresh.svg"
+  },
+  {
+    "classButton": "btn_new",
+    "imageIconSrc": "./Resources/Themes/Normal/Img/Toolbar/Buttons/new.svg"
+  }
+]

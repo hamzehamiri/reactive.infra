@@ -1,0 +1,24 @@
+// Convert the byte array to base64 in the server-side code
+// Example in Java using Base64 library
+String encodedString = Base64.getEncoder().encodeToString(byteArray);
+
+// In your JavaScript code
+var base64String = "your base64 encoded string"; // Replace with the actual base64 string
+
+// Decode the base64 string to a byte array
+var binaryString = window.atob(base64String);
+var binaryLen = binaryString.length;
+var bytes = new Uint8Array(binaryLen);
+for (var i = 0; i < binaryLen; i++) {
+    var ascii = binaryString.charCodeAt(i);
+    bytes[i] = ascii;
+}
+
+// Create a Blob with the byte array
+var blob = new Blob([bytes], { type: "application/pdf" });
+
+// Create a URL for the Blob
+var url = window.URL.createObjectURL(blob);
+
+// Open the URL in a new window or iframe
+window.open(url, '', 'height=650,width=840');

@@ -1,0 +1,47 @@
+{
+  "components": [
+    {
+      "label": "نام کارمند",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1hiqeg5",
+        "columns": null
+      },
+      "id": "Field_1rls59l",
+      "key": "textfield_5pyb2f",
+      "readonly": true,
+      "appearance": {
+        "prefixAdorner": "=textfield_name"
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "تایید می شود",
+          "value": "a"
+        },
+        {
+          "label": "رد میشود",
+          "value": "r"
+        }
+      ],
+      "label": "Radio group",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0x1v24z",
+        "columns": null
+      },
+      "id": "Field_0nuehb8",
+      "key": "radio_7etddq"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1v72zex",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.24.0"
+  },
+  "schemaVersion": 16
+}

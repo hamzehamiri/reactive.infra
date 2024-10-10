@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="600" height="600"></canvas>
+
+<script type="application/javascript">
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let rotation = 45
+    let p1 = new Path2D()
+
+    p1.rect(0, 0, 75, 75)
+
+    let p2 = new Path2D()
+    p2.addPath(p1, new DOMMatrix().translate(80, 10).scale(1, 1.2).rotate(45))
+
+    ctx.fillStyle = 'red'
+    ctx.fill(p2)
+
+    let minY = Infinity, minX = Infinity, maxY = -Infinity, maxX = -Infinity;
+    for (const {x, y} of p1) {
+        minY = Math.min(minY, y);
+        minX = Math.min(minX, x);
+        maxY = Math.max(maxY, y);
+        maxX = Math.max(maxX, x);
+    }
+    // const bbox = p2.getBBox(); // a DOMRect
+    ctx.strokeStyle = "green";
+    ctx.strokeRect(minX - 3, minY - 3, maxX - minX + 3, maxY - minX + 3);
+</script>
+</body>
+</html>

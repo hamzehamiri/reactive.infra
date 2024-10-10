@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="loading-bar.css"/>
+    <script type="text/javascript" src="loading-bar.js"></script>
+</head>
+<body>
+<div id="TT" class="myBar label-center"></div>
+<script>
+    let el = document.getElementById("TT");
+    let bar1 = new ldBar(el, {
+        "stroke": '#f00',
+        "stroke-width": 10,
+        "preset": "circle",
+    });
+    bar1.set(
+        10, // 60%
+        true // disable animation
+    );
+</script>
+</body>
+</html>

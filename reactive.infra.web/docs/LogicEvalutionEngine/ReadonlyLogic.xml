@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="" ?>
+<logic>
+    <bpmn:process id="Morakhasi" name="Morakhasi" isExecutable="true">
+        <bpmn:startEvent id="StartEvent_1">
+            <bpmn:outgoing>Flow_1gdhc82</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow id="Flow_1gdhc82" sourceRef="StartEvent_1" targetRef="Task" />
+        <bpmn:userTask id="Task" name="فرآیند مرخصی">
+            <bpmn:extensionElements>
+                <zeebe:assignmentDefinition assignee="demo" />
+                <zeebe:formDefinition formId="user-register" />
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1gdhc82</bpmn:incoming>
+            <bpmn:outgoing>Flow_1cqb2za</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:endEvent id="Event_1d3539i">
+            <bpmn:incoming>Flow_026kajc</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_026kajc" sourceRef="Activity_0zrbksw" targetRef="Event_1d3539i" />
+        <bpmn:endEvent id="Event_1gpio0n">
+            <bpmn:incoming>Flow_1alghes</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_1alghes" sourceRef="Activity_12r2ti2" targetRef="Event_1gpio0n" />
+        <bpmn:userTask id="Activity_0zrbksw" name="مسئول تایید">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="Form_1v72zex" />
+                <zeebe:assignmentDefinition assignee="demo" />
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1daya9l</bpmn:incoming>
+            <bpmn:outgoing>Flow_026kajc</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:userTask id="Activity_12r2ti2" name="مسئول تایید">
+            <bpmn:extensionElements>
+                <zeebe:formDefinition formId="Form_1v72zex" />
+                <zeebe:assignmentDefinition assignee="demo" />
+            </bpmn:extensionElements>
+            <bpmn:incoming>Flow_1g310zh</bpmn:incoming>
+            <bpmn:outgoing>Flow_1alghes</bpmn:outgoing>
+        </bpmn:userTask>
+        <bpmn:exclusiveGateway id="Gateway_0nv1uvx">
+            <bpmn:incoming>Flow_1cqb2za</bpmn:incoming>
+            <bpmn:outgoing>Flow_1g310zh</bpmn:outgoing>
+            <bpmn:outgoing>Flow_1daya9l</bpmn:outgoing>
+        </bpmn:exclusiveGateway>
+        <bpmn:sequenceFlow id="Flow_1g310zh" name="مرخصی ساعتی" sourceRef="Gateway_0nv1uvx" targetRef="Activity_12r2ti2">
+            <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=noe_morakhasi="h"</bpmn:conditionExpression>
+        </bpmn:sequenceFlow>
+        <bpmn:sequenceFlow id="Flow_1daya9l" name="بررسی مرخصی طولانی" sourceRef="Gateway_0nv1uvx" targetRef="Activity_0zrbksw">
+            <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=noe_morakhasi="d"</bpmn:conditionExpression>
+        </bpmn:sequenceFlow>
+        <bpmn:sequenceFlow id="Flow_1cqb2za" sourceRef="Task" targetRef="Gateway_0nv1uvx" />
+    </bpmn:process>
+</logic>

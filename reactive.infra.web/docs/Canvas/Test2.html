@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        var END_CLICK_RADIUS = 5;
+        //the max number of points of your poygon
+        var MAX_POINTS = 8;
+
+        var mouseX = 0;
+        var mouseY = 0;
+        var isStarted = false;
+
+        var points = null;
+        var polygons = null;
+        var lines = null;
+
+        var canvas = null;
+        var ctx = null;
+
+
+        window.addEventListener('load', onPageLoaded, false);
+
+        function byId(e){return document.getElementById(e);}
+
+        //object representing a point
+        function Point(x, y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        // object representing a polygon
+        function Polygon(points, color)
+        {
+            this.points = points;
+            this.color = color;
+        }
+
+        // object representing a single line segment
+        function LineSegment(point1, point2, color)
+        {
+            this.p1 = point1;
+            this.p2 = point2;
+            this.color = color;
+        }
+
+        function onPageLoaded()
+        {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            setColor( byId('color').value );
+
+            canvas.addEventListener("click", onCanvasClick, false);
+            canvas.addEventListener("mousemove", onCanvasMouseMove, false);
+
+            polygons = new Array();
+            lines = new Array();
+
+            //refresh time
+            setInterval(updateScreen, 100);
+        }
+
+        function onCanvasMouseMove(e)
+        {
+            mouseX = e.clientX - canvas.offsetLeft;
+            mouseY = e.clientY - canvas.offsetTop;
+        }
+
+        function addPolygon()
+        {
+            polygons[polygons.length] = new Polygon(points, byId('color').value);
+            alert(polygons.length + " polygons completed");
+        }
+
+        function addLine()
+        {
+            lines[lines.length] = new LineSegment(points[0], points[1], byId('color').value);
+        }
+
+        function onCanvasClick(e)
+        {
+            var x = e.clientX-canvas.offsetLeft;
+            var y = e.clientY-canvas.offsetTop;
+
+            switch (byId('shapeType').value)
+            {
+                case 'poly': polyClick(x,y);
+                    break;
+                case 'line': lineClick(x,y);
+                    break;
+            }
+        }
+
+
+        function lineClick(x,y)
+        {
+            if (isStarted)
+            {
+                points[points.length] = new Point(x,y);
+                addLine();
+                reset();
+                isStarted = false;
+                //	points = new Array();
+            }
+            else
+            {
+                isStarted = true;
+                points = new Array();
+                points[points.length] = new Point(x,y);
+            }
+        }
+
+        function polyClick(x, y)
+        {
+            if(isStarted)
+            {
+                //drawing the next line, and closing the polygon if needed
+                if(Math.abs(x - points[0].x) < END_CLICK_RADIUS && Math.abs(y - points[0].y) < END_CLICK_RADIUS)
+                {
+                    isStarted = false;
+                    addPolygon();
+                    reset();
+                }
+                else
+                {
+                    points[points.length] = new Point(x, y);
+                    if(points.length >= MAX_POINTS)
+                    {
+                        addPolygon();
+                        reset();
+                    }
+                }
+            }
+
+            else if(points == null)
+            {
+                //opening the polygon
+                points = new Array();
+                points[0] = new Point(x, y);
+                isStarted = true;
+            }
+        }
+
+
+        //changes the color of the draw
+        function setColor(color)
+        {
+            ctx.strokeStyle = color;
+        }
+
+        //resets the application
+        function reset()
+        {
+            isStarted = false;
+            points = null;
+        }
+
+        // called whenever the screen needs updating
+        function updateScreen()
+        {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            switch (byId('shapeType').value)
+            {
+                case 'poly':
+                    drawIncompletePolygon();
+                    break;
+                case 'line':
+                    drawIncompleteLine();
+                    break;
+            }
+
+
+            var i, n;
+            n = polygons.length;
+            for (i=0; i<n; i++)
+                drawPolygon(polygons[i]);
+
+            n = lines.length;
+            for (i=0; i<n; i++)
+                drawLineSegment(lines[i]);
+
+        }
+
+        // draws an arbitrary polygon. Takes a Polygon object as the input
+        function drawPolygon(polyToDraw)
+        {
+            setColor(polyToDraw.color);
+            var i, n = polyToDraw.points.length;
+            ctx.beginPath();
+
+            ctx.moveTo(polyToDraw.points[0].x, polyToDraw.points[0].y);
+            for (i=1; i<n; i++)
+                ctx.lineTo(polyToDraw.points[i].x, polyToDraw.points[i].y);
+
+            ctx.lineTo(polyToDraw.points[0].x, polyToDraw.points[0].y);
+
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function drawLineSegment(lineSegToDraw)
+        {
+            setColor(lineSegToDraw.color);
+            ctx.beginPath();
+            ctx.moveTo(lineSegToDraw.p1.x, lineSegToDraw.p1.y);
+            ctx.lineTo(lineSegToDraw.p2.x, lineSegToDraw.p2.y);
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function drawIncompleteLine()
+        {
+            if (isStarted)
+            {
+                setColor(byId('color').value);
+                ctx.beginPath();
+                ctx.moveTo(points[0].x, points[0].y);
+                ctx.lineTo(mouseX, mouseY);
+                ctx.closePath();
+                ctx.stroke();
+            }
+        }
+
+
+        //draws the current **in-progress** shape
+        function drawIncompletePolygon()
+        {
+            setColor(byId('color').value);
+
+            ctx.beginPath();
+
+            if(points != null && points.length > 0)
+            {
+                ctx.moveTo(points[0].x, points[0].y);
+
+                for(i = 1 ; i < points.length ; i++)
+                {
+                    ctx.lineTo(points[i].x, points[i].y);
+                }
+
+                if(isStarted)
+                {
+                    ctx.lineTo(mouseX, mouseY);
+                }
+                else
+                {
+                    ctx.lineTo(points[0].x, points[0].y);
+                }
+            }
+            ctx.stroke();
+            ctx.closePath();
+        }
+    </script>
+
+    <style>
+        body
+        {
+            margin: 0;
+        }
+
+        #board
+        {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        #myCanvas
+        {
+            border: 3px dotted #000;
+        }
+    </style>
+</head>
+<body>
+<div id="board">
+    <canvas id="canvas" width="300" height="300" style="border: 1px solid black;"></canvas>
+    <br />
+    <select id='shapeType'>
+        <option value="poly" selected>Polygon</option>
+        <option value="line">Line</option>
+    </select>
+    Couleur : <select id="color" onchange="setColor(this.value);">
+    <option value="red" selected="selected">Red</option>
+    <option value="blue">Blue</option>
+    <option value="green">green</option>
+    <option value="black">black</option>
+    <option value="yellow">yellow</option>
+</select>
+</div>
+</body>
+</html>

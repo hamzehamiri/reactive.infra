@@ -1,0 +1,73 @@
+{
+  "components": [
+    {
+      "label": "Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1qljj8a",
+        "columns": 16
+      },
+      "id": "Field_01qo4jd",
+      "key": "textfield_name"
+    },
+    {
+      "label": "Family",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ophxbc",
+        "columns": null
+      },
+      "id": "Field_0f130ss",
+      "key": "textfield_family"
+    },
+    {
+      "values": [
+        {
+          "label": "Female",
+          "value": "F"
+        },
+        {
+          "label": "Male",
+          "value": "M"
+        }
+      ],
+      "label": "Radio group",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0mhzy4o",
+        "columns": null
+      },
+      "id": "Field_0ejthzq",
+      "key": "radio_5hsxt"
+    },
+    {
+      "values": [
+        {
+          "label": "روزانه",
+          "value": "d"
+        },
+        {
+          "label": "ساعتی",
+          "value": "h"
+        }
+      ],
+      "label": "نوع مرخصی",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1nxogxg",
+        "columns": null
+      },
+      "id": "Field_1a1zsrz",
+      "key": "noe_morakhasi"
+    }
+  ],
+  "type": "default",
+  "id": "user-register",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.24.0"
+  },
+  "schemaVersion": 16
+}

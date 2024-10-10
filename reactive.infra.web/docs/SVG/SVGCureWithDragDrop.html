@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Bezier Curve with Tangents</title>
+    <style>
+        svg {
+            border: 1px solid black;
+            user-select: none;
+        }
+        .control-point {
+            cursor: pointer;
+            fill: red;
+        }
+        .tangent-line {
+            stroke: grey;
+            stroke-dasharray: 5, 5;
+        }
+    </style>
+</head>
+<body>
+<svg id="svgCanvas" width="500" height="500"></svg>
+
+<script>
+    const svg = document.getElementById('svgCanvas');
+
+    // Initial points
+    const source = { x: 50, y: 250 };
+    const destination = { x: 450, y: 250 };
+    const control1 = { x: 150, y: 50 };
+    const control2 = { x: 350, y: 450 };
+
+    // Create path element for Bezier curve
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('stroke', 'blue');
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('fill', 'none');
+
+    // Create tangent lines
+    const tangent1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    tangent1.setAttribute('class', 'tangent-line');
+    const tangent2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    tangent2.setAttribute('class', 'tangent-line');
+
+    // Create control points
+    const createControlPoint = (x, y) => {
+        const point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        point.setAttribute('cx', x);
+        point.setAttribute('cy', y);
+        point.setAttribute('r', 8);
+        point.setAttribute('class', 'control-point');
+        svg.appendChild(point);
+        return point;
+    };
+
+    const controlPoint1 = createControlPoint(control1.x, control1.y);
+    const controlPoint2 = createControlPoint(control2.x, control2.y);
+
+    // Append elements to SVG
+    svg.appendChild(path);
+    svg.appendChild(tangent1);
+    svg.appendChild(tangent2);
+
+    // Function to update the curve and tangents
+    function updateCurve() {
+        const d = `M ${source.x},${source.y} C ${control1.x},${control1.y}, ${control2.x},${control2.y}, ${destination.x},${destination.y}`;
+        path.setAttribute('d', d);
+
+        tangent1.setAttribute('x1', source.x);
+        tangent1.setAttribute('y1', source.y);
+        tangent1.setAttribute('x2', control1.x);
+        tangent1.setAttribute('y2', control1.y);
+
+        tangent2.setAttribute('x1', destination.x);
+        tangent2.setAttribute('y1', destination.y);
+        tangent2.setAttribute('x2', control2.x);
+        tangent2.setAttribute('y2', control2.y);
+
+        controlPoint1.setAttribute('cx', control1.x);
+        controlPoint1.setAttribute('cy', control1.y);
+        controlPoint2.setAttribute('cx', control2.x);
+        controlPoint2.setAttribute('cy', control2.y);
+    }
+
+    updateCurve();
+
+    // Function to handle drag events
+    function makeDraggable(controlPoint, control) {
+        let isDragging = false;
+
+        controlPoint.addEventListener('mousedown', (e) => {
+            isDragging = true;
+        });
+
+        svg.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const svgRect = svg.getBoundingClientRect();
+                control.x = e.clientX - svgRect.left;
+                control.y = e.clientY - svgRect.top;
+                updateCurve();
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    }
+
+    makeDraggable(controlPoint1, control1);
+    makeDraggable(controlPoint2, control2);
+</script>
+</body>
+</html>

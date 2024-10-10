@@ -1,0 +1,11 @@
+docker build -t hamzeh .
+docker run -it --rm mavennewimage /bin/bash
+docker exec -it 3bacb016d9430fef2d3265c6ef03d5920e544ecaaa67ba942e94fd4f3634ae23 bash
+docker build -t mavennewimage -f Dockerfile-MavenWithM2Setting .
+
+
+docker login --username=[username] --password=[password] [registry-url]
+
+docker login --username=hamze --password=Amiri@reg123 http://reg.vs.citservices.ir/
+docker tag mavennewimage:latest reg.vs.citservices.ir/vspublic/mavennewimage:v1
+docker push reg.vs.citservices.ir/vspublic/mavennewimage:v1

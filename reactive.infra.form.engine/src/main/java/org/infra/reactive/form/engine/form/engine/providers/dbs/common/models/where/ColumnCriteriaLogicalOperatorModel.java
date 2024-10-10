@@ -1,0 +1,13 @@
+package org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.where;
+
+import lombok.Builder;
+import lombok.Data;
+import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.operators.ComparisonOperatorsValue;
+import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.columnexpression.common.ColumnExpression;
+
+@Data
+@Builder
+public class ColumnCriteriaLogicalOperatorModel {
+    private ColumnExpression columnExpression;
+    private ComparisonOperatorsValue operationValue;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="application/javascript">
+    let canvasEl = document.createElement('canvas');
+    canvasEl.width = 800;
+    canvasEl.height = 200;
+    document.body.append(canvasEl);
+    let contextMain = canvasEl.getContext("2d");
+
+    let path1 = new Path2D();
+    path1.moveTo(75, 50);
+    path1.lineTo(100, 75);
+    path1.lineTo(100, 25);
+    path1.closePath();
+
+    let path2 = new Path2D();
+    path2.moveTo(125, 50);
+    path2.lineTo(150, 75);
+    path2.lineTo(150, 25);
+    path2.closePath();
+
+    contextMain.fillStyle = 'blue';
+    contextMain.fill(path1);
+    contextMain.fill(path2);
+
+    canvasEl.addEventListener('mousemove', function(e) {
+        let mouseX = e.clientX - canvasEl.offsetLeft;
+        let mouseY = e.clientY - canvasEl.offsetTop;
+
+        contextMain.fillStyle = contextMain.isPointInPath(path1, mouseX, mouseY) ? 'red' : 'blue';
+        contextMain.fill(path1);
+
+        contextMain.fillStyle = contextMain.isPointInPath(path2, mouseX, mouseY) ? 'red' : 'blue';
+        contextMain.fill(path2);
+    });
+
+</script>
+
+</body>
+</html>

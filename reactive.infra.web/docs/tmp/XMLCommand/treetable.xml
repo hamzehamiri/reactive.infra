@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-8" ?>
+<table name="treetable">
+    <column name="id" type="int"></column>
+    <column name="name" type="String"></column>
+    <column name="parent_id" type="int"></column>
+</table>

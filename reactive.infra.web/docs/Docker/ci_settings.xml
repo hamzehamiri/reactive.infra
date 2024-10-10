@@ -1,0 +1,63 @@
+<settings>
+    <servers>
+        <server>
+            <id>ai-maven-repository</id>
+            <username>admin</username>
+            <password>Ipsec@401</password>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>unblock-nx-parsa</id>
+            <mirrorOf>external:http:*</mirrorOf>
+            <name>Pseudo repository to mirror external repositories initially using HTTP.</name>
+            <url>http://10.10.10.102:8081/repository/ai-maven/</url>
+            <blocked>false</blocked>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <id>settings_default-profile</id>
+
+            <repositories>
+                <repository>
+                    <id>ai-maven-repository</id>
+                    <url>http://10.10.10.102:8081/repository/ai-maven/</url>
+                </repository>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>ai-maven-repository</id>
+                    <url>http://10.10.10.102:8081/repository/ai-maven/</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            <properties>
+                <maven.wagon.http.ssl.insecure>true</maven.wagon.http.ssl.insecure>
+                <maven.wagon.http.ssl.allowall>true</maven.wagon.http.ssl.allowall>
+                <maven.wagon.http.ssl.ignore.validity.dates>true</maven.wagon.http.ssl.ignore.validity.dates>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>settings_default-profile</activeProfile>
+    </activeProfiles>
+</settings>

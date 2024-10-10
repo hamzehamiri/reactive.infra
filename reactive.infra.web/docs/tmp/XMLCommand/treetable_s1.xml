@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-8" ?>
+<select tablename="treetable">
+    <column name="id">
+        <if column="x1" command=">" variable="x3">
+            <
+        </if>
+    </column>
+</select>

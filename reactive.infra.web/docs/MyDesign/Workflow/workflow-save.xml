@@ -1,0 +1,13 @@
+<process-definition name="10">
+    <start-state>
+        <transition name="dd" to="before-save"/>
+    </start-state>
+    <task-node name="before-save">
+        <task name="change">
+            <assignment class='org.jbpm.tutorial.taskmgmt.NappyAssignmentHandler' />
+        </task>
+        <transition to='end' />"
+    </task-node>
+</process-definition>
+
+<!--        https://docs.jboss.org/jbpm/v3.2/userguide/html_single/#jpdlgraphicalprocessdesigner-->

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Cubic Bezier Curve</title>
+</head>
+<body>
+<!-- SVG container -->
+<svg id="svgCanvas" width="400" height="400" style="border: 1px solid black;"></svg>
+
+<script>
+    // Define source and destination points
+    const source = { x: 50, y: 50 };
+    const destination = { x: 350, y: 350 };
+
+    // Define control points for the cubic Bezier curve
+    const controlPoint1 = { x: 150, y: 10 };
+    const controlPoint2 = { x: 300, y: 300 };
+    const controlPoint3 = { x: 400, y: 200 };
+
+    // Create a new SVG path element
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+    // Define the path's data using the cubic Bezier curve (C command)
+    const d = `M ${source.x},${source.y} C ${controlPoint1.x},${controlPoint1.y} ${controlPoint2.x},${controlPoint2.y} ${controlPoint3.x},${controlPoint3.y} ${destination.x},${destination.y}`;
+
+    // Set the attributes for the path element
+    path.setAttribute("d", d);  // Path definition
+    path.setAttribute("stroke", "blue");  // Stroke color
+    path.setAttribute("stroke-width", "2");  // Stroke width
+    path.setAttribute("fill", "none");  // No fill
+
+    // Append the path to the SVG container
+    document.getElementById("svgCanvas").appendChild(path);
+</script>
+</body>
+</html>

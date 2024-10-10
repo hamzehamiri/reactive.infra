@@ -1,0 +1,1 @@
+https://mariadb.com/resources/blog/connect-by-is-dead-long-live-cte-in-mariadb-server-10-2/

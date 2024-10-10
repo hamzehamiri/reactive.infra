@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width=300 height=300></canvas>
+<script type="module">
+
+    // export class UUID {
+    //     constructor() {
+    //
+    //     }
+    //
+    //     static create() {
+    //         let dt = new Date().getTime();
+    //         let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    //             let r = (dt + Math.random() * 16) % 16 | 0;
+    //             dt = Math.floor(dt / 16);
+    //             return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    //         });
+    //         return uuid;
+    //     }
+    // }
+
+    class Base2DCanvasRegister {
+        static init() {
+            Base2DCanvasRegister.registerMapCanvas = new Map();
+        }
+
+        static register(uuid, instanceBase2DCanvas) {
+            Base2DCanvasRegister.registerMapCanvas.set(uuid, instanceBase2DCanvas);
+        }
+
+        static getComponent(uuid) {
+            return Base2DCanvasRegister.registerMapCanvas.get(uuid);
+        }
+
+        static redrawAllComponent(ctx) {
+            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+            Base2DCanvasRegister.registerMapCanvas.forEach((instanceBase2DCanvas) => {
+                if (instanceBase2DCanvas instanceof Base2DCanvas) {
+                    instanceBase2DCanvas.draw();
+                }
+            });
+        }
+    }
+
+    class Base2DCanvas {
+        constructor(canvasContext) {
+            this.canvasContext = canvasContext;
+            this.uuid = UUID.create();
+            Base2DCanvasRegister.register(this.uuid, this);
+        }
+
+        draw() {
+
+        }
+    }
+
+    class DrawShape extends Base2DCanvas {
+        constructor(canvasContext) {
+            super(canvasContext);
+            this.canvasContext.fillStyle = 'skyblue';
+            this.canvasContext.strokeStyle = 'gray';
+            this.canvasContext.lineWidth = 3;
+        }
+
+        setDataPoint(dataPoint) {
+            this.dataPoint = dataPoint;
+        }
+
+        getDataPoint() {
+            return this.dataPoint;
+        }
+
+        draw() {
+            let points = this.getDataPoint();
+
+            this.canvasContext.beginPath();
+            this.canvasContext.moveTo(points.points[0].x + points.x, points.points[0].y + points.y);
+            for (let i = 0; i < points.points.length; i++) {
+                this.canvasContext.lineTo(points.points[i].x + points.x, points.points[i].y + points.y);
+            }
+            this.canvasContext.closePath();
+
+            this.canvasContext.fill();
+            this.canvasContext.stroke()
+        }
+    }
+
+    Base2DCanvasRegister.init();
+
+    let canvasEl = document.getElementById('canvas');
+    let ctx = canvasEl.getContext("2d");
+    canvasEl.addEventListener('mousedown' , (e)=>{
+        // tell the browser we're handling this event
+        e.preventDefault();
+        e.stopPropagation();
+
+        startX = parseInt(e.clientX - offsetX);
+        startY = parseInt(e.clientY - offsetY);
+
+        if (ctx.isPointInPath(startX, startY)) {
+            isDown = true;
+        }
+    });
+    let drawShape1 = new DrawShape(ctx);
+    drawShape1.setDataPoint({
+        x: 0,
+        y: 0,
+        points: [{x: 50, y: 50}, {x: 75, y: 25}, {x: 100, y: 50}, {x: 75, y: 125}, {x: 50, y: 50}],
+    });
+    drawShape1.draw();
+
+    let lastX = 0, lastY = 0;
+    setInterval(() => {
+        lastX += 1;
+        lastY += 1;
+        drawShape1.setDataPoint({
+            x: lastX,
+            y: lastY,
+            points: [{x: 50, y: 50}, {x: 75, y: 25}, {x: 100, y: 50}, {x: 75, y: 125}, {x: 50, y: 50}],
+        });
+        drawShape1.draw();
+
+        Base2DCanvasRegister.redrawAllComponent(ctx);
+    }, 1000);
+
+    let drawShape2 = new DrawShape(canvasEl.getContext("2d"));
+    drawShape2.setDataPoint({
+        x: 0,
+        y: 0,
+        points: [{x: 50, y: 50}, {x: 75, y: 25}, {x: 100, y: 50}, {x: 75, y: 125}, {x: 50, y: 50}],
+    });
+    drawShape2.draw();
+</script>
+</body>
+</html>
