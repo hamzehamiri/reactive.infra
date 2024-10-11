@@ -117,6 +117,8 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
     public static LRUCache<Long, CoreWindowEntity> coreWindowEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreWindowTabEntity> coreWindowTabEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreWindowTabFieldEntity> coreWindowTabFieldEntityLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, CoreWindowTabFilterEntity> coreWindowTabFilterEntityLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, CoreWindowTabFilterFieldEntity> coreWindowTabFilterFieldEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreWindowTabJoinColumnEntity> coreWindowTabJoinColumnEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreWindowTabTypeEntity> coreWindowTabTypeEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreDashboardEntity> coreDashboardEntityLRUCache = new LRUCache<>(1000);
@@ -219,6 +221,8 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
         coreWindowEntityLRUCache.clear();
         coreWindowTabEntityLRUCache.clear();
         coreWindowTabFieldEntityLRUCache.clear();
+        coreWindowTabFilterEntityLRUCache.clear();
+        coreWindowTabFilterFieldEntityLRUCache.clear();
         coreWindowTabJoinColumnEntityLRUCache.clear();
         coreWindowTabTypeEntityLRUCache.clear();
 
@@ -320,6 +324,8 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
                         coreCssEntity(connection),
                         coreButtonAssignElementRecordEntityCache(connection),
                         windowTabFieldCache(connection),
+                        coreWindowTabFilterEntityLRUCache(connection),
+                        coreWindowTabFilterFieldEntityLRUCache(connection),
                         coreWindowTabJoinColumnEntityLRUCache(connection),
                         coreWindowTabTypeEntityLRUCache(connection),
                         coreDashboardEntity(connection),
@@ -518,6 +524,14 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
 
     public Flux<CoreWindowTabFieldEntity> windowTabFieldCache(Mono<Connection> connection) {
         return createDataTable(connection, 4L, CoreWindowTabFieldEntity.class, rowEntity -> coreWindowTabFieldEntityLRUCache.put(rowEntity.getId(), rowEntity));
+    }
+
+    public Flux<CoreWindowTabFilterEntity> coreWindowTabFilterEntityLRUCache(Mono<Connection> connection) {
+        return createDataTable(connection, 4L, CoreWindowTabFilterEntity.class, rowEntity -> coreWindowTabFilterEntityLRUCache.put(rowEntity.getId(), rowEntity));
+    }
+
+    public Flux<CoreWindowTabFilterFieldEntity> coreWindowTabFilterFieldEntityLRUCache(Mono<Connection> connection) {
+        return createDataTable(connection, 4L, CoreWindowTabFilterFieldEntity.class, rowEntity -> coreWindowTabFilterFieldEntityLRUCache.put(rowEntity.getId(), rowEntity));
     }
 
     public Flux<CoreWindowTabJoinColumnEntity> coreWindowTabJoinColumnEntityLRUCache(Mono<Connection> connection) {
