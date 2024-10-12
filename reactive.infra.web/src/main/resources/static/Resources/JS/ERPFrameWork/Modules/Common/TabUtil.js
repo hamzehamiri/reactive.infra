@@ -26,7 +26,7 @@ export default class TabUtil {
 
     static mergeCoreWindowTabResponseSearchDTOWithTabChangeRecords(coreWindowTabResponseSearchDTO, tabRecordChangeHandler, tabController) {
         if (tabRecordChangeHandler instanceof TabRecordChangeHandler) {
-            let recordPk = tabController.getView().getGridView().getWebGridAdvanced().recordDescriptorForPk(coreWindowTabResponseSearchDTO, tabController.view.gridView.webGridAdvanced);
+            let recordPk = tabController.getView().getGridView().getWebGridAdvanced().recordDescriptorForPk(coreWindowTabResponseSearchDTO, tabController.getView().getGridView().webGridAdvanced);
             let changedRecord = tabRecordChangeHandler.getMapRecordChanged().get(recordPk);
             if (coreWindowTabResponseSearchDTO instanceof CoreWindowTabResponseSearchDTO && changedRecord instanceof CoreWindowTabResponseSearchDTO) {
                 changedRecord.getRecordModelDTO().getFieldValues().forEach((dataProviderInterface, fieldId) => {
@@ -130,6 +130,16 @@ export default class TabUtil {
             if (coreWindowTabFieldDTO.getActive()) {
                 TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
                 columnConfigConsumer(coreWindowTabFieldDTO.getColumnIndex(), TabUtil.createColumnConfigWithMetaData(coreWindowTabFieldDTO, coreWindowTabFieldDTO.getColumnIndex()), coreWindowTabFieldDTO.getCoreTableColumnDTO() != null && coreWindowTabFieldDTO.getCoreTableColumnDTO().getPk(), coreWindowTabFieldDTO);
+            }
+        }
+    }
+
+    static createEditorFromCoreWindowTabFilterDTO(coreWindowTabFilterDTO, editorConsumer) {
+        let coreWindowTabFilterFieldDTOMap = coreWindowTabFilterDTO.getCoreWindowTabFilterFieldDTOMap();
+        for (let [, coreWindowTabFilterFieldDTO] of coreWindowTabFilterFieldDTOMap) {
+            if (coreWindowTabFilterFieldDTO.getActive()) {
+                let coreWindowTabFieldDTO = coreWindowTabFilterFieldDTO.getCoreWindowTabFieldDTO();
+                TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
             }
         }
     }
@@ -267,7 +277,7 @@ export default class TabUtil {
 
     static createDefaultLayoutAndLayoutData(container, editorArraySorted) {
         let responsiveTableLayout = new ResponsiveTableLayout();
-        responsiveTableLayout.setPadding(12 , "px");
+        responsiveTableLayout.setPadding(12, "px");
         container.setLayout(responsiveTableLayout);
 
         let smallPageJson = {

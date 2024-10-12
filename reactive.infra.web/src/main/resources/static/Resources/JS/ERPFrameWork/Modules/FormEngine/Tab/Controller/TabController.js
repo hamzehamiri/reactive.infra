@@ -39,6 +39,9 @@ import ErpWindowFactory from "../../../Components/ErpWindowFactory.js";
 import CoreButtonAssignElementDTO from "../../../../Communicate/Models/Response/Button/CoreButtonAssignElementDTO.js";
 import ModuleFunctionFactory from "../../../Common/ModuleFunctionFactory.js";
 import ConvertUtil from "../../../../Communicate/Common/ConvertUtil.js";
+import CoreWindowTabFilterDTO from "../../../../Communicate/Models/Response/Window/Tab/Filter/CoreWindowTabFilterDTO.js";
+import CoreWindowTabFilterFieldDTO from "../../../../Communicate/Models/Response/Window/Tab/Filter/CoreWindowTabFilterFieldDTO.js";
+import WebEditorFactory from "../../WebEditors/Factory/WebEditorFactory";
 
 export default class TabController extends BaseController {
     constructor(parentContainer, recordId) {
@@ -139,7 +142,18 @@ export default class TabController extends BaseController {
                 });
 
                 this.view.getGridView().getWebGridAdvanced().sortColumnConfigs();
+
+                this.processCoreWindowTabFilterDTOContainer(coreWindowTabDTO.getDefaultCoreWindowTabFilterDTO());
             }
+        }
+    }
+
+    processCoreWindowTabFilterDTOContainer(coreWindowTabFilterDTO) {
+        if (coreWindowTabFilterDTO instanceof CoreWindowTabFilterDTO) {
+            TabUtil.createEditorFromCoreWindowTabFilterDTO(coreWindowTabFilterDTO , (id, editorInstance) => {
+                this.view.getEditor().set(id, editorInstance);
+                editorInstance.addListener(EventFrameWork.event.Editors.FieldChangeEvent, this.tabRecordChangeHandler.fieldChangeEvent, this.tabRecordChangeHandler);
+            });
         }
     }
 

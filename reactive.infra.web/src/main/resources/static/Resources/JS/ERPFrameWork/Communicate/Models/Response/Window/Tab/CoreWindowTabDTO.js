@@ -100,4 +100,13 @@ export default class CoreWindowTabDTO extends BaseModel {
         }
         return this.coreWindowTabFilterDTOMap;
     }
+
+    getDefaultCoreWindowTabFilterDTO() {
+        let defaultValue;
+        this.getCoreWindowTabFilterDTOMap().forEach((coreWindowTabFilterDTO, id) => {
+            if (coreWindowTabFilterDTO.getActiveDefault())
+                defaultValue = coreWindowTabFilterDTO;
+        });
+        return defaultValue;
+    }
 }

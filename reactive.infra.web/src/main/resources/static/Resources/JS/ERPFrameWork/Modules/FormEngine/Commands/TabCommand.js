@@ -105,7 +105,7 @@ export default class TabCommand {
 
                 if (viewInstance) {
                     tabController.getView().setLayout(new SideLayout(true));
-                    tabController.getView().addItem(tabController.getView().gridView, SideLayoutData.factory(SideLayoutData.Side.Center, 0, true, false, true, false, 0, 0, 0, 0));
+                    tabController.getView().addItem(tabController.getView().getGridView(), SideLayoutData.factory(SideLayoutData.Side.Center, 0, true, false, true, false, 0, 0, 0, 0));
                     tabController.getView().addItem(viewInstance, SideLayoutData.factory(SideLayoutData.Side.Bottom, 200, true, false, true, true, 0, 0, 0, 0, 1));
                     tabController.getView().getGridView().bindModelToUI(tabController.getModel());
                 }
@@ -165,7 +165,7 @@ export default class TabCommand {
         ClientLogger.Log(LogLevel.Debug, "TableView");
 
         tabController.getView().setLayout(new FitLayout(true));
-        tabController.getView().addItem(tabController.getView().gridView);
+        tabController.getView().addItem(tabController.getView().getGridView());
         tabController.getView().getGridView().bindModelToUI(tabController.getModel());
     }
 

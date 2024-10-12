@@ -1,6 +1,7 @@
 import BaseView from "../../../Common/BaseView.js";
 import GridView from "./GridView.js";
 import FormView from "./FormView.js";
+import HTMLContainer from "../../../../../UIFrameWork/HTML/Container/HTMLContainer.js";
 
 export default class TabView extends BaseView {
     constructor() {
@@ -9,6 +10,7 @@ export default class TabView extends BaseView {
         this.uiElements.set(TabView.CoreButtonAssignElementDTOMap, new Map());
         this.gridView = new GridView();
         this.formView = new FormView();
+        this.filterContainer = new HTMLContainer();
     }
 
     getEditor() {
@@ -25,6 +27,10 @@ export default class TabView extends BaseView {
 
     getFormView() {
         return this.formView;
+    }
+
+    getFilterContainer() {
+        return this.filterContainer;
     }
 }
 

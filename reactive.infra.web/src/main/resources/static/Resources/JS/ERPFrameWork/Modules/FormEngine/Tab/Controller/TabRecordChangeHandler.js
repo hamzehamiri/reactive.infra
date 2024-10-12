@@ -58,7 +58,7 @@ export default class TabRecordChangeHandler extends BaseObservable {
                 let editorValueChangedModel = editor.getValue();
                 let editorRecordSource = editor.getRecord();
 
-                let recordPk = this.tabController.getView().getGridView().getWebGridAdvanced().recordDescriptorForPk(editorRecordSource, this.tabController.view.gridView.webGridAdvanced);
+                let recordPk = this.tabController.getView().getGridView().getWebGridAdvanced().recordDescriptorForPk(editorRecordSource, this.tabController.getView().getGridView().webGridAdvanced);
 
                 let targetRecord = this.mapRecordChanged.get(recordPk);
                 if (!targetRecord) {
