@@ -8,5 +8,6 @@ import java.io.Serializable;
 @Data
 public class CoreWindowTabFilterFieldDTO implements Serializable {
     private Long id;
+    private Long coreWindowTabFilterId;
     private CoreWindowTabFieldDTO coreWindowTabFieldDTO;
 }

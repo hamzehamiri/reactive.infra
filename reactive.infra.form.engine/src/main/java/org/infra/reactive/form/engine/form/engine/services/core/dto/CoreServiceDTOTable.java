@@ -45,6 +45,8 @@ import org.infra.reactive.form.engine.form.engine.model.dto.response.view.CoreVi
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.CoreWindowDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.*;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.field.CoreWindowTabFieldDTO;
+import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.filter.CoreWindowTabFilterDTO;
+import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.filter.CoreWindowTabFilterFieldDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.wizard.CoreWizardDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.wizard.CoreWizardStateDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.wizard.CoreWizardStateValueDTO;
@@ -197,6 +199,9 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
     public static LRUCache<Long, CoreWindowTabPluggableDTO> coreWindowTabPluggableDTOLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreWindowTabPluggableAssignTabDTO> coreWindowTabPluggableAssignTabDTOLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, List<CoreWindowTabPluggableAssignTabDTO>> coreWindowTabPluggableAssignTabDTOsLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, CoreWindowTabFilterFieldDTO> coreWindowTabFilterFieldDTOLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, CoreWindowTabFilterDTO> coreWindowTabFilterDTOLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, Map<Long, CoreWindowTabFilterDTO>> coreWindowTabFilterDTOPerTabIdLRUCache = new LRUCache<>(1000);
     // ***********************************
 
     public static LRUCache<Long, CoreFilterLayoutDTO> coreFilterLayoutDTOLRUCache = new LRUCache<>(1000); //TODO in Next Time Please Online With Query
@@ -276,6 +281,9 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
         coreTableColumnDataProviderAttachmentDTOLRUCache.clear();
         coreTableColumnDataProviderListValuesDTOLRUCache.clear();
         coreWindowDTOLRUCache.clear();
+        coreWindowTabFilterFieldDTOLRUCache.clear();
+        coreWindowTabFilterDTOLRUCache.clear();
+        coreWindowTabFilterDTOPerTabIdLRUCache.clear();
         coreWindowTabDTOLRUCache.clear();
         coreWindowTabDTOByCoreTableIdLRUCache.clear();
         coreWindowTabFieldDTOLRUCache.clear();
@@ -1475,6 +1483,22 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
     }
 
     private Mono<Serializable> coreWindowTabDTO() {
+        for (Long coreWindowTabFilterId : CoreServiceEntityTable.coreWindowTabFilterEntityLRUCache.getKeySet()) {
+            Optional<CoreWindowTabFilterEntity> coreWindowTabFilterEntityOptional = CoreServiceEntityTable.coreWindowTabFilterEntityLRUCache.get(coreWindowTabFilterId);
+            coreWindowTabFilterEntityOptional.ifPresent(coreWindowTabFilterEntity -> {
+                CoreWindowTabFilterDTO coreWindowTabFilterDTO = ConvertUtil.convert(coreWindowTabFilterEntity);
+                coreWindowTabFilterDTOLRUCache.put(coreWindowTabFilterDTO.getId(), coreWindowTabFilterDTO);
+
+                Map<Long, CoreWindowTabFilterDTO> mapOfTab = coreWindowTabFilterDTOPerTabIdLRUCache.get(coreWindowTabFilterDTO.getCoreWindowTabId()).orElseGet(() -> {
+                    Map<Long, CoreWindowTabFilterDTO> mapOf = new HashMap<>();
+                    coreWindowTabFilterDTOPerTabIdLRUCache.put(coreWindowTabFilterDTO.getCoreWindowTabId(), mapOf);
+                    return mapOf;
+                });
+
+                mapOfTab.put(coreWindowTabFilterEntity.getId(), coreWindowTabFilterDTO);
+            });
+        }
+
         for (Long coreWindowTabTypeEntityId : CoreServiceEntityTable.coreWindowTabTypeEntityLRUCache.getKeySet()) {
             Optional<CoreWindowTabTypeEntity> coreWindowTabTypeEntityOptional = CoreServiceEntityTable.coreWindowTabTypeEntityLRUCache.get(coreWindowTabTypeEntityId);
             coreWindowTabTypeEntityOptional.ifPresent(coreWindowTabTypeEntity -> {
@@ -1525,6 +1549,7 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
                         coreWindowTabDTO.setCoreLayoutAssignElementDTOMap_Toolbar(coreWindowTabLayoutDTOMap_Toolbar);
                         coreWindowTabJoinColumnDTOPerChildTabIdLRUCache.get(coreWindowTabDTO.getId()).ifPresent(coreWindowTabDTO::setCoreWindowTabJoinColumnDTOMap);
                         coreWorkflowActionDTOLRUCache.get(coreWindowTabEntity.getCore_workflow_action_id()).ifPresent(coreWindowTabDTO::setCoreWorkflowActionDTO);
+                        coreWindowTabFilterDTOPerTabIdLRUCache.get(coreWindowTabDTO.getId()).ifPresent(coreWindowTabDTO::setCoreWindowTabFilterDTOMap);
 
                         if (coreTableDTOOptional.isPresent()) {
                             coreWindowTabDTO.setCoreTableDTO(coreTableDTOOptional.get());
@@ -1596,6 +1621,20 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
                 if (coreWindowTabDTO != null) {
                     coreWindowTabDTO.getCoreWindowTabFieldDTOMap().put(coreWindowTabFieldDTO.getId(), coreWindowTabFieldDTO);
                 }
+            });
+        }
+
+        for (Long coreWindowTabFilterFieldId : CoreServiceEntityTable.coreWindowTabFilterFieldEntityLRUCache.getKeySet()) {
+            Optional<CoreWindowTabFilterFieldEntity> coreWindowTabFilterFieldEntityOptional = CoreServiceEntityTable.coreWindowTabFilterFieldEntityLRUCache.get(coreWindowTabFilterFieldId);
+            coreWindowTabFilterFieldEntityOptional.ifPresent(coreWindowTabFilterFieldEntity -> {
+                CoreWindowTabFilterFieldDTO coreWindowTabFilterFieldDTO = ConvertUtil.convert(coreWindowTabFilterFieldEntity);
+                coreWindowTabFieldDTOLRUCache.get(coreWindowTabFilterFieldEntity.getCore_window_tab_field_id()).ifPresent(coreWindowTabFilterFieldDTO::setCoreWindowTabFieldDTO);
+
+                coreWindowTabFilterFieldDTOLRUCache.put(coreWindowTabFilterFieldDTO.getId(), coreWindowTabFilterFieldDTO);
+
+                coreWindowTabFilterDTOLRUCache.get(coreWindowTabFilterFieldEntity.getCore_window_tab_filter_id()).ifPresent(coreWindowTabFilterDTO -> {
+                    coreWindowTabFilterDTO.getCoreWindowTabFilterFieldDTOMap().put(coreWindowTabFilterFieldDTO.getId(), coreWindowTabFilterFieldDTO);
+                });
             });
         }
 

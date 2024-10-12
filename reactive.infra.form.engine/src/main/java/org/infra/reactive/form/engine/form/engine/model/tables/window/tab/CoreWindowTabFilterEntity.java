@@ -15,4 +15,8 @@ public class CoreWindowTabFilterEntity implements BaseEntityInterface<Long> {
     private String name;
     @CoreColumnDefinition(columnName = "core_window_tab_id", columnType = CoreColumnType.INT64)
     private Long core_window_tab_id;
+    @CoreColumnDefinition(columnName = "active_default", columnType = CoreColumnType.Boolean)
+    private Boolean active_default;
+    @CoreColumnDefinition(columnName = "register_key_side", columnType = CoreColumnType.String)
+    private String register_key_side;
 }

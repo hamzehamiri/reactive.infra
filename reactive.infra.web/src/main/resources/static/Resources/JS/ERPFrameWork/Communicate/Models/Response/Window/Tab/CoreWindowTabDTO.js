@@ -5,6 +5,7 @@ import CoreWindowTabJoinColumnDTO from "./CoreWindowTabJoinColumnDTO.js";
 import CoreButtonAssignElementDTO from "../../Button/CoreButtonAssignElementDTO.js";
 import CoreAllElementDTO from "../../Element/CoreAllElementDTO.js";
 import CoreLayoutAssignElementDTO from "../../Layout/CoreLayoutAssignElementDTO.js";
+import CoreWindowTabFilterDTO from "./Filter/CoreWindowTabFilterDTO.js";
 
 export default class CoreWindowTabDTO extends BaseModel {
 
@@ -91,5 +92,12 @@ export default class CoreWindowTabDTO extends BaseModel {
             this.coreWindowTabJoinColumnDTOParent = ConvertUtil.ConvertGeneral(CoreWindowTabJoinColumnDTO, this.coreWindowTabJoinColumnDTOParent);
         }
         return this.coreWindowTabJoinColumnDTOParent;
+    }
+
+    getCoreWindowTabFilterDTOMap() {
+        if (this.coreWindowTabFilterDTOMap && !(this.coreWindowTabFilterDTOMap instanceof Map)) {
+            this.coreWindowTabFilterDTOMap = ConvertUtil.ConvertGeneralWithMap(CoreWindowTabFilterDTO, this.coreWindowTabFilterDTOMap);
+        }
+        return this.coreWindowTabFilterDTOMap;
     }
 }

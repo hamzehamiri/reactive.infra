@@ -6,8 +6,8 @@ import org.infra.reactive.form.engine.form.engine.model.dto.response.element.Cor
 import org.infra.reactive.form.engine.form.engine.model.dto.response.layout.CoreLayoutAssignElementDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.table.CoreTableDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.field.CoreWindowTabFieldDTO;
+import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.filter.CoreWindowTabFilterDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.workflow.CoreWorkflowActionDTO;
-import org.infra.reactive.form.engine.form.engine.model.dto.response.workflow.CoreWorkflowDTO;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -30,4 +30,5 @@ public class CoreWindowTabDTO implements Serializable {
     private Map<Long, CoreWindowTabFieldDTO> coreWindowTabFieldDTOMap;
     private Map<Long, CoreButtonAssignElementDTO> coreButtonAssignElementDTOMap;
     private Map<Long, CoreWindowTabJoinColumnDTO> coreWindowTabJoinColumnDTOMap;
+    private Map<Long, CoreWindowTabFilterDTO> coreWindowTabFilterDTOMap;
 }

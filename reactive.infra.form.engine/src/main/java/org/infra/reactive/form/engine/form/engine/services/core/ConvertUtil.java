@@ -45,6 +45,8 @@ import org.infra.reactive.form.engine.form.engine.model.dto.response.view.CoreVi
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.CoreWindowDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.*;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.field.CoreWindowTabFieldDTO;
+import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.filter.CoreWindowTabFilterDTO;
+import org.infra.reactive.form.engine.form.engine.model.dto.response.window.tab.filter.CoreWindowTabFilterFieldDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.wizard.CoreWizardDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.wizard.CoreWizardStateDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.wizard.CoreWizardStateValueDTO;
@@ -109,6 +111,24 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ConvertUtil {
+
+    public static CoreWindowTabFilterDTO convert(CoreWindowTabFilterEntity coreWindowTabFilterEntity) {
+        CoreWindowTabFilterDTO coreWindowTabFilterDTO = new CoreWindowTabFilterDTO();
+        coreWindowTabFilterDTO.setId(coreWindowTabFilterEntity.getId());
+        coreWindowTabFilterDTO.setName(coreWindowTabFilterEntity.getName());
+        coreWindowTabFilterDTO.setCoreWindowTabId(coreWindowTabFilterEntity.getCore_window_tab_id());
+        coreWindowTabFilterDTO.setActiveDefault(coreWindowTabFilterEntity.getActive_default());
+        coreWindowTabFilterDTO.setRegisterKeySide(coreWindowTabFilterEntity.getRegister_key_side());
+        coreWindowTabFilterDTO.setCoreWindowTabFilterFieldDTOMap(new HashMap<>());
+        return coreWindowTabFilterDTO;
+    }
+
+    public static CoreWindowTabFilterFieldDTO convert(CoreWindowTabFilterFieldEntity coreWindowTabFilterFieldEntity) {
+        CoreWindowTabFilterFieldDTO coreWindowTabFilterFieldDTO = new CoreWindowTabFilterFieldDTO();
+        coreWindowTabFilterFieldDTO.setId(coreWindowTabFilterFieldEntity.getId());
+        coreWindowTabFilterFieldDTO.setCoreWindowTabFilterId(coreWindowTabFilterFieldEntity.getCore_window_tab_filter_id());
+        return coreWindowTabFilterFieldDTO;
+    }
 
     public static CoreAllElementPropertiesValueDTO convert(CoreAllElementPropertiesDTO coreAllElementPropertiesDTO, String value) {
         CoreAllElementPropertiesValueDTO coreAllElementPropertiesValueDTO = new CoreAllElementPropertiesValueDTO();

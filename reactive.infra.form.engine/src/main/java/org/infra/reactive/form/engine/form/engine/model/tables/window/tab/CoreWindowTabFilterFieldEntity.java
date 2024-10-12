@@ -11,6 +11,8 @@ import org.infra.reactive.form.engine.form.engine.providers.dbs.common.querybuil
 public class CoreWindowTabFilterFieldEntity implements BaseEntityInterface<Long> {
     @CoreColumnDefinition(columnName = "id", columnType = CoreColumnType.INT64, isPk = true, sequenceName = "core_window_tab_filter_id_seq")
     private Long id;
+    @CoreColumnDefinition(columnName = "core_window_tab_filter_id", columnType = CoreColumnType.INT64)
+    private Long core_window_tab_filter_id;
     @CoreColumnDefinition(columnName = "core_window_tab_field_id", columnType = CoreColumnType.INT64)
     private Long core_window_tab_field_id;
 }
