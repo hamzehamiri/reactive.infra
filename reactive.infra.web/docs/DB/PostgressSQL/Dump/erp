@@ -2,13 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 17.0
--- Dumped by pg_dump version 17.0
+-- Dumped from database version 16.0
+-- Dumped by pg_dump version 16.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -1596,7 +1595,7 @@ CREATE TABLE hamzehschema.core_user_tenant_profile (
     core_profile_id bigint,
     core_all_element_id bigint,
     record_id bigint,
-    "json_value" character varying
+    json_value character varying
 );
 
 
@@ -1700,6 +1699,31 @@ CREATE TABLE hamzehschema.core_window_tab_field (
 
 
 ALTER TABLE hamzehschema.core_window_tab_field OWNER TO postgres;
+
+--
+-- Name: core_window_tab_filter; Type: TABLE; Schema: hamzehschema; Owner: postgres
+--
+
+CREATE TABLE hamzehschema.core_window_tab_filter (
+    id bigint NOT NULL,
+    name character varying,
+    core_window_tab_id bigint
+);
+
+
+ALTER TABLE hamzehschema.core_window_tab_filter OWNER TO postgres;
+
+--
+-- Name: core_window_tab_filter_field; Type: TABLE; Schema: hamzehschema; Owner: postgres
+--
+
+CREATE TABLE hamzehschema.core_window_tab_filter_field (
+    id bigint NOT NULL,
+    core_window_tab_field_id bigint
+);
+
+
+ALTER TABLE hamzehschema.core_window_tab_filter_field OWNER TO postgres;
 
 --
 -- Name: core_window_tab_join_column; Type: TABLE; Schema: hamzehschema; Owner: postgres
@@ -1846,7 +1870,7 @@ ALTER TABLE hamzehschema.core_wizard_state_validation OWNER TO postgres;
 CREATE TABLE hamzehschema.core_wizard_state_value (
     id bigint NOT NULL,
     core_wizard_state_id bigint,
-    "json_value" json
+    json_value json
 );
 
 
@@ -3251,6 +3275,8 @@ COPY hamzehschema.core_table (id, name, core_table_datasource_id, tablename) FRO
 104	business_cartable	2	business_cartable
 105	business_cartable_folders	2	business_cartable_folders
 106	business_letter	2	business_letter
+107	core_window_tab_filter	1	core_window_tab_filter
+108	core_window_tab_filter_field	1	core_window_tab_filter_field
 \.
 
 
@@ -3658,6 +3684,11 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 468	subject	1	106	\N	6
 469	body	1	106	\N	6
 470	created_date	1	106	\N	6
+471	id	1	107	t	\N
+472	name	1	107	\N	6
+473	core_window_tab_id	1	107	\N	6
+474	id	1	108	t	\N
+475	core_window_tab_field_id	1	108	\N	6
 \.
 
 
@@ -4754,7 +4785,7 @@ COPY hamzehschema.core_user_tenant_process (id, core_user_tenant_id, core_all_el
 -- Data for Name: core_user_tenant_profile; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
 --
 
-COPY hamzehschema.core_user_tenant_profile (id, name, core_user_tenant_id, core_profile_id, core_all_element_id, record_id, "json_value") FROM stdin;
+COPY hamzehschema.core_user_tenant_profile (id, name, core_user_tenant_id, core_profile_id, core_all_element_id, record_id, json_value) FROM stdin;
 1	CoreWindowProfile	1	1	1	1	{profile : 1}
 \.
 
@@ -5089,6 +5120,22 @@ COPY hamzehschema.core_window_tab_field (id, name, core_window_tab_id, core_tabl
 
 
 --
+-- Data for Name: core_window_tab_filter; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
+--
+
+COPY hamzehschema.core_window_tab_filter (id, name, core_window_tab_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: core_window_tab_filter_field; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
+--
+
+COPY hamzehschema.core_window_tab_filter_field (id, core_window_tab_field_id) FROM stdin;
+\.
+
+
+--
 -- Data for Name: core_window_tab_join_column; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
 --
 
@@ -5173,7 +5220,7 @@ COPY hamzehschema.core_wizard_state_validation (id, core_wizard_state_id, core_w
 -- Data for Name: core_wizard_state_value; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
 --
 
-COPY hamzehschema.core_wizard_state_value (id, core_wizard_state_id, "json_value") FROM stdin;
+COPY hamzehschema.core_wizard_state_value (id, core_wizard_state_id, json_value) FROM stdin;
 \.
 
 
@@ -5997,6 +6044,22 @@ ALTER TABLE ONLY hamzehschema.core_view_module_assign_element
 
 ALTER TABLE ONLY hamzehschema.core_view_module
     ADD CONSTRAINT core_viewcontroller_pk PRIMARY KEY (id);
+
+
+--
+-- Name: core_window_tab_filter_field core_window_tab_filter_field_pk; Type: CONSTRAINT; Schema: hamzehschema; Owner: postgres
+--
+
+ALTER TABLE ONLY hamzehschema.core_window_tab_filter_field
+    ADD CONSTRAINT core_window_tab_filter_field_pk PRIMARY KEY (id);
+
+
+--
+-- Name: core_window_tab_filter core_window_tab_filter_pk; Type: CONSTRAINT; Schema: hamzehschema; Owner: postgres
+--
+
+ALTER TABLE ONLY hamzehschema.core_window_tab_filter
+    ADD CONSTRAINT core_window_tab_filter_pk PRIMARY KEY (id);
 
 
 --
