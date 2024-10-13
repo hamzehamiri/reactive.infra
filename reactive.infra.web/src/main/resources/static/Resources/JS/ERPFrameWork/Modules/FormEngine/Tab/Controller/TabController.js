@@ -150,10 +150,7 @@ export default class TabController extends BaseController {
 
     processCoreWindowTabFilterDTOContainer(coreWindowTabFilterDTO) {
         if (coreWindowTabFilterDTO instanceof CoreWindowTabFilterDTO) {
-            TabUtil.createEditorFromCoreWindowTabFilterDTO(coreWindowTabFilterDTO, (id, editorInstance) => {
-                this.view.getEditor().set(id, editorInstance);
-                editorInstance.addListener(EventFrameWork.event.Editors.FieldChangeEvent, this.tabRecordChangeHandler.fieldChangeEvent, this.tabRecordChangeHandler);
-            });
+            // this.filterTabController.setParentContainer();
         }
     }
 

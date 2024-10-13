@@ -27,6 +27,7 @@ export const CoreButtonConstantButton = () => {
         ChartElementTabButton : Symbol("chart_element"),
 
         Filter : Symbol("filter"),
+        FilterTab : Symbol("filter_tab_button"),
 
         SaveFilter : Symbol("save_filter"),
         AddRowFilter : Symbol("add_row_filter"),

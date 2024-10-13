@@ -5,6 +5,7 @@ import DropDownButton from "./StandardButtons/DropDownButton.js";
 import Divider from "./StandardButtons/Divider.js";
 import ListPlugButton from "./StandardButtons/ListPlugButton.js";
 import ProcessButton from "./StandardButtons/ProcessButton.js";
+import ListFilterTabButton from "./StandardButtons/ListFilterTabButton.js";
 
 export default class StandardButtons {
     static Init() {
@@ -15,6 +16,7 @@ export default class StandardButtons {
         DropDownButton.Init();
         Divider.Init();
         ListPlugButton.Init();
+        ListFilterTabButton.Init();
         ProcessButton.Init();
     }
 }

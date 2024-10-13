@@ -2374,6 +2374,7 @@ COPY hamzehschema.core_button (id, name, command_server_key, command_client_key,
 8	save_analytic	\N	save_analytic	SimpleButton
 4	multi	\N		MultiMode
 6	paging	\N	paging	Paging
+21	filter_tab_button	\N	filter_tab_button	ListFilterTabButton
 \.
 
 
@@ -2652,6 +2653,7 @@ COPY hamzehschema.core_button_assign_element (id, name, core_button_id, core_css
 268	filter	3	3	2	52	3	\N	\N
 269	multi	4	4	2	52	4	\N	\N
 270	refresh	5	5	2	52	5	\N	\N
+271	filter_tab_button	21	15	2	50	7	\N	\N
 \.
 
 
@@ -2674,6 +2676,7 @@ COPY hamzehschema.core_css (id, name, json_attribute) FROM stdin;
 12	undo_filter	{\n    "classButton": "btn_undo",\n    "imageIconSrc": "./Resources/Themes/Img/Toolbar/Buttons/Filter/undo.svg"\n  }
 13	plug_button	{\n    "classButton": "btn_plug",\n    "imageIconSrc": "./Resources/Themes/IMG/Toolbar/Buttons/Tab/plug-panel.svg"\n  }
 14	process_button	{\n  "classButton": "btn_plug",\n  "imageIconSrc": "./Resources/Themes/IMG/Toolbar/Buttons/Process/process.svg",\n  "jsonTheme" : {\n\t\t"ClassNameActive": ["ClassNameActive", {\n\t\t\t"border": "1px solid",\n\t\t\t"$hover$": {\n\t\t\t\t"background-color": "rgb(55,10,130)"\n\t\t\t}\n\t\t}]\n\t}\n}
+15	filter_tab_button	{\n  "classButton": "btn_filter_tab",\n  "imageIconSrc": "./Resources/Themes/IMG/Toolbar/Buttons/Tab/Filter/filter.svg",\n  "jsonTheme" : {\n\t\t"ClassNameActive": ["ClassNameActive", {\n\t\t\t"border": "1px solid",\n\t\t\t"$hover$": {\n\t\t\t\t"background-color": "rgb(55,10,130)"\n\t\t\t}\n\t\t}]\n\t}\n}
 \.
 
 

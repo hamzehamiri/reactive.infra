@@ -37,7 +37,9 @@ export default class TabCommand {
 
         CommandFactory.register(CoreButtonConstantButton().WebAdvancedGridSortOrder.description, TabCommand.SortOrder);
         CommandFactory.register(CoreButtonConstantButton().WebAdvancedGridFilterColumnConfig.description, TabCommand.FilterColumnConfig);
+
         CommandFactory.register(CoreButtonConstantButton().Filter.description, TabCommand.Filter);
+        CommandFactory.register(CoreButtonConstantButton().FilterTab.description, TabCommand.FilterTab);
 
         CommandFactory.register(CoreButtonConstantButton().Pluggable.description, TabCommand.Pluggable);
         CommandFactory.register(CoreButtonConstantButton().Process.description, TabCommand.Process);
@@ -61,6 +63,10 @@ export default class TabCommand {
                 }
             }
         }
+    }
+
+    static FilterTab(tabController, buttonEvent) {
+        tabController.openFilterCommand();
     }
 
     static Filter(tabController, buttonEvent) {
@@ -164,9 +170,18 @@ export default class TabCommand {
     static TableView(tabController) {
         ClientLogger.Log(LogLevel.Debug, "TableView");
 
+        TabCommand.normalGridView(tabController);
+
+        tabController.getView().getGridView().bindModelToUI(tabController.getModel());
+    }
+
+    static normalGridView(tabController) {
         tabController.getView().setLayout(new FitLayout(true));
         tabController.getView().addItem(tabController.getView().getGridView());
-        tabController.getView().getGridView().bindModelToUI(tabController.getModel());
+    }
+
+    static normalGridViewWithFilterTab(tabController) {
+
     }
 
     static TableFormView(tabController) {
