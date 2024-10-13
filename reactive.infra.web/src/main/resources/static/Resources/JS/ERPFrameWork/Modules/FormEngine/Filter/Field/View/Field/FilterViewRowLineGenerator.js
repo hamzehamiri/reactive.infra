@@ -1,20 +1,20 @@
-import {RowLayout, RowLayout_Mode} from "../../../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Row/RowLayout.js";
-import WebERPSearchEditor from "../../../WebEditors/WebERPSearchEditor.js";
-import {RowLayoutData} from "../../../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Row/RowLayoutData.js";
-import CoreFilterAssignAbstract from "../../../../../Communicate/Models/Response/Filter/CoreFilterAssignAbstract.js";
-import CoreFilterOperationDTO from "../../../../../Communicate/Models/Response/Filter/CoreFilterOperationDTO.js";
-import CoreFilterOperationParamDTO from "../../../../../Communicate/Models/Response/Filter/CoreFilterOperationParamDTO.js";
-import {WebComboBox} from "../../../../../../UIFrameWork/HTML/WebEditor/Combobox/WebComboBox.js";
-import {EventFrameWork} from "../../../../../../UIFrameWork/Shared/Event/EventFrameWork.js";
-import CoreWindowTabFieldDTO from "../../../../../Communicate/Models/Response/Window/Tab/Field/CoreWindowTabFieldDTO.js";
-import BaseEvent from "../../../../../../UIFrameWork/Shared/Event/BaseEvent.js";
-import KeyValueDTO from "../../../../../Communicate/Common/DataProvider/Impl/KeyValueDTO.js";
-import TabUtil from "../../../../Common/TabUtil.js";
-import {Util} from "../../../../../../UIFrameWork/Shared/Common/Util.js";
-import ConvertUtil from "../../../../../Communicate/Common/ConvertUtil.js";
-import CoreFilterAssignFieldDTO from "../../../../../Communicate/Models/Response/Filter/Field/CoreFilterAssignFieldDTO.js";
-import {WebEditor} from "../../../../../../UIFrameWork/HTML/WebEditor/Common/WebEditor.js";
-import HTMLContainer from "../../../../../../UIFrameWork/HTML/Container/HTMLContainer.js";
+import {RowLayout, RowLayout_Mode} from "../../../../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Row/RowLayout.js";
+import WebERPSearchEditor from "../../../../WebEditors/WebERPSearchEditor.js";
+import {RowLayoutData} from "../../../../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Row/RowLayoutData.js";
+import CoreFilterAssignAbstract from "../../../../../../Communicate/Models/Response/Filter/CoreFilterAssignAbstract.js";
+import CoreFilterOperationDTO from "../../../../../../Communicate/Models/Response/Filter/CoreFilterOperationDTO.js";
+import CoreFilterOperationParamDTO from "../../../../../../Communicate/Models/Response/Filter/CoreFilterOperationParamDTO.js";
+import {WebComboBox} from "../../../../../../../UIFrameWork/HTML/WebEditor/Combobox/WebComboBox.js";
+import {EventFrameWork} from "../../../../../../../UIFrameWork/Shared/Event/EventFrameWork.js";
+import CoreWindowTabFieldDTO from "../../../../../../Communicate/Models/Response/Window/Tab/Field/CoreWindowTabFieldDTO.js";
+import BaseEvent from "../../../../../../../UIFrameWork/Shared/Event/BaseEvent.js";
+import KeyValueDTO from "../../../../../../Communicate/Common/DataProvider/Impl/KeyValueDTO.js";
+import TabUtil from "../../../../../Common/TabUtil.js";
+import {Util} from "../../../../../../../UIFrameWork/Shared/Common/Util.js";
+import ConvertUtil from "../../../../../../Communicate/Common/ConvertUtil.js";
+import CoreFilterAssignFieldDTO from "../../../../../../Communicate/Models/Response/Filter/Field/CoreFilterAssignFieldDTO.js";
+import {WebEditor} from "../../../../../../../UIFrameWork/HTML/WebEditor/Common/WebEditor.js";
+import HTMLContainer from "../../../../../../../UIFrameWork/HTML/Container/HTMLContainer.js";
 
 export default class FilterViewRowLineGenerator extends HTMLContainer {
     constructor(filterOptionMap) {

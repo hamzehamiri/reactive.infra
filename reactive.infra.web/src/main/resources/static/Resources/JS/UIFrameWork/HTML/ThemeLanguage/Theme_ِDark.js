@@ -278,7 +278,7 @@ export let Theme_Dark = {
                     'line-height': '0'
                 }],
             },
-            [UiFrameWorkComponent.Components.WebAdvancedTree2[0]] : {
+            [UiFrameWorkComponent.Components.WebAdvancedTree2[0]]: {
                 [UiFrameWorkComponent.Components.WebAdvancedTree2[1].WebAdvancedTree2_TreeNodeMasterDiv]: [[UiFrameWorkComponent.Components.WebAdvancedTree2[1].WebAdvancedTree2_TreeNodeMasterDiv], {
                     'max-width': '100%',
                     'overflow': 'auto',
@@ -1853,6 +1853,11 @@ export let Theme_Dark = {
                     'box-shadow': 'rgba(0, 0, 0, 0.8) 0px 0px 10px',
                     'background-color': 'rgb(244, 244, 244)',
                     'border-radius': '12px',
+                }]
+            },
+            [UiFrameWorkComponent.Modules.WebTabFilter[0]]: {
+                [UiFrameWorkComponent.Modules.WebTabFilter[1].WebFilterTabMasterDiv]: [UiFrameWorkComponent.Modules.WebTabFilter[1].WebFilterTabMasterDiv, {
+                    'background-color': 'red'
                 }]
             },
             [UiFrameWorkComponent.Modules.WebFilterFilterViewPanel[0]]: {

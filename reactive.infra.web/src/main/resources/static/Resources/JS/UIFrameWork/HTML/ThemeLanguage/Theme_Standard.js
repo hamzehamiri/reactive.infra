@@ -1852,6 +1852,11 @@ export let Theme_Standard = {
             [UiFrameWorkComponent.Modules.WebFilter[0]]: {
                 [UiFrameWorkComponent.Modules.WebFilter[1].WebFilterMasterDiv]: [UiFrameWorkComponent.Modules.WebFilter[1].WebFilterMasterDiv, {}]
             },
+            [UiFrameWorkComponent.Modules.WebTabFilter[0]]: {
+                [UiFrameWorkComponent.Modules.WebTabFilter[1].WebFilterTabMasterDiv]: [UiFrameWorkComponent.Modules.WebTabFilter[1].WebFilterTabMasterDiv, {
+                    'background-color': 'red'
+                }]
+            },
             [UiFrameWorkComponent.Modules.WebFilterFilterViewPanel[0]]: {
                 [UiFrameWorkComponent.Modules.WebFilterFilterViewPanel[1].WebFilterFilterViewPanelMasterDiv]: [UiFrameWorkComponent.Modules.WebFilterFilterViewPanel[1].WebFilterFilterViewPanelMasterDiv, {
                     '$webkit-scrollbar$': {

@@ -65,7 +65,7 @@ export const UiFrameWorkComponent = {
             TreeNodeLabelSpan: 'TreeNodeLabelSpan',
             TreeNodeBreakUl: 'TreeNodeBreakUl'
         }],
-        WebAdvancedTree2 : ['WebAdvancedTree2' , {
+        WebAdvancedTree2: ['WebAdvancedTree2', {
             WebAdvancedTree2_TreeNodeMasterDiv: 'WebAdvancedTree2_TreeNodeMasterDiv',
             WebAdvancedTree2_TreeNodeGroupUl: 'WebAdvancedTree2_TreeNodeGroupUl',
             WebAdvancedTree2_TreeNodeGroupLi: 'WebAdvancedTree2_TreeNodeGroupLi',
@@ -325,6 +325,9 @@ export const UiFrameWorkComponent = {
     Modules: {
         WebFilter: ['WebFilter', {
             WebFilterMasterDiv: 'WebFilterMasterDiv'
+        }],
+        WebTabFilter: ['WebTabFilter', {
+            WebFilterTabMasterDiv: 'WebFilterTabMasterDiv'
         }],
         WebFilterFilterViewPanel: ['WebFilterFilterViewPanel', {
             WebFilterFilterViewPanelMasterDiv: 'WebFilterFilterViewPanelMasterDiv',

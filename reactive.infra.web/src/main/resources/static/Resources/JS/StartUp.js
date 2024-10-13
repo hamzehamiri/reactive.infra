@@ -19,7 +19,7 @@ import {PopupManager} from "./UIFrameWork/HTML/Popup/PopupManager.js";
 import LayoutDataFactory from "./ERPFrameWork/Modules/Common/Factory/LayoutDataFactory.js";
 import LayoutFactory from "./ERPFrameWork/Modules/Common/Factory/LayoutFactory.js";
 import WizardCommand from "./ERPFrameWork/Modules/Wizard/Commands/WizardCommand.js";
-import FilterCommand from "./ERPFrameWork/Modules/FormEngine/Filter/Command/FilterCommand.js";
+import FilterCommand from "./ERPFrameWork/Modules/FormEngine/Filter/Field/Command/FilterCommand.js";
 import ChartElementCommand from "./ERPFrameWork/Modules/ChartElement/Commands/ChartElementCommand.js";
 import {RegisterComponent} from "./UIFrameWork/Shared/BaseShared/RegisterComponent.js";
 import WebAttachmentCentralProxy from "./ERPFrameWork/Modules/FormEngine/WebEditors/Containers/Attachment/WebAttachmentCentralProxy.js";

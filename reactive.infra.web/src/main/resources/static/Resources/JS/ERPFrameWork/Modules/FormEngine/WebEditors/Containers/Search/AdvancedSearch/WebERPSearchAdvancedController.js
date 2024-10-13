@@ -1,7 +1,7 @@
 import BaseController from "../../../../../Common/BaseController.js";
 import {WebERPSearchAdvancedView} from "./WebERPSearchAdvancedView.js";
 import CharacterWordGenerator from "../../../../../Common/Character/CharacterWordGenerator.js";
-import FilterController, {FilterControllerFunction, FilterControllerFunctionFactory} from "../../../../Filter/FilterController.js";
+import FilterController, {FilterControllerFunction, FilterControllerFunctionFactory} from "../../../../Filter/Field/FilterController.js";
 import CoreFilterRequestDTO from "../../../../../../Communicate/Models/Request/Filter/CoreFilterRequestDTO.js";
 import WebElementServiceFindElement from "../../../../../../Communicate/XMLHttpRequest/Services/Element/WebElementServiceFindElement.js";
 import CoreAllElementRegisterKeyEnum from "../../../../../../Communicate/Models/Response/Element/CoreAllElementRegisterKeyEnum.js";
@@ -13,8 +13,8 @@ import WebFormEngineTabSearchData from "../../../../../../Communicate/XMLHttpReq
 import CoreWindowTabResponseSearchDTO from "../../../../../../Communicate/Models/Response/Window/Tab/CoreWindowTabResponseSearchDTO.js";
 import CoreWindowTabRequestSearchDTO from "../../../../../../Communicate/Models/Request/Window/Tab/CoreWindowTabRequestSearchDTO.js";
 import WebEnvironment from "../../../../../../Communicate/Common/WebEnvironment.js";
-import FilterViewPanel from "../../../../Filter/View/FilterViewPanel.js";
-import {FilterViewKeys} from "../../../../Filter/View/FilterView.js";
+import FilterViewPanel from "../../../../Filter/Field/View/FilterViewPanel.js";
+import {FilterViewKeys} from "../../../../Filter/Field/View/FilterView.js";
 import FormEngineEventFrameWork from "../../../../Events/FormEngineEventFrameWork.js";
 import TabUtil from "../../../../../Common/TabUtil.js";
 import {EventFrameWork} from "../../../../../../../UIFrameWork/Shared/Event/EventFrameWork.js";

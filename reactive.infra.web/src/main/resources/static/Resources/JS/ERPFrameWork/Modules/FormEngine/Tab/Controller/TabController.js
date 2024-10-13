@@ -13,7 +13,7 @@ import CoreWindowTabRequestDTO from "../../../../Communicate/Models/Request/Wind
 import TabRecordChangeHandlerEvent from "./TabRecordChangeHandlerEvent.js";
 import CoreWindowTabRequestSearchDTO from "../../../../Communicate/Models/Request/Window/Tab/CoreWindowTabRequestSearchDTO.js";
 import CoreWindowSaveDataRequestDTO from "../../../../Communicate/Models/Request/Window/CoreWindowSaveDataRequestDTO.js";
-import FilterController, {FilterControllerFunctionFactory} from "../../Filter/FilterController.js";
+import FilterController, {FilterControllerFunctionFactory} from "../../Filter/Field/FilterController.js";
 import {BodyElementWidget} from "../../../../../UIFrameWork/HTML/Widget/BodyElementWidget.js";
 import CoreFilterRequestDTO from "../../../../Communicate/Models/Request/Filter/CoreFilterRequestDTO.js";
 import ErpWindow from "../../../Components/ErpWindow.js";
@@ -28,7 +28,7 @@ import WebFormEngineTabSearchData from "../../../../Communicate/XMLHttpRequest/S
 import WebFormEngineTabNewData from "../../../../Communicate/XMLHttpRequest/Services/FormEngine/WebFormEngineTabNewData.js";
 import CoreWindowTabResponseSearchDTO from "../../../../Communicate/Models/Response/Window/Tab/CoreWindowTabResponseSearchDTO.js";
 import WebFormEngineTabSaveData from "../../../../Communicate/XMLHttpRequest/Services/FormEngine/WebFormEngineTabSaveData.js";
-import FilterViewRowLineGenerator from "../../Filter/View/Field/FilterViewRowLineGenerator.js";
+import FilterViewRowLineGenerator from "../../Filter/Field/View/Field/FilterViewRowLineGenerator.js";
 import WebEnvironment from "../../../../Communicate/Common/WebEnvironment.js";
 import CoreFilterRequestElementRecordDTO from "../../../../Communicate/Models/Request/Filter/CoreFilterRequestElementRecordDTO.js";
 import ListPlugButton from "../../Toolbar/StandardButtons/ListPlugButton.js";
@@ -40,8 +40,7 @@ import CoreButtonAssignElementDTO from "../../../../Communicate/Models/Response/
 import ModuleFunctionFactory from "../../../Common/ModuleFunctionFactory.js";
 import ConvertUtil from "../../../../Communicate/Common/ConvertUtil.js";
 import CoreWindowTabFilterDTO from "../../../../Communicate/Models/Response/Window/Tab/Filter/CoreWindowTabFilterDTO.js";
-import CoreWindowTabFilterFieldDTO from "../../../../Communicate/Models/Response/Window/Tab/Filter/CoreWindowTabFilterFieldDTO.js";
-import WebEditorFactory from "../../WebEditors/Factory/WebEditorFactory";
+import FilterTabController from "../../Filter/Tab/FilterTabController.js";
 
 export default class TabController extends BaseController {
     constructor(parentContainer, recordId) {
@@ -73,6 +72,7 @@ export default class TabController extends BaseController {
             view.setParentContainer(parentContainer);
         }
 
+        this.filterTabController = new FilterTabController();
         this.setView(view);
         this.setFilterController(new FilterController(true));
     }
@@ -150,7 +150,7 @@ export default class TabController extends BaseController {
 
     processCoreWindowTabFilterDTOContainer(coreWindowTabFilterDTO) {
         if (coreWindowTabFilterDTO instanceof CoreWindowTabFilterDTO) {
-            TabUtil.createEditorFromCoreWindowTabFilterDTO(coreWindowTabFilterDTO , (id, editorInstance) => {
+            TabUtil.createEditorFromCoreWindowTabFilterDTO(coreWindowTabFilterDTO, (id, editorInstance) => {
                 this.view.getEditor().set(id, editorInstance);
                 editorInstance.addListener(EventFrameWork.event.Editors.FieldChangeEvent, this.tabRecordChangeHandler.fieldChangeEvent, this.tabRecordChangeHandler);
             });
@@ -232,6 +232,10 @@ export default class TabController extends BaseController {
         this.filterController.bindModelToUIPerField(this.getFilterRequestModel(), this.getFilterModel(), this.getModel(), coreWindowTabFieldDTO, new Map([
             [FilterViewRowLineGenerator.Options.FieldEditorShow, false]
         ]));
+    }
+
+    openFilterTab() {
+
     }
 
     executeProcess(coreButtonAssignElementDTO) {

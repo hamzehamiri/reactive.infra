@@ -1,9 +1,9 @@
-import BaseController from "../../Common/BaseController.js";
+import BaseController from "../../../Common/BaseController.js";
 import FilterView from "./View/FilterView.js";
-import WebFilterLoadService from "../../../Communicate/XMLHttpRequest/Services/Filter/WebFilterLoadService.js";
-import CharacterWordGenerator from "../../Common/Character/CharacterWordGenerator.js";
-import ButtonUtil from "../../Common/ButtonUtil.js";
-import {ConfirmPanelEvent} from "../../Common/Confirm/ConfirmPanel.js";
+import WebFilterLoadService from "../../../../Communicate/XMLHttpRequest/Services/Filter/WebFilterLoadService.js";
+import CharacterWordGenerator from "../../../Common/Character/CharacterWordGenerator.js";
+import ButtonUtil from "../../../Common/ButtonUtil.js";
+import {ConfirmPanelEvent} from "../../../Common/Confirm/ConfirmPanel.js";
 
 export default class FilterController extends BaseController {
     constructor(activeConfirmPanel) {
