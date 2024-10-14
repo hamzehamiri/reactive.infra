@@ -39,7 +39,7 @@ import ErpWindowFactory from "../../../Components/ErpWindowFactory.js";
 import CoreButtonAssignElementDTO from "../../../../Communicate/Models/Response/Button/CoreButtonAssignElementDTO.js";
 import ModuleFunctionFactory from "../../../Common/ModuleFunctionFactory.js";
 import ConvertUtil from "../../../../Communicate/Common/ConvertUtil.js";
-import FilterTabController, {FilterTabControllerFunctionFactory} from "../../Filter/Tab/FilterTabController.js";
+import FilterTabController from "../../Filter/Tab/FilterTabController.js";
 import ListFilterTabButton from "../../Toolbar/StandardButtons/ListFilterTabButton.js";
 
 export default class TabController extends BaseController {
@@ -252,20 +252,7 @@ export default class TabController extends BaseController {
         }
     }
 
-    openFilterTab(coreWindowTabFilterDTO) {
-        let filterTabControllerFunction = FilterTabControllerFunctionFactory.Factory((coreFilterRequestElementWithOperandDTO) => {
-            if (coreFilterRequestElementWithOperandDTO instanceof CoreFilterRequestElementWithOperandDTO) {
-                this.setFilterModel(coreFilterRequestElementWithOperandDTO);
-                ButtonUtil.ButtonHandleEvent(new ButtonEditorEvent(this, CoreButtonConstantButton().Refresh.description), this);
-            }
-        });
-
-        // this.filterTabController.setParentContainer();
-        this.filterTabController.setFunctionFilterProvider(filterTabControllerFunction);
-        this.filterTabController.bindModelToUI(coreWindowTabFilterDTO, this, this.changeFilterTab);
-    }
-
-    changeFilterTab(event) {
+    changeFilterTabEditor(event) {
 
     }
 

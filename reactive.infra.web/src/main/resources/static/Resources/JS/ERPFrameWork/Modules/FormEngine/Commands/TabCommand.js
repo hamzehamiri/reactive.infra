@@ -14,6 +14,9 @@ import ViewModuleFactory from "../../Common/Factory/ViewModuleFactory.js";
 import {SideLayout} from "../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Side/SideLayout.js";
 import {SideLayoutData} from "../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Side/SideLayoutData.js";
 import BaseSharedComponent from "../../../../UIFrameWork/Shared/BaseShared/BaseSharedComponent.js";
+import {FilterTabControllerFunctionFactory} from "../Filter/Tab/FilterTabController.js";
+import CoreFilterRequestElementWithOperandDTO from "../../../Communicate/Models/Request/Filter/Element/CoreFilterRequestElementWithOperandDTO.js";
+import ButtonUtil from "../../Common/ButtonUtil.js";
 
 export default class TabCommand {
 
@@ -66,7 +69,25 @@ export default class TabCommand {
     }
 
     static FilterTab(tabController, buttonEvent) {
-        tabController.openFilterTab(tabController.getModel().getDefaultCoreWindowTabFilterDTO());
+        if (buttonEvent instanceof ButtonEditorEvent) {
+            let coreWindowTabFilterDTO = buttonEvent.getValue();
+
+            let filterTabControllerFunction = FilterTabControllerFunctionFactory.Factory((coreFilterRequestElementWithOperandDTO) => {
+                if (coreFilterRequestElementWithOperandDTO instanceof CoreFilterRequestElementWithOperandDTO) {
+                    tabController.setFilterModel(coreFilterRequestElementWithOperandDTO);
+                    ButtonUtil.ButtonHandleEvent(new ButtonEditorEvent(this, CoreButtonConstantButton().Refresh.description), this);
+                }
+            });
+            let filterTabController = tabController.filterTabController;
+
+
+            filterTabController.setFunctionFilterProvider(filterTabControllerFunction);
+            filterTabController.bindModelToUI(coreWindowTabFilterDTO, tabController, tabController.changeFilterTabEditor);
+            filterTabController.getView().setEditorsWithLayout(filterTabController.getEditor(), null, TabUtil.startSortField(filterTabController.getEditor()));
+
+            tabController.getView().getGridView().addFilterTabContainer(filterTabController.getView(), TabCommand.ViewPortPlace.Right);
+            tabController.getView().layoutExecute();
+        }
     }
 
     static Filter(tabController, buttonEvent) {

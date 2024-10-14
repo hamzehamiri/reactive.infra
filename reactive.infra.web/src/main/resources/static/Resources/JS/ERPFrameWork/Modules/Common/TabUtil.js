@@ -21,6 +21,11 @@ import CoreProcessParamDTO from "../../Communicate/Models/Response/Process/CoreP
 import CoreTableColumnEditorDTO from "../../Communicate/Models/Response/Table/Column/CoreTableColumnEditorDTO.js";
 import CoreWindowTabDTO from "../../Communicate/Models/Response/Window/Tab/CoreWindowTabDTO.js";
 import CoreWindowTabJoinColumnDTO from "../../Communicate/Models/Response/Window/Tab/CoreWindowTabJoinColumnDTO.js";
+import LayoutDataFactory from "./Factory/LayoutDataFactory.js";
+import {RowLayoutData} from "../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Row/RowLayoutData.js";
+import LayoutFactory from "./Factory/LayoutFactory.js";
+import {RowLayout, RowLayout_Mode} from "../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Row/RowLayout.js";
+import CoreWindowTabFilterFieldDTO from "../../Communicate/Models/Response/Window/Tab/Filter/CoreWindowTabFilterFieldDTO.js";
 
 export default class TabUtil {
 
@@ -138,9 +143,11 @@ export default class TabUtil {
         let coreWindowTabFilterFieldDTOMap = coreWindowTabFilterDTO.getCoreWindowTabFilterFieldDTOMap();
         if (coreWindowTabFilterFieldDTOMap)
             for (let [, coreWindowTabFilterFieldDTO] of coreWindowTabFilterFieldDTOMap) {
-                if (coreWindowTabFilterFieldDTO.getActive()) {
+                if (coreWindowTabFilterFieldDTO instanceof CoreWindowTabFilterFieldDTO) {
                     let coreWindowTabFieldDTO = coreWindowTabFilterFieldDTO.getCoreWindowTabFieldDTO();
-                    TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
+                    if (coreWindowTabFieldDTO.getActive()) {
+                        TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
+                    }
                 }
             }
     }
@@ -276,6 +283,38 @@ export default class TabUtil {
         return webColumnConfig;
     }
 
+    static createDefaultLayoutAndLayoutDataFilterTab(container, editorArraySorted) {
+        let rowLayout = new RowLayout(RowLayout_Mode.Vertical);
+        container.setLayout(rowLayout);
+
+        editorArraySorted.forEach((webEditorInstance) => {
+            if (webEditorInstance instanceof WebEditor) {
+
+                let coreLayoutDataDTO = new CoreLayoutDataDTO();
+                coreLayoutDataDTO.setRegisterKey("row_layout_data");
+
+                let rowLayoutData = RowLayoutData.factory(1, 1 / editorArraySorted.size, 1, 1, 1, 1, true, false)
+
+                let coreLayoutDataAssignElementDTO = new CoreLayoutDataAssignElementDTO();
+                coreLayoutDataAssignElementDTO.setId(2);
+                coreLayoutDataAssignElementDTO.setJsonLayoutData(rowLayoutData.toJsonString());
+                coreLayoutDataAssignElementDTO.setCoreLayoutDataDTO(coreLayoutDataDTO);
+
+                let coreLayoutDataAssignElementDTOMap = new Map();
+                coreLayoutDataAssignElementDTOMap.set(coreLayoutDataAssignElementDTO.getId(), coreLayoutDataAssignElementDTO);
+
+                let coreWindowTabField = webEditorInstance.getCoreWindowTabField();
+                let coreProcessParamDTO = webEditorInstance.getCoreProcessParamDTO();
+                if (coreWindowTabField) {
+                    coreWindowTabField.setCoreLayoutDataAssignElementDTOMap(coreLayoutDataAssignElementDTOMap);
+                }
+                if (coreProcessParamDTO) {
+                    coreProcessParamDTO.setCoreLayoutDataAssignElementDTOMap(coreLayoutDataAssignElementDTOMap);
+                }
+            }
+        })
+    }
+
     static createDefaultLayoutAndLayoutData(container, editorArraySorted) {
         let responsiveTableLayout = new ResponsiveTableLayout();
         responsiveTableLayout.setPadding(12, "px");
@@ -360,5 +399,46 @@ export default class TabUtil {
                 }
             }
         });
+    }
+
+
+    static renderEditors(container, editorArraySorted) {
+        editorArraySorted.forEach(webEditorInstance => {
+            if (webEditorInstance instanceof WebEditor) {
+                let field = webEditorInstance.getCoreWindowTabField();
+                let coreProcessParamDTO = webEditorInstance.getCoreProcessParamDTO();
+                let coreLayoutDataAssignElementDTOMap;
+                if (field instanceof CoreWindowTabFieldDTO) {
+                    coreLayoutDataAssignElementDTOMap = field.getCoreLayoutDataAssignElementDTOMap();
+                } else if (coreProcessParamDTO instanceof CoreProcessParamDTO) {
+                    coreLayoutDataAssignElementDTOMap = coreProcessParamDTO.getCoreLayoutDataAssignElementDTOMap();
+                }
+                if (coreLayoutDataAssignElementDTOMap) {
+                    coreLayoutDataAssignElementDTOMap.forEach((coreLayoutDataAssignElementDTO, id) => {
+                        if (coreLayoutDataAssignElementDTO instanceof CoreLayoutDataAssignElementDTO) {
+                            let LayoutDateInvoke = LayoutDataFactory.factory(coreLayoutDataAssignElementDTO.getCoreLayoutDataDTO().getRegisterKey());
+                            if (LayoutDateInvoke) {
+                                let layoutDataInstance = new LayoutDateInvoke();
+                                layoutDataInstance.applyData(coreLayoutDataAssignElementDTO.getJsonLayoutData());
+                                container.addItem(webEditorInstance, layoutDataInstance, false);
+                            } else {
+                                container.addItem(webEditorInstance, RowLayoutData.factory(1, 50, 0, 0, 3, 3, true), false);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    static layoutProcess(container, coreLayoutAssignElementDTO) {
+        let LayoutInvoke = LayoutFactory.factory(coreLayoutAssignElementDTO.getCoreLayoutDTO().getRegisterKey());
+        if (LayoutInvoke) {
+            let layoutInstance = new LayoutInvoke();
+            layoutInstance.applyData(coreLayoutAssignElementDTO.getJsonLayout());
+            container.setLayout(layoutInstance);
+        } else {
+            container.setLayout(new RowLayout(RowLayout_Mode.Vertical));
+        }
     }
 }

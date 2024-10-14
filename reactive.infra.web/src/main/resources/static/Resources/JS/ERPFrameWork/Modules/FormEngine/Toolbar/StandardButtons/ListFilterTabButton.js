@@ -30,6 +30,7 @@ export default class ListFilterTabButton extends BaseDropDownButton {
 
     bindModelToUi(coreWindowTabFilterDTOMap) {
         if (coreWindowTabFilterDTOMap) {
+            this.listView.clearItems();
             for (let [, coreWindowTabFilterDTO] of coreWindowTabFilterDTOMap) {
                 let displayText = coreWindowTabFilterDTO.getName();
                 this.listView.addItemData([

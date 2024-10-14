@@ -14,12 +14,12 @@ import {WebColumnConfig} from "../../../../../UIFrameWork/HTML/Cells/Grid/Standa
 import ConvertUtil from "../../../../Communicate/Common/ConvertUtil.js";
 import HTMLContainer from "../../../../../UIFrameWork/HTML/Container/HTMLContainer.js";
 import {HTMLComponent} from "../../../../../UIFrameWork/HTML/Component/HTMLComponent.js";
+import {SideLayout} from "../../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Side/SideLayout.js";
+import {SideLayoutData} from "../../../../../UIFrameWork/HTML/Container/Layout/Sizeable/Normal/Side/SideLayoutData.js";
 
 export default class GridView extends HTMLContainer {
     constructor() {
         super();
-
-        this.setLayout(new RowLayout(RowLayout_Mode.Vertical));
 
         this.webGridAdvanced = new WebGridAdvanced();
         this.webGridAdvanced.setStripRow(true);
@@ -35,7 +35,7 @@ export default class GridView extends HTMLContainer {
         this.pagingDTO.setTotalRecord(100);
 
         this.sortOrderMap = new Map();
-        this.toggleSideContainer = new Map();
+        this.toggleSideContainerMap = new Map();
         this.webGridAdvanced.addListener(FormEngineEventFrameWork.event.ButtonAction.CommandExecute, (buttonEditorEvent) => {
             if (buttonEditorEvent instanceof ButtonEditorEvent) {
                 let columnConfigModel = buttonEditorEvent.getExtraAttribute().get(ButtonHeaderAdvancedKeys.DataElement);
@@ -46,17 +46,37 @@ export default class GridView extends HTMLContainer {
             }
         });
 
-        this.addItem(this.webGridAdvanced, RowLayoutData.factory(1, 1, 0, 0, 0, 0));
-        this.addItem(this.pagingToolbar, RowLayoutData.factory(1, 32, 0, 0, 0, 0));
+        this.centerLayout = new HTMLContainer();
+
+        this.initNormalLayout();
     }
 
-    toggleSideContainer(active, side) {
-        let container = this.toggleSideContainer.get(side);
+    addFilterTabContainer(filterTabView, side) {
+        let container = this.toggleSideContainerMap.get(side);
         if (container instanceof HTMLComponent) {
-            if (!active && container.getAttached()) {
+            if (container.getAttached()) {
                 container.onDetach();
             }
         }
+
+        this.centerLayout.clearItems();
+        this.centerLayout.setLayout(new RowLayout(RowLayout_Mode.Vertical));
+        this.centerLayout.addItem(this.webGridAdvanced, RowLayoutData.factory(1, 1, 0, 0, 0, 0));
+        this.centerLayout.addItem(this.pagingToolbar, RowLayoutData.factory(1, 32, 0, 0, 0, 0));
+
+        this.clearItems();
+        this.setLayout(new SideLayout());
+        this.addItem(filterTabView, SideLayoutData.factory(SideLayoutData.Side.Left, 100, true, false, true, true, 0, 0, 0, 0), false);
+        this.addItem(this.centerLayout, SideLayoutData.factory(SideLayoutData.Side.Center, 0, true, false, true, true, 0, 0, 0, 0), false);
+    }
+
+    initNormalLayout() {
+        this.clearItems();
+
+        this.setLayout(new RowLayout(RowLayout_Mode.Vertical));
+
+        this.addItem(this.webGridAdvanced, RowLayoutData.factory(1, 1, 0, 0, 0, 0));
+        this.addItem(this.pagingToolbar, RowLayoutData.factory(1, 32, 0, 0, 0, 0));
     }
 
     clearColumnConfigs() {
