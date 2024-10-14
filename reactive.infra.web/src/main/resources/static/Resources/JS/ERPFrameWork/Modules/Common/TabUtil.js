@@ -136,12 +136,13 @@ export default class TabUtil {
 
     static createEditorFromCoreWindowTabFilterDTO(coreWindowTabFilterDTO, editorConsumer) {
         let coreWindowTabFilterFieldDTOMap = coreWindowTabFilterDTO.getCoreWindowTabFilterFieldDTOMap();
-        for (let [, coreWindowTabFilterFieldDTO] of coreWindowTabFilterFieldDTOMap) {
-            if (coreWindowTabFilterFieldDTO.getActive()) {
-                let coreWindowTabFieldDTO = coreWindowTabFilterFieldDTO.getCoreWindowTabFieldDTO();
-                TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
+        if (coreWindowTabFilterFieldDTOMap)
+            for (let [, coreWindowTabFilterFieldDTO] of coreWindowTabFilterFieldDTOMap) {
+                if (coreWindowTabFilterFieldDTO.getActive()) {
+                    let coreWindowTabFieldDTO = coreWindowTabFilterFieldDTO.getCoreWindowTabFieldDTO();
+                    TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
+                }
             }
-        }
     }
 
     static createEditorFromCoreProcessDTO(coreProcessDTO, editorConsumer) {

@@ -5,6 +5,12 @@ export default class BaseView extends HTMLContainer {
         super();
         this.uiElements = new Map();
         this.setController(baseController);
+
+        this.uiElements.set(BaseView.Editors, new Map());
+    }
+
+    getEditor() {
+        return this.uiElements.get(BaseView.Editors);
     }
 
     bindModelToUI(model) {
@@ -28,4 +34,6 @@ export default class BaseView extends HTMLContainer {
         return this.parentContainer;
     }
 }
+
+BaseView.Editors = "Editors";
 

@@ -257,6 +257,12 @@ export const UiFrameWorkComponent = {
             btn_form_table: 'btn_form_table',
             btn_refresh: 'btn_refresh'
         }],
+        BaseDropDownButton: ['BaseDropDownButton', {
+            BaseDropDownButton_Master: 'BaseDropDownButton_Master',
+            BaseDropDownButton_Icon: 'BaseDropDownButton_Icon',
+            BaseDropDownButton_Arrow: 'BaseDropDownButton_Arrow',
+            BaseDropDownButton_PopUpItemPTag: 'BaseDropDownButton_PopUpItemPTag'
+        }],
         ButtonPlug: ['ButtonPlug', {
             ButtonPlug_Master: 'ButtonPlug_Master',
             ButtonPlug_Icon: 'ButtonPlug_Icon',

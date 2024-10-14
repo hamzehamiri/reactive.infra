@@ -13,6 +13,7 @@ import {ButtonHeaderAdvancedKeys} from "../../../../../UIFrameWork/HTML/Cells/Gr
 import {WebColumnConfig} from "../../../../../UIFrameWork/HTML/Cells/Grid/Standard/WebColumnConfig.js";
 import ConvertUtil from "../../../../Communicate/Common/ConvertUtil.js";
 import HTMLContainer from "../../../../../UIFrameWork/HTML/Container/HTMLContainer.js";
+import {HTMLComponent} from "../../../../../UIFrameWork/HTML/Component/HTMLComponent.js";
 
 export default class GridView extends HTMLContainer {
     constructor() {
@@ -34,6 +35,7 @@ export default class GridView extends HTMLContainer {
         this.pagingDTO.setTotalRecord(100);
 
         this.sortOrderMap = new Map();
+        this.toggleSideContainer = new Map();
         this.webGridAdvanced.addListener(FormEngineEventFrameWork.event.ButtonAction.CommandExecute, (buttonEditorEvent) => {
             if (buttonEditorEvent instanceof ButtonEditorEvent) {
                 let columnConfigModel = buttonEditorEvent.getExtraAttribute().get(ButtonHeaderAdvancedKeys.DataElement);
@@ -46,6 +48,15 @@ export default class GridView extends HTMLContainer {
 
         this.addItem(this.webGridAdvanced, RowLayoutData.factory(1, 1, 0, 0, 0, 0));
         this.addItem(this.pagingToolbar, RowLayoutData.factory(1, 32, 0, 0, 0, 0));
+    }
+
+    toggleSideContainer(active, side) {
+        let container = this.toggleSideContainer.get(side);
+        if (container instanceof HTMLComponent) {
+            if (!active && container.getAttached()) {
+                container.onDetach();
+            }
+        }
     }
 
     clearColumnConfigs() {
@@ -92,4 +103,11 @@ export default class GridView extends HTMLContainer {
     getPageToolbar() {
         return this.pagingToolbar;
     }
+}
+
+GridView.Side = {
+    Left: 'Left',
+    Right: 'Right',
+    Top: 'Top',
+    Bottom: 'Bottom',
 }

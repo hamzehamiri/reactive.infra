@@ -6,15 +6,10 @@ import HTMLContainer from "../../../../../UIFrameWork/HTML/Container/HTMLContain
 export default class TabView extends BaseView {
     constructor() {
         super();
-        this.uiElements.set(TabView.Editors, new Map());
         this.uiElements.set(TabView.CoreButtonAssignElementDTOMap, new Map());
         this.gridView = new GridView();
         this.formView = new FormView();
         this.filterContainer = new HTMLContainer();
-    }
-
-    getEditor() {
-        return this.uiElements.get(TabView.Editors);
     }
 
     getCoreButtonAssignElementDTOMap() {

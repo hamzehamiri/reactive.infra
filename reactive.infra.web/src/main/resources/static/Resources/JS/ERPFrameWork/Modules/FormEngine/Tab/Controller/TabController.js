@@ -39,8 +39,8 @@ import ErpWindowFactory from "../../../Components/ErpWindowFactory.js";
 import CoreButtonAssignElementDTO from "../../../../Communicate/Models/Response/Button/CoreButtonAssignElementDTO.js";
 import ModuleFunctionFactory from "../../../Common/ModuleFunctionFactory.js";
 import ConvertUtil from "../../../../Communicate/Common/ConvertUtil.js";
-import CoreWindowTabFilterDTO from "../../../../Communicate/Models/Response/Window/Tab/Filter/CoreWindowTabFilterDTO.js";
-import FilterTabController from "../../Filter/Tab/FilterTabController.js";
+import FilterTabController, {FilterTabControllerFunctionFactory} from "../../Filter/Tab/FilterTabController.js";
+import ListFilterTabButton from "../../Toolbar/StandardButtons/ListFilterTabButton.js";
 
 export default class TabController extends BaseController {
     constructor(parentContainer, recordId) {
@@ -142,15 +142,7 @@ export default class TabController extends BaseController {
                 });
 
                 this.view.getGridView().getWebGridAdvanced().sortColumnConfigs();
-
-                this.processCoreWindowTabFilterDTOContainer(coreWindowTabDTO.getDefaultCoreWindowTabFilterDTO());
             }
-        }
-    }
-
-    processCoreWindowTabFilterDTOContainer(coreWindowTabFilterDTO) {
-        if (coreWindowTabFilterDTO instanceof CoreWindowTabFilterDTO) {
-            // this.filterTabController.setParentContainer();
         }
     }
 
@@ -164,6 +156,8 @@ export default class TabController extends BaseController {
                 let coreWindowTabPluggableRequestDTO = new CoreWindowTabPluggableRequestDTO();
                 coreWindowTabPluggableRequestDTO.setCoreWindowTabId(this.model.getId());
                 buttonInstance.requestPlug(coreWindowTabPluggableRequestDTO);
+            } else if (buttonInstance instanceof ListFilterTabButton) {
+                buttonInstance.bindModelToUi(this.getModel().getCoreWindowTabFilterDTOMap());
             }
         }
     }
@@ -231,10 +225,6 @@ export default class TabController extends BaseController {
         ]));
     }
 
-    openFilterTab() {
-
-    }
-
     executeProcess(coreButtonAssignElementDTO) {
         if (coreButtonAssignElementDTO instanceof CoreButtonAssignElementDTO) {
             let ModuleInvoke = ModuleFactory.factoryByCoreAllElement(coreButtonAssignElementDTO.getCoreAllElementDTOModule());
@@ -260,6 +250,23 @@ export default class TabController extends BaseController {
                 }
             }
         }
+    }
+
+    openFilterTab(coreWindowTabFilterDTO) {
+        let filterTabControllerFunction = FilterTabControllerFunctionFactory.Factory((coreFilterRequestElementWithOperandDTO) => {
+            if (coreFilterRequestElementWithOperandDTO instanceof CoreFilterRequestElementWithOperandDTO) {
+                this.setFilterModel(coreFilterRequestElementWithOperandDTO);
+                ButtonUtil.ButtonHandleEvent(new ButtonEditorEvent(this, CoreButtonConstantButton().Refresh.description), this);
+            }
+        });
+
+        // this.filterTabController.setParentContainer();
+        this.filterTabController.setFunctionFilterProvider(filterTabControllerFunction);
+        this.filterTabController.bindModelToUI(coreWindowTabFilterDTO, this, this.changeFilterTab);
+    }
+
+    changeFilterTab(event) {
+
     }
 
     openFilterCommand(consumerFilter) {

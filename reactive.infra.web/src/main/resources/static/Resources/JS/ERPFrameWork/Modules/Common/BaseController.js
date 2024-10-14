@@ -23,7 +23,13 @@ export default class BaseController extends BaseObservable {
         this.enableTranslateEvent = true;
         this.dragElementMatcherFunctionArray = [];
 
+        this.uiElements.set(BaseController.Editors, new Map());
+
         this.initVariables();
+    }
+
+    getEditor() {
+        return this.uiElements.get(BaseController.Editors);
     }
 
     setEnableTranslateEventChildController(enableTranslateEvent) {
@@ -127,3 +133,5 @@ export default class BaseController extends BaseObservable {
 
     }
 }
+
+BaseController.Editors = "Editors";

@@ -31,10 +31,10 @@ export default class ProcessView extends BaseView {
 
         let containerCenter = new HTMLContainer();
         containerCenter.setLayout(new SideLayout());
-        containerCenter.addItem(this.formView, SideLayoutData.factory(SideLayoutData.Side.Center, 0, true, false, false, false, 5, 5, 5, 5))
-        containerCenter.addItem(this.canvasElement, SideLayoutData.factory(SideLayoutData.Side.Top, 200, true, false, false, false, 5, 5, 5, 5))
+        containerCenter.addItem(this.formView, SideLayoutData.factory(SideLayoutData.Side.Center, 0, true, false, false, false, 5, 5, 5, 5));
+        containerCenter.addItem(this.canvasElement, SideLayoutData.factory(SideLayoutData.Side.Top, 200, true, false, false, false, 5, 5, 5, 5));
         // containerCenter.addItem(this.wrapSVGComponent, SideLayoutData.factory(SideLayoutData.Side.Top, 200, true, false, false, false, 5, 5, 5, 5))
-        containerCenter.addItem(this.processViewSideBar, SideLayoutData.factory(SideLayoutData.Side.Left, 300, true, false, false, false, 0, 0, 0, 0))
+        containerCenter.addItem(this.processViewSideBar, SideLayoutData.factory(SideLayoutData.Side.Left, 300, true, false, false, false, 0, 0, 0, 0));
 
         this.addItem(containerCenter, RowLayoutData.factory(1, 1, 2, 2, 2, 2, true));
         this.addItem(this.confirmPanel, RowLayoutData.factory(1, 40, 2, 2, 1, 1, true));

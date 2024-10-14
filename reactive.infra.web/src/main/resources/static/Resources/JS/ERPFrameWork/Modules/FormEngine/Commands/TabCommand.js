@@ -66,7 +66,7 @@ export default class TabCommand {
     }
 
     static FilterTab(tabController, buttonEvent) {
-        tabController.openFilterCommand();
+        tabController.openFilterTab(tabController.getModel().getDefaultCoreWindowTabFilterDTO());
     }
 
     static Filter(tabController, buttonEvent) {

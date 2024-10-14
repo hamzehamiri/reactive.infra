@@ -1437,19 +1437,19 @@ export let Theme_Standard = {
                     'overflow': 'hidden',
                 }],
             },
-            [UiFrameWorkComponent.Components.ButtonPlug[0]]: {
-                [UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_Master]: [[UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_Master], {
+            [UiFrameWorkComponent.Components.BaseDropDownButton[0]]: {
+                [UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_Master]: [[UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_Master], {
                     'display': 'flex',
                     'border-radius': '5px',
                     'overflow': 'hidden'
                 }],
-                [UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_Icon]: [[UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_Icon], {
+                [UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_Icon]: [[UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_Icon], {
                     'background-repeat': 'no-repeat',
                     'background-size': '1rem',
                     'border': 'none',
                     'background-position': 'center',
                 }],
-                [UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_Arrow]: [[UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_Arrow], {
+                [UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_Arrow]: [[UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_Arrow], {
                     'background-image': 'url(Resources/Themes/IMG/Editors/arrow.svg)',
                     'background-repeat': 'no-repeat',
                     'background-size': '1rem',
@@ -1461,7 +1461,7 @@ export let Theme_Standard = {
                         'background-color': '#3354f1'
                     }
                 }],
-                [UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_PopUpItemPTag]: [[UiFrameWorkComponent.Components.ButtonPlug[1].ButtonPlug_PopUpItemPTag], {
+                [UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_PopUpItemPTag]: [[UiFrameWorkComponent.Components.BaseDropDownButton[1].BaseDropDownButton_PopUpItemPTag], {
                     'text-align': 'center',
                     'overflow': 'hidden',
                     'text-overflow': 'ellipsis',

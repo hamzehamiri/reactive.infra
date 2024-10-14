@@ -101,8 +101,10 @@ export class BaseButtonEditor extends WebEditor {
     onLoad() {
         super.onLoad();
         if (this.defaultButton) {
-            this.setImageIconSrc(this.imageIcon);
-            this.addBaseButtonClass(this.classButton);
+            if (this.imageIcon)
+                this.setImageIconSrc(this.imageIcon);
+            if (this.classButton)
+                this.addBaseButtonClass(this.classButton);
         }
     }
 
