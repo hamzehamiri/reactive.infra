@@ -293,7 +293,7 @@ export default class TabUtil {
                 let coreLayoutDataDTO = new CoreLayoutDataDTO();
                 coreLayoutDataDTO.setRegisterKey("row_layout_data");
 
-                let rowLayoutData = RowLayoutData.factory(1, 1 / editorArraySorted.size, 1, 1, 1, 1, true, false)
+                let rowLayoutData = RowLayoutData.factory(1, 1 / editorArraySorted.length, 3, 3, 3, 3, true, false)
 
                 let coreLayoutDataAssignElementDTO = new CoreLayoutDataAssignElementDTO();
                 coreLayoutDataAssignElementDTO.setId(2);

@@ -78,15 +78,12 @@ export default class TabCommand {
                     ButtonUtil.ButtonHandleEvent(new ButtonEditorEvent(this, CoreButtonConstantButton().Refresh.description), this);
                 }
             });
+
             let filterTabController = tabController.filterTabController;
-
-
             filterTabController.setFunctionFilterProvider(filterTabControllerFunction);
             filterTabController.bindModelToUI(coreWindowTabFilterDTO, tabController, tabController.changeFilterTabEditor);
-            filterTabController.getView().setEditorsWithLayout(filterTabController.getEditor(), null, TabUtil.startSortField(filterTabController.getEditor()));
 
             tabController.getView().getGridView().addFilterTabContainer(filterTabController.getView(), TabCommand.ViewPortPlace.Right);
-            tabController.getView().layoutExecute();
         }
     }
 

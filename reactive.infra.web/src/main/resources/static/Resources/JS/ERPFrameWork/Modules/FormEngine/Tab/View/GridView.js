@@ -68,6 +68,7 @@ export default class GridView extends HTMLContainer {
         this.setLayout(new SideLayout());
         this.addItem(filterTabView, SideLayoutData.factory(SideLayoutData.Side.Left, 100, true, false, true, true, 0, 0, 0, 0), false);
         this.addItem(this.centerLayout, SideLayoutData.factory(SideLayoutData.Side.Center, 0, true, false, true, true, 0, 0, 0, 0), false);
+        this.layoutExecute();
     }
 
     initNormalLayout() {

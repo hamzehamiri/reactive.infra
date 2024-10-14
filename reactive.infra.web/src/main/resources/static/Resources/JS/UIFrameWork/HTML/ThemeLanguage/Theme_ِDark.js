@@ -1857,7 +1857,7 @@ export let Theme_Dark = {
             },
             [UiFrameWorkComponent.Modules.WebTabFilter[0]]: {
                 [UiFrameWorkComponent.Modules.WebTabFilter[1].WebFilterTabMasterDiv]: [UiFrameWorkComponent.Modules.WebTabFilter[1].WebFilterTabMasterDiv, {
-                    'background-color': 'red'
+                    // 'background-color': 'red'
                 }]
             },
             [UiFrameWorkComponent.Modules.WebFilterFilterViewPanel[0]]: {

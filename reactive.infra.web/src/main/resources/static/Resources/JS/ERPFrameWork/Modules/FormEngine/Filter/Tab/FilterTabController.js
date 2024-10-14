@@ -29,6 +29,8 @@ export default class FilterTabController extends BaseController {
                 editorInstance.addListener(EventFrameWork.event.Editors.FieldChangeEvent, observerChangeListenerMethodInvoke, observerChangeListenerInstance);
             })
         }
+
+        this.getView().setEditorsWithLayout(this.getEditor(), null, TabUtil.startSortField(this.getEditor()));
     }
 }
 
