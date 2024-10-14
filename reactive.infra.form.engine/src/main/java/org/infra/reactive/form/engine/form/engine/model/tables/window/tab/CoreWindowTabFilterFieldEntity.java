@@ -15,4 +15,6 @@ public class CoreWindowTabFilterFieldEntity implements BaseEntityInterface<Long>
     private Long core_window_tab_filter_id;
     @CoreColumnDefinition(columnName = "core_window_tab_field_id", columnType = CoreColumnType.INT64)
     private Long core_window_tab_field_id;
+    @CoreColumnDefinition(columnName = "core_table_column_editor_id", columnType = CoreColumnType.INT64)
+    private Long core_table_column_editor_id;
 }

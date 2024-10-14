@@ -1629,6 +1629,7 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
             coreWindowTabFilterFieldEntityOptional.ifPresent(coreWindowTabFilterFieldEntity -> {
                 CoreWindowTabFilterFieldDTO coreWindowTabFilterFieldDTO = ConvertUtil.convert(coreWindowTabFilterFieldEntity);
                 coreWindowTabFieldDTOLRUCache.get(coreWindowTabFilterFieldEntity.getCore_window_tab_field_id()).ifPresent(coreWindowTabFilterFieldDTO::setCoreWindowTabFieldDTO);
+                coreTableColumnEditorDTOLRUCache.get(coreWindowTabFilterFieldEntity.getCore_table_column_editor_id()).ifPresent(coreWindowTabFilterFieldDTO::setCoreTableColumnEditorDTO);
 
                 coreWindowTabFilterFieldDTOLRUCache.put(coreWindowTabFilterFieldDTO.getId(), coreWindowTabFilterFieldDTO);
 

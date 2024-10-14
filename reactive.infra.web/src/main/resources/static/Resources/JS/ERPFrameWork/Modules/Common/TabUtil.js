@@ -145,8 +145,9 @@ export default class TabUtil {
             for (let [, coreWindowTabFilterFieldDTO] of coreWindowTabFilterFieldDTOMap) {
                 if (coreWindowTabFilterFieldDTO instanceof CoreWindowTabFilterFieldDTO) {
                     let coreWindowTabFieldDTO = coreWindowTabFilterFieldDTO.getCoreWindowTabFieldDTO();
+                    let coreTableColumnEditorDTO = coreWindowTabFilterFieldDTO.getCoreTableColumnEditorDTO();
                     if (coreWindowTabFieldDTO.getActive()) {
-                        TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true);
+                        TabUtil.createEditor(coreWindowTabFieldDTO, editorConsumer, true, coreWindowTabFieldDTO.getTranslate(), true, coreTableColumnEditorDTO);
                     }
                 }
             }
@@ -207,9 +208,9 @@ export default class TabUtil {
         }
     }
 
-    static createEditor(coreWindowTabFieldDTO, editorConsumer, placeHolder, placeHolderLabel, filterMode) {
+    static createEditor(coreWindowTabFieldDTO, editorConsumer, placeHolder, placeHolderLabel, filterMode, forceCoreTableColumnEditorDTO) {
         let column = coreWindowTabFieldDTO.getCoreTableColumnDTO();
-        let coreTableColumnEditorDTO = coreWindowTabFieldDTO.getCoreTableColumnEditorDTO() != null ? coreWindowTabFieldDTO.getCoreTableColumnEditorDTO() : column.getCoreTableColumnEditorDTO();
+        let coreTableColumnEditorDTO = forceCoreTableColumnEditorDTO != null ? forceCoreTableColumnEditorDTO : (coreWindowTabFieldDTO.getCoreTableColumnEditorDTO() != null ? coreWindowTabFieldDTO.getCoreTableColumnEditorDTO() : column.getCoreTableColumnEditorDTO());
         let coreTableColumnDataProviderDTO = TabUtil.getDataProviderFromField(coreWindowTabFieldDTO);
         let editorClassRegisterKey = coreTableColumnEditorDTO.getEditorClassRegisterKey();
         TabUtil.createEditorSpecial(editorClassRegisterKey, editorConsumer, placeHolder, coreWindowTabFieldDTO, placeHolderLabel, filterMode, coreTableColumnDataProviderDTO, coreWindowTabFieldDTO.getId());

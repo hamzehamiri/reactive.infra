@@ -1723,7 +1723,8 @@ ALTER TABLE hamzehschema.core_window_tab_filter OWNER TO postgres;
 CREATE TABLE hamzehschema.core_window_tab_filter_field (
     id bigint NOT NULL,
     core_window_tab_filter_id bigint,
-    core_window_tab_field_id bigint
+    core_window_tab_field_id bigint,
+    core_table_column_editor_id bigint
 );
 
 
@@ -3681,7 +3682,6 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 458	created_date	1	104	\N	6
 459	business_cartable_status_id	1	104	\N	6
 460	has_attachment	1	104	\N	6
-461	business_cartable_folders_id	1	104	\N	6
 462	id	1	105	t	\N
 463	name	1	105	\N	6
 464	parent_id	1	105	\N	6
@@ -3699,6 +3699,8 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 476	core_window_tab_filter_id	1	108	\N	6
 477	active_default	1	107	\N	6
 478	register_key_side	1	107	\N	6
+461	business_cartable_folders_id	19	104	\N	6
+479	core_table_column_editor_id	1	108	\N	6
 \.
 
 
@@ -3889,6 +3891,8 @@ COPY hamzehschema.core_table_column_editor (id, name, editor_class_register_key)
 15	WebColorEditor2	WebColorEditor2
 16	WebSignatureEditor	WebSignatureEditor
 17	WebRangeEditor	WebRangeEditor
+18	WebTreeFlatEditor	WebTreeFlatEditor
+19	WebTreeEditor	WebTreeEditor
 \.
 
 
@@ -5143,10 +5147,10 @@ COPY hamzehschema.core_window_tab_filter (id, name, core_window_tab_id, active_d
 -- Data for Name: core_window_tab_filter_field; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
 --
 
-COPY hamzehschema.core_window_tab_filter_field (id, core_window_tab_filter_id, core_window_tab_field_id) FROM stdin;
-1	1	209
-2	2	209
-3	2	208
+COPY hamzehschema.core_window_tab_filter_field (id, core_window_tab_filter_id, core_window_tab_field_id, core_table_column_editor_id) FROM stdin;
+3	2	208	\N
+1	1	209	18
+2	2	209	18
 \.
 
 

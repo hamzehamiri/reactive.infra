@@ -22,6 +22,7 @@ export class WebEditor extends HTMLComponent {
         this.setFieldChangeEvent(true);
         this.setEnable(true);
         this.setReadOnly(false)
+        this.setActivePlaceHolder(true);
     }
 
     setPopUp(popUp) {
@@ -150,6 +151,10 @@ export class WebEditor extends HTMLComponent {
         }
     }
 
+    setActivePlaceHolder(activePlaceHolder) {
+        this.activePlaceHolder = activePlaceHolder;
+    }
+
     setVisible(visible) {
         this.visible = visible;
         if (this.getAttached()) {
@@ -230,7 +235,7 @@ export class WebEditor extends HTMLComponent {
             DOM.addClassName(this.getInputElement(), this.getInputClass());
             // DOM.setAttribute(this.getInputElement() , 'name' , UUID.create())
         }
-        if (this.placeHolderLabel) {
+        if (this.placeHolderLabel && this.activePlaceHolder) {
             let spanElement = DOM.createElement('span');
             spanElement.setAttribute("data-placeholder", this.placeHolderLabel);
             spanElement.innerText = this.placeHolderLabel;

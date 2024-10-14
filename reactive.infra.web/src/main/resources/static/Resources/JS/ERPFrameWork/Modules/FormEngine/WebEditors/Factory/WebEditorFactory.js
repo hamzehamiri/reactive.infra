@@ -18,6 +18,7 @@ import WebNumberEditor from "../WebNumberEditor.js";
 import WebSignatureEditor from "../WebSignatureEditor.js";
 import WebColor2Editor from "../WebColor2Editor.js";
 import WebRangeEditor from "../WebRangeEditor.js";
+import WebTreeFlatEditor from "../WebTreeFlatEditor.js";
 import WebTreeEditor from "../WebTreeEditor.js";
 
 export default class WebEditorFactory {
@@ -44,6 +45,7 @@ export default class WebEditorFactory {
         WebEditorFactory.register(WebNumberEditor.registerKey(), WebNumberEditor);
         WebEditorFactory.register(WebSignatureEditor.registerKey(), WebSignatureEditor);
         WebEditorFactory.register(WebRangeEditor.registerKey(), WebRangeEditor);
+        WebEditorFactory.register(WebTreeFlatEditor.registerKey(), WebTreeFlatEditor);
         WebEditorFactory.register(WebTreeEditor.registerKey(), WebTreeEditor);
     }
 

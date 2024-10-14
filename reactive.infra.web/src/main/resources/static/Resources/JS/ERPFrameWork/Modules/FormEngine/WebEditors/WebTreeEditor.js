@@ -1,4 +1,5 @@
 import {WebComboBox} from "../../../../UIFrameWork/HTML/WebEditor/Combobox/WebComboBox.js";
+import WebTreeContainer from "./Containers/Tree/WebTreeContainer.js";
 
 export default class WebTreeEditor extends WebComboBox {
     static registerKey() {
@@ -7,5 +8,7 @@ export default class WebTreeEditor extends WebComboBox {
 
     constructor() {
         super();
+
+        let view = new WebTreeContainer();
     }
 }
