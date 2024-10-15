@@ -2,13 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 17.0
--- Dumped by pg_dump version 17.0
+-- Dumped from database version 16.0
+-- Dumped by pg_dump version 16.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
-SET transaction_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
@@ -1596,7 +1595,7 @@ CREATE TABLE hamzehschema.core_user_tenant_profile (
     core_profile_id bigint,
     core_all_element_id bigint,
     record_id bigint,
-    "json_value" character varying
+    json_value character varying
 );
 
 
@@ -1875,7 +1874,7 @@ ALTER TABLE hamzehschema.core_wizard_state_validation OWNER TO postgres;
 CREATE TABLE hamzehschema.core_wizard_state_value (
     id bigint NOT NULL,
     core_wizard_state_id bigint,
-    "json_value" json
+    json_value json
 );
 
 
@@ -2638,8 +2637,6 @@ COPY hamzehschema.core_button_assign_element (id, name, core_button_id, core_css
 252	refresh	5	5	2	49	5	\N	\N
 253	chart_record	15	9	2	49	6	\N	\N
 254	process	20	14	2	4	7	9	3
-255	new	1	1	2	50	1	\N	\N
-256	save	2	2	2	50	2	\N	\N
 257	filter	3	3	2	50	3	\N	\N
 258	multi	4	4	2	50	4	\N	\N
 259	refresh	5	5	2	50	5	\N	\N
@@ -3684,7 +3681,6 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 460	has_attachment	1	104	\N	6
 462	id	1	105	t	\N
 463	name	1	105	\N	6
-464	parent_id	1	105	\N	6
 465	id	1	106	t	\N
 466	common_organization_user_id_sender	1	106	\N	6
 467	common_organization_user_id_recipient	1	106	\N	6
@@ -3699,8 +3695,9 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 476	core_window_tab_filter_id	1	108	\N	6
 477	active_default	1	107	\N	6
 478	register_key_side	1	107	\N	6
-461	business_cartable_folders_id	19	104	\N	6
 479	core_table_column_editor_id	1	108	\N	6
+461	business_cartable_folders_id	19	104	\N	28
+464	parent_id	19	105	\N	28
 \.
 
 
@@ -3743,6 +3740,7 @@ COPY hamzehschema.core_table_column_dataprovider (id, name, core_table_column_da
 25	AttachmentType	4	2
 26	CoreHostCluster	1	16
 27	CoreTableDataSourceType	1	17
+28	BusinessCartableFolders	5	2
 \.
 
 
@@ -3853,6 +3851,7 @@ COPY hamzehschema.core_table_column_dataprovider_table_columns (id, core_table_c
 
 COPY hamzehschema.core_table_column_dataprovider_tree (id, name, core_table_id, core_table_column_dataprovider_serializer_id, core_table_column_id, core_table_column_parent_id) FROM stdin;
 1	Core_Menu	19	5	74	77
+2	business_cartable_folders	105	5	462	464
 \.
 
 
@@ -4799,7 +4798,7 @@ COPY hamzehschema.core_user_tenant_process (id, core_user_tenant_id, core_all_el
 -- Data for Name: core_user_tenant_profile; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
 --
 
-COPY hamzehschema.core_user_tenant_profile (id, name, core_user_tenant_id, core_profile_id, core_all_element_id, record_id, "json_value") FROM stdin;
+COPY hamzehschema.core_user_tenant_profile (id, name, core_user_tenant_id, core_profile_id, core_all_element_id, record_id, json_value) FROM stdin;
 1	CoreWindowProfile	1	1	1	1	{profile : 1}
 \.
 
@@ -5239,7 +5238,7 @@ COPY hamzehschema.core_wizard_state_validation (id, core_wizard_state_id, core_w
 -- Data for Name: core_wizard_state_value; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
 --
 
-COPY hamzehschema.core_wizard_state_value (id, core_wizard_state_id, "json_value") FROM stdin;
+COPY hamzehschema.core_wizard_state_value (id, core_wizard_state_id, json_value) FROM stdin;
 \.
 
 
