@@ -4,7 +4,8 @@ public enum CoreTableColumnDataProviderTypeEnum {
     Table(1),
     List(2),
     Primary(3),
-    Attachment(4);
+    Attachment(4),
+    Tree(5);
 
     private final int key;
 

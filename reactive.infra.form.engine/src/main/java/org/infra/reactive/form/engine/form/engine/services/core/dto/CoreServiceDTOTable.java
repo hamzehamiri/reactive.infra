@@ -1685,7 +1685,10 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
                         coreTableColumnDataProviderDTO.getCoreTableColumnDataProviderWithSerializerDTO().setCoreTableColumnDataProviderSerializerDTO(coreTableColumnDataProviderAttachmentDTO.getCoreTableColumnDataProviderSerializerDTO());
                     });
                 }
+                case Tree -> {
+                }
                 case null -> {
+
                 }
             }
         }

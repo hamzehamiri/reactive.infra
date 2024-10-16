@@ -1340,6 +1340,20 @@ CREATE TABLE hamzehschema.core_table_column_dataprovider_tree (
 ALTER TABLE hamzehschema.core_table_column_dataprovider_tree OWNER TO postgres;
 
 --
+-- Name: core_table_column_dataprovider_tree_columns; Type: TABLE; Schema: hamzehschema; Owner: postgres
+--
+
+CREATE TABLE hamzehschema.core_table_column_dataprovider_tree_columns (
+    id bigint NOT NULL,
+    core_table_column_dataprovider_tree_id bigint,
+    core_table_column_id bigint,
+    index integer
+);
+
+
+ALTER TABLE hamzehschema.core_table_column_dataprovider_tree_columns OWNER TO postgres;
+
+--
 -- Name: core_table_column_dataprovider_type; Type: TABLE; Schema: hamzehschema; Owner: postgres
 --
 
@@ -3282,6 +3296,7 @@ COPY hamzehschema.core_table (id, name, core_table_datasource_id, tablename) FRO
 106	business_letter	2	business_letter
 107	core_window_tab_filter	1	core_window_tab_filter
 108	core_window_tab_filter_field	1	core_window_tab_filter_field
+109	core_table_column_dataprovider_tree_columns	1	core_table_column_dataprovider_tree_columns
 \.
 
 
@@ -3698,6 +3713,10 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 479	core_table_column_editor_id	1	108	\N	6
 461	business_cartable_folders_id	19	104	\N	28
 464	parent_id	19	105	\N	28
+480	id	1	109	t	\N
+481	core_table_column_dataprovider_tree_id	1	109	\N	6
+482	core_table_column_id	1	109	\N	6
+483	index	1	109	\N	6
 \.
 
 
@@ -3852,6 +3871,14 @@ COPY hamzehschema.core_table_column_dataprovider_table_columns (id, core_table_c
 COPY hamzehschema.core_table_column_dataprovider_tree (id, name, core_table_id, core_table_column_dataprovider_serializer_id, core_table_column_id, core_table_column_parent_id) FROM stdin;
 1	Core_Menu	19	5	74	77
 2	business_cartable_folders	105	5	462	464
+\.
+
+
+--
+-- Data for Name: core_table_column_dataprovider_tree_columns; Type: TABLE DATA; Schema: hamzehschema; Owner: postgres
+--
+
+COPY hamzehschema.core_table_column_dataprovider_tree_columns (id, core_table_column_dataprovider_tree_id, core_table_column_id, index) FROM stdin;
 \.
 
 
@@ -5950,6 +5977,14 @@ ALTER TABLE ONLY hamzehschema.core_table_column_dataprovider_serializer
 
 ALTER TABLE ONLY hamzehschema.core_table_column_dataprovider_table
     ADD CONSTRAINT core_table_column_dataprovider_table_metadata_pk PRIMARY KEY (id);
+
+
+--
+-- Name: core_table_column_dataprovider_tree_columns core_table_column_dataprovider_tree_columns_pk; Type: CONSTRAINT; Schema: hamzehschema; Owner: postgres
+--
+
+ALTER TABLE ONLY hamzehschema.core_table_column_dataprovider_tree_columns
+    ADD CONSTRAINT core_table_column_dataprovider_tree_columns_pk PRIMARY KEY (id);
 
 
 --

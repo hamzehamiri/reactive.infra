@@ -19,6 +19,8 @@ import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.co
 import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.columnexpression.impl.primary.PrimaryExpressionPrepare;
 import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.columnexpression.impl.table.TableExpression;
 import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.columnexpression.impl.table.TableExpressionPrepare;
+import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.columnexpression.impl.tree.TreeExpression;
+import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.columnexpression.impl.tree.TreeExpressionPrepare;
 import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.table.TableMetadata;
 import reactor.core.publisher.Mono;
 
@@ -41,6 +43,7 @@ public class ColumnExpressionPrepareFactory {
         ColumnExpressionPrepareFactory.Instance().register(CoreTableColumnDataProviderTypeEnum.List, ListColumnExpression.class, ListExpressionPrepare.class);
         ColumnExpressionPrepareFactory.Instance().register(CoreTableColumnDataProviderTypeEnum.Primary, PrimaryColumnExpression.class, PrimaryExpressionPrepare.class);
         ColumnExpressionPrepareFactory.Instance().register(CoreTableColumnDataProviderTypeEnum.Attachment, AttachmentColumnExpression.class, AttachmentExpressionPrepare.class);
+        ColumnExpressionPrepareFactory.Instance().register(CoreTableColumnDataProviderTypeEnum.Tree, TreeExpression.class, TreeExpressionPrepare.class);
     }
 
     private Map<CoreTableColumnDataProviderTypeEnum, Class<? extends ColumnExpression>> registerColumnExpressions;

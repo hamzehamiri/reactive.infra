@@ -97,6 +97,11 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
     public static LRUCache<Long, CoreTableColumnDataProviderTableEntity> coreTableColumnDataProviderTableEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreTableColumnDataProviderTableColumnsEntity> coreTableColumnDataProviderTableColumnsEntityLRUCache = new LRUCache<>(10000);
     public static LRUCache<Long, List<CoreTableColumnDataProviderTableColumnsEntity>> coreTableColumnDataProviderTableColumnsByTableIdEntityLRUCache = new LRUCache<>(10000);
+
+    public static LRUCache<Long, CoreTableColumnDataProviderTreeEntity> coreTableColumnDataProviderTreeEntityLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, CoreTableColumnDataProviderTreeColumnsEntity> coreTableColumnDataProviderTreeColumnsEntityLRUCache = new LRUCache<>(10000);
+    public static LRUCache<Long, List<CoreTableColumnDataProviderTreeColumnsEntity>> coreTableColumnDataProviderTreeColumnsByTableIdEntityLRUCache = new LRUCache<>(10000);
+
     public static LRUCache<Long, CoreTableColumnEditorEntity> coreTableColumnEditorEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreTableColumnDataProviderPrimaryEntity> coreTableColumnDataProviderPrimaryEntityLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreHostEntity> coreHostEntityLRUCache = new LRUCache<>(100);
@@ -199,9 +204,13 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
         coreAllElementExtraAttributeEntityByCoreAllElementIdLRUCache.clear();
         coreTableColumnDataProviderEntityLRUCache.clear();
         coreTableColumnDataProviderSerializerEntityLRUCache.clear();
+
         coreTableColumnDataProviderTableEntityLRUCache.clear();
         coreTableColumnDataProviderTableColumnsEntityLRUCache.clear();
         coreTableColumnDataProviderTableColumnsByTableIdEntityLRUCache.clear();
+        coreTableColumnDataProviderTreeEntityLRUCache.clear();
+        coreTableColumnDataProviderTreeColumnsEntityLRUCache.clear();
+        coreTableColumnDataProviderTreeColumnsByTableIdEntityLRUCache.clear();
 
         coreTableColumnEditorEntityLRUCache.clear();
         coreTableColumnDataProviderPrimaryEntityLRUCache.clear();
@@ -295,6 +304,8 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
                         coreTableColumnDataProviderListValues(connection),
                         coreTableColumnDataProviderTable(connection),
                         coreTableColumnDataProviderTableColumn(connection),
+                        coreTableColumnDataProviderTree(connection),
+                        coreTableColumnDataProviderTreeColumn(connection),
                         coreTableColumnEditor(connection),
                         coreTableColumnDataProviderPrimary(connection),
                         coreHost(connection),
@@ -759,6 +770,25 @@ public class CoreServiceEntityTable extends CoreServiceEntityTableBase {
             listColumn.add(rowEntity);
         });
     }
+
+
+    public Flux<CoreTableColumnDataProviderTreeEntity> coreTableColumnDataProviderTree(Mono<Connection> connection) {
+        return createDataTable(connection, 4L, CoreTableColumnDataProviderTreeEntity.class, rowEntity -> coreTableColumnDataProviderTreeEntityLRUCache.put(rowEntity.getId(), rowEntity));
+    }
+
+    public Flux<CoreTableColumnDataProviderTreeColumnsEntity> coreTableColumnDataProviderTreeColumn(Mono<Connection> connection) {
+        return createDataTable(connection, 5L, CoreTableColumnDataProviderTreeColumnsEntity.class, rowEntity -> {
+            coreTableColumnDataProviderTreeColumnsEntityLRUCache.put(rowEntity.getId(), rowEntity);
+            Optional<List<CoreTableColumnDataProviderTreeColumnsEntity>> optionalCoreTableColumnDataProviderTreeColumnsEntityList = coreTableColumnDataProviderTreeColumnsByTableIdEntityLRUCache.get(rowEntity.getCore_table_column_dataprovider_tree_id());
+            List<CoreTableColumnDataProviderTreeColumnsEntity> listColumn = optionalCoreTableColumnDataProviderTreeColumnsEntityList.orElseGet(() -> {
+                List<CoreTableColumnDataProviderTreeColumnsEntity> res = new ArrayList<>();
+                coreTableColumnDataProviderTreeColumnsByTableIdEntityLRUCache.put(rowEntity.getCore_table_column_dataprovider_tree_id(), res);
+                return res;
+            });
+            listColumn.add(rowEntity);
+        });
+    }
+
 
     public Flux<CoreTableColumnEditorEntity> coreTableColumnEditor(Mono<Connection> connection) {
         return createDataTable(connection, 6L, CoreTableColumnEditorEntity.class, rowEntity -> coreTableColumnEditorEntityLRUCache.put(rowEntity.getId(), rowEntity));
