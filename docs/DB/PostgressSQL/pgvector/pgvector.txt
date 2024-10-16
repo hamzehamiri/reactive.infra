@@ -5,3 +5,27 @@ CREATE TABLE items (id bigserial PRIMARY KEY, embedding vector(3));
 INSERT INTO items (embedding) VALUES ('[1,2,3]'), ('[4,5,6]');
 
 SELECT * FROM items ORDER BY embedding <-> '[3,1,2]' LIMIT 5;
+
+
+SELECT o.* , o.feature <-> (SELECT feature FROM original_image_segment where original_image_segment_id = 1) as dd
+FROM original_image_segment o
+WHERE feature <=> (SELECT feature FROM original_image_segment where original_image_segment_id = 1) > 0;
+
+SELECT feature FROM original_image_segment where original_image_segment_id = 1;
+
+
+CREATE TABLE items (id bigserial PRIMARY KEY, embedding vector(3));
+INSERT INTO items (embedding) VALUES ('[1,2,3]'), ('[4,5,6]');
+
+SELECT * FROM items ORDER BY embedding <-> '[3,1,2]' LIMIT 5;
+
+SET search_path TO "product-recognition-server", public;
+
+ALTER USER postgres SET search_path TO "product-recognition-server", public;
+
+ALTER DATABASE postgres SET search_path TO "product-recognition-server", public;
+
+ALTER SCHEMA "product-recognition-server" RENAME TO product_recognition_server;
+ALTER USER postgres SET search_path TO product_recognition_server, public;
+
+SHOW search_path;
