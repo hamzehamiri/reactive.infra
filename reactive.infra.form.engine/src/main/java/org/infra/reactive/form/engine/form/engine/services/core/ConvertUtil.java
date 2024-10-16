@@ -601,12 +601,27 @@ public class ConvertUtil {
         return coreTableColumnDataProviderTableColumnsDTO;
     }
 
+    public static CoreTableColumnDataProviderTreeColumnsDTO convert(CoreTableColumnDataProviderTreeColumnsEntity coreTableColumnDataProviderTreeColumnsEntity) {
+        CoreTableColumnDataProviderTreeColumnsDTO coreTableColumnDataProviderTreeColumnsDTO = new CoreTableColumnDataProviderTreeColumnsDTO();
+        coreTableColumnDataProviderTreeColumnsDTO.setId(coreTableColumnDataProviderTreeColumnsEntity.getId());
+        coreTableColumnDataProviderTreeColumnsDTO.setIndex(coreTableColumnDataProviderTreeColumnsEntity.getIndex());
+        return coreTableColumnDataProviderTreeColumnsDTO;
+    }
+
     public static CoreTableColumnDataProviderTableDTO convert(CoreTableColumnDataProviderTableEntity coreTableColumnDataProviderTableEntity) {
         CoreTableColumnDataProviderTableDTO coreTableColumnDataProviderTableDTO = new CoreTableColumnDataProviderTableDTO();
         coreTableColumnDataProviderTableDTO.setId(coreTableColumnDataProviderTableEntity.getId());
         coreTableColumnDataProviderTableDTO.setName(coreTableColumnDataProviderTableEntity.getName());
         coreTableColumnDataProviderTableDTO.setCoreTableId(coreTableColumnDataProviderTableEntity.getCore_table_id());
         return coreTableColumnDataProviderTableDTO;
+    }
+
+    public static CoreTableColumnDataProviderTreeDTO convert(CoreTableColumnDataProviderTreeEntity coreTableColumnDataProviderTreeEntity) {
+        CoreTableColumnDataProviderTreeDTO coreTableColumnDataProviderTreeDTO = new CoreTableColumnDataProviderTreeDTO();
+        coreTableColumnDataProviderTreeDTO.setId(coreTableColumnDataProviderTreeEntity.getId());
+        coreTableColumnDataProviderTreeDTO.setName(coreTableColumnDataProviderTreeEntity.getName());
+        coreTableColumnDataProviderTreeDTO.setCoreTableId(coreTableColumnDataProviderTreeEntity.getCore_table_id());
+        return coreTableColumnDataProviderTreeDTO;
     }
 
     public static CoreTableColumnDataProviderPrimaryDTO convert(CoreTableColumnDataProviderPrimaryEntity coreTableColumnDataProviderPrimaryEntity) {

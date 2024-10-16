@@ -17,4 +17,8 @@ public class CoreTableColumnDataProviderTreeEntity implements BaseEntityInterfac
     private Long core_table_id;
     @CoreColumnDefinition(columnName = "core_table_column_dataprovider_serializer_id", columnType = CoreColumnType.INT64)
     private Long core_table_column_dataprovider_serializer_id;
+    @CoreColumnDefinition(columnName = "core_table_column_id", columnType = CoreColumnType.INT64)
+    private Long core_table_column_id;
+    @CoreColumnDefinition(columnName = "core_table_column_parent_id", columnType = CoreColumnType.INT64)
+    private Long core_table_column_parent_id;
 }

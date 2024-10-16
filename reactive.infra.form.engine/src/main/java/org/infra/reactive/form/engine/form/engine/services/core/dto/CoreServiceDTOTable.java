@@ -188,6 +188,7 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
 
     // Level 4 ***********************************
     public static LRUCache<Long, CoreTableColumnDataProviderTableDTO> coreTableColumnDataProviderTableDTOLRUCache = new LRUCache<>(1000);
+    public static LRUCache<Long, CoreTableColumnDataProviderTreeDTO> coreTableColumnDataProviderTreeDTOLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreTableColumnDataProviderListDTO> coreTableColumnDataProviderListDTOLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, CoreTableColumnDataProviderAttachmentDTO> coreTableColumnDataProviderAttachmentDTOLRUCache = new LRUCache<>(1000);
     public static LRUCache<Long, Map<Long, CoreTableColumnDataProviderAttachmentAssignElementDTO>> coreTableColumnDataProviderAttachmentAssignElementDTOLRUCache = new LRUCache<>(1000);
@@ -277,6 +278,7 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
         coreWindowTabJoinColumnDTOPerChildTabIdLRUCache.clear();
 
         coreTableColumnDataProviderTableDTOLRUCache.clear();
+        coreTableColumnDataProviderTreeDTOLRUCache.clear();
         coreTableColumnDataProviderListDTOLRUCache.clear();
         coreTableColumnDataProviderAttachmentDTOLRUCache.clear();
         coreTableColumnDataProviderListValuesDTOLRUCache.clear();
@@ -373,6 +375,7 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
                         coreAnalyticReportLayout(), //OK  => CoreAnalyticReport and CoreUserTenant
                         coreUserTenantProfileDTO(), //OK  => CoreProfileDTO and CoreAllElementDTO and CoreUserTenantDTO
                         coreTableColumnDataProviderTableDTO(), //OK   => CoreTableDTO
+                        coreTableColumnDataProviderTreeDTO(), //OK   => CoreTableDTO
                         coreTableColumnDataProviderListDTOLRUCache(),
                         coreTableColumnDataProviderAttachmentDTOLRUCache(),
                         coreWindowTabDTO(), // OK  => CoreTableDTO
@@ -1406,6 +1409,48 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
         return Mono.just(complete);
     }
 
+    private Mono<Serializable> coreTableColumnDataProviderTreeDTO() {
+        for (Long coreTableColumnDataProviderTreeId : CoreServiceEntityTable.coreTableColumnDataProviderTreeEntityLRUCache.getKeySet()) {
+            Optional<CoreTableColumnDataProviderTreeEntity> coreTableColumnDataProviderTreeEntityOptional = CoreServiceEntityTable.coreTableColumnDataProviderTreeEntityLRUCache.get(coreTableColumnDataProviderTreeId);
+            Optional<List<CoreTableColumnDataProviderTreeColumnsEntity>> coreTableColumnDataProviderTreeColumnsEntityList = CoreServiceEntityTable.coreTableColumnDataProviderTreeColumnsByTableIdEntityLRUCache.get(coreTableColumnDataProviderTreeId);
+
+            coreTableColumnDataProviderTreeEntityOptional.ifPresent(coreTableColumnDataProviderTreeEntity -> {
+                CoreTableColumnDataProviderTreeDTO coreTableColumnDataProviderTreeDTO = ConvertUtil.convert(coreTableColumnDataProviderTreeEntity);
+
+                if (coreTableColumnDataProviderTreeEntity.getCore_table_column_dataprovider_serializer_id() != null) {
+                    Optional<CoreTableColumnDataProviderSerializerDTO> coreTableColumnDataProviderSerializerDTOOptional = coreTableColumnDataProviderSerializerDTOLRUCache.get(coreTableColumnDataProviderTreeEntity.getCore_table_column_dataprovider_serializer_id());
+                    coreTableColumnDataProviderSerializerDTOOptional.ifPresent(coreTableColumnDataProviderTreeDTO::setCoreTableColumnDataProviderSerializerDTO);
+                }
+
+                if (coreTableColumnDataProviderTreeEntity.getCore_table_column_id() != null) {
+                    Optional<CoreTableColumnDTO> coreTableColumnDTOOptional = coreTableColumnDTOLRUCache.get(coreTableColumnDataProviderTreeEntity.getCore_table_column_id());
+                    coreTableColumnDTOOptional.ifPresent(coreTableColumnDataProviderTreeDTO::setCoreTableColumnDTO);
+                }
+
+                if (coreTableColumnDataProviderTreeEntity.getCore_table_column_parent_id() != null) {
+                    Optional<CoreTableColumnDTO> coreTableColumnDTOOptional = coreTableColumnDTOLRUCache.get(coreTableColumnDataProviderTreeEntity.getCore_table_column_parent_id());
+                    coreTableColumnDTOOptional.ifPresent(coreTableColumnDataProviderTreeDTO::setCoreTableColumnDTOParent);
+                }
+
+                coreTableColumnDataProviderTreeColumnsEntityList.ifPresent(coreTableColumnDataProviderTreeColumnsEntities -> {
+                    Optional<CoreTableDTO> coreTableDTOOptional = coreTableDTOLRUCache.get(coreTableColumnDataProviderTreeDTO.getCoreTableId());
+                    Map<Long, CoreTableColumnDataProviderTreeColumnsDTO> coreTableColumnDataProviderTreeColumnsDTOHashMap = new HashMap<>();
+                    for (CoreTableColumnDataProviderTreeColumnsEntity coreTableColumnDataProviderTreeColumnsEntity : coreTableColumnDataProviderTreeColumnsEntities) {
+                        CoreTableColumnDataProviderTreeColumnsDTO coreTableColumnDataProviderTreeColumnsDTO = ConvertUtil.convert(coreTableColumnDataProviderTreeColumnsEntity);
+
+                        coreTableDTOOptional.ifPresent(coreTableDTO -> {
+                            coreTableColumnDataProviderTreeColumnsDTO.setCoreTableColumnDTO(coreTableDTO.getColumnDTOMap().get(coreTableColumnDataProviderTreeColumnsEntity.getCore_table_column_id()));
+                        });
+                        coreTableColumnDataProviderTreeColumnsDTOHashMap.put(coreTableColumnDataProviderTreeColumnsDTO.getId(), coreTableColumnDataProviderTreeColumnsDTO);
+                    }
+                    coreTableColumnDataProviderTreeDTO.setCoreTableColumnDataProviderTreeColumnsDTOMap(coreTableColumnDataProviderTreeColumnsDTOHashMap);
+                });
+                coreTableColumnDataProviderTreeDTOLRUCache.put(coreTableColumnDataProviderTreeId, coreTableColumnDataProviderTreeDTO);
+            });
+        }
+        return Mono.just(complete);
+    }
+
     private Mono<Serializable> coreTableColumnDataProviderAttachmentDTOLRUCache() {
         for (Long coreTableColumnDataProviderAttachmentId : CoreServiceEntityTable.coreTableColumnDataProviderAttachmentEntityLRUCache.getKeySet()) {
             Optional<CoreTableColumnDataProviderAttachmentEntity> coreTableColumnDataProviderAttachmentEntityOptional = CoreServiceEntityTable.coreTableColumnDataProviderAttachmentEntityLRUCache.get(coreTableColumnDataProviderAttachmentId);
@@ -1686,6 +1731,10 @@ public class CoreServiceDTOTable extends CoreServiceBaseEntity {
                     });
                 }
                 case Tree -> {
+                    Optional<CoreTableColumnDataProviderTreeDTO> coreTableColumnDataProviderTreeDTOOptional = coreTableColumnDataProviderTreeDTOLRUCache.get(coreTableColumnDataProviderDTO.getCoreTableColumnDataProviderTypeRecordId());
+                    coreTableColumnDataProviderTreeDTOOptional.ifPresent(coreTableColumnDataProviderTreeDTO -> {
+                        coreTableColumnDataProviderDTO.getCoreTableColumnDataProviderWithSerializerDTO().setCoreTableColumnDataProviderSerializerDTO(coreTableColumnDataProviderTreeDTO.getCoreTableColumnDataProviderSerializerDTO());
+                    });
                 }
                 case null -> {
 

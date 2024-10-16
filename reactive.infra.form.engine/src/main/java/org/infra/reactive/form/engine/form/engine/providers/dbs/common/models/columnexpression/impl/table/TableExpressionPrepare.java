@@ -7,7 +7,6 @@ import org.infra.reactive.form.engine.form.engine.model.dto.response.table.CoreT
 import org.infra.reactive.form.engine.form.engine.model.dto.response.table.column.CoreTableColumnDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.table.column.dataprovider.CoreTableColumnDataProviderTableColumnsDTO;
 import org.infra.reactive.form.engine.form.engine.model.dto.response.table.column.dataprovider.CoreTableColumnDataProviderTableDTO;
-import org.infra.reactive.form.engine.form.engine.model.tables.table.column.dataprovider.CoreTableColumnDataProviderTableEntity;
 import org.infra.reactive.form.engine.form.engine.providers.coretableservices.dataprovider.DataProviderJavaAbstract;
 import org.infra.reactive.form.engine.form.engine.providers.coretableservices.dataprovider.DataProviderJavaServiceRegistry;
 import org.infra.reactive.form.engine.form.engine.providers.coretableservices.table.DataProviderTableKeyValueDTO;
@@ -29,7 +28,6 @@ import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.ta
 import org.infra.reactive.form.engine.form.engine.providers.dbs.common.models.where.ColumnCriteriaLogicalOperatorModel;
 import org.infra.reactive.form.engine.form.engine.services.core.ConvertUtil;
 import org.infra.reactive.form.engine.form.engine.services.core.dto.CoreServiceDTOTable;
-import org.infra.reactive.form.engine.form.engine.services.core.entity.CoreServiceEntityTable;
 import reactor.core.publisher.Mono;
 
 import java.util.*;
@@ -50,18 +48,16 @@ public class TableExpressionPrepare extends MultiColumnExpressionPrepare<TableEx
     public void generate(DataProviderObjects dataProviderObjects) {
         Long coreTableColumnDataProviderTableId = dataProviderObjects.coreTableColumnDataProviderDTO.getCoreTableColumnDataProviderTypeRecordId();
 
-        Optional<CoreTableColumnDataProviderTableEntity> optionalCoreTableColumnDataProviderTable = CoreServiceEntityTable.coreTableColumnDataProviderTableEntityLRUCache.get(coreTableColumnDataProviderTableId);
         Optional<CoreTableColumnDataProviderTableDTO> optionalCoreTableColumnDataProviderTableDTO = CoreServiceDTOTable.coreTableColumnDataProviderTableDTOLRUCache.get(coreTableColumnDataProviderTableId);
 
-        if (optionalCoreTableColumnDataProviderTable.isPresent() && optionalCoreTableColumnDataProviderTableDTO.isPresent()) {
+        if (optionalCoreTableColumnDataProviderTableDTO.isPresent()) {
             boolean isColumnMasterExist = dataProviderObjects.coreTableColumnDTO != null;
 
-            CoreTableColumnDataProviderTableEntity coreTableColumnDataProviderTableEntity = optionalCoreTableColumnDataProviderTable.get();
             CoreTableColumnDataProviderTableDTO coreTableColumnDataProviderTableDTO = optionalCoreTableColumnDataProviderTableDTO.get();
             Optional<CoreTableDTO> optionalCoreTableDTO = CoreServiceDTOTable.coreTableDTOLRUCache.get(coreTableColumnDataProviderTableDTO.getCoreTableId());
             if (optionalCoreTableDTO.isPresent()) {
                 CoreTableDTO coreTableDTO = optionalCoreTableDTO.get();
-                DataProviderTableKeyValueDTO dataProviderTableJavaAbstract = DataProviderJavaServiceRegistry.Instance().factoryInstance(coreTableColumnDataProviderTableDTO.getCoreTableColumnDataProviderSerializerDTO().getClientRegisterKey(), dataProviderObjects.userSecurity , computeEffectiveCoreAllElementDTO(dataProviderObjects));
+                DataProviderTableKeyValueDTO dataProviderTableJavaAbstract = DataProviderJavaServiceRegistry.Instance().factoryInstance(coreTableColumnDataProviderTableDTO.getCoreTableColumnDataProviderSerializerDTO().getClientRegisterKey(), dataProviderObjects.userSecurity, computeEffectiveCoreAllElementDTO(dataProviderObjects));
                 if (dataProviderTableJavaAbstract == null) {
                     dataProviderTableJavaAbstract = new DataProviderTableKeyValueDTO(dataProviderObjects.userSecurity);
                 }
@@ -77,94 +73,102 @@ public class TableExpressionPrepare extends MultiColumnExpressionPrepare<TableEx
                     }
                     pkColumns.addAll(coreTableDTO.getPkColumns());
                 } else {
-                    for (CoreTableColumnDTO column : coreTableDTO.getColumns()) {
-                        if (column.isPk()) {
-                            pkColumns.add(column);
-                        } else {
-                            if (!isColumnMasterExist) {
-                                overRightColumnSelected.add(column);
-                            } else {
-                                if (!detectChain(dataProviderObjects, column)) {
-                                    overRightColumnSelected.add(column);
-                                }
-                            }
-                        }
-                    }
+                    processDefaultColumn(coreTableDTO, overRightColumnSelected, pkColumns, dataProviderObjects, isColumnMasterExist);
                 }
 
-                TableMetadata tableMetaData = ConvertUtil.convert(coreTableDTO, overRightColumnSelected);
+                processShare(dataProviderObjects, coreTableDTO, overRightColumnSelected, isColumnMasterExist, pkColumns, dataProviderTableJavaAbstract);
+            }
+        }
+    }
 
-                TableExpression childTableExpression = new TableExpression();
-                childTableExpression.setId(coreTableDTO.getId());
-                childTableExpression.setUuid(UUID.randomUUID().toString());
-                childTableExpression.AddTable(tableMetaData.getID(), tableMetaData);
-                childTableExpression.setParentTableExpression(dataProviderObjects.parentTableExpression);
-                childTableExpression.setCoreTableColumnDataProviderDTO(dataProviderObjects.coreTableColumnDataProviderDTO);
+    protected void processShare(DataProviderObjects dataProviderObjects, CoreTableDTO coreTableDTO, List<CoreTableColumnDTO> overRightColumnSelected, boolean isColumnMasterExist, List<CoreTableColumnDTO> pkColumns, DataProviderTableKeyValueDTO dataProviderTableJavaAbstract) {
+        TableMetadata tableMetaData = ConvertUtil.convert(coreTableDTO, overRightColumnSelected);
 
-                ColumnExpression mainColumn = isColumnMasterExist ? dataProviderObjects.getColumnExpression() : null;
+        TableExpression childTableExpression = new TableExpression();
+        childTableExpression.setId(coreTableDTO.getId());
+        childTableExpression.setUuid(UUID.randomUUID().toString());
+        childTableExpression.AddTable(tableMetaData.getID(), tableMetaData);
+        childTableExpression.setParentTableExpression(dataProviderObjects.parentTableExpression);
+        childTableExpression.setCoreTableColumnDataProviderDTO(dataProviderObjects.coreTableColumnDataProviderDTO);
 
-                for (CoreTableColumnDTO pkColumn : pkColumns) {
-                    ColumnMetaModel columnPkExpression = ConvertUtil.convert(pkColumn);
-                    columnPkExpression.setTableInterface(tableMetaData);
+        ColumnExpression mainColumn = isColumnMasterExist ? dataProviderObjects.getColumnExpression() : null;
 
-                    childTableExpression.AddPkColumnExpression(columnPkExpression.getID(), columnPkExpression);
-                    if (dataProviderObjects.tableMetaData != null && isColumnMasterExist) {
-                        mainColumn.setTableInterface(dataProviderObjects.tableMetaData);
+        for (CoreTableColumnDTO pkColumn : pkColumns) {
+            ColumnMetaModel columnPkExpression = ConvertUtil.convert(pkColumn);
+            columnPkExpression.setTableInterface(tableMetaData);
 
-                        childTableExpression.AddJoinColumn(JoinColumnModel.builder()
-                                .joinTypeEnum(JoinTypeEnum.LeftJoin)
-                                .toTable(dataProviderObjects.tableMetaData)
-                                .toColumn(mainColumn)
-                                .fromTable(tableMetaData)
-                                .fromColumn(columnPkExpression)
-                                .build());
-                    }
-                }
+            childTableExpression.AddPkColumnExpression(columnPkExpression.getID(), columnPkExpression);
+            if (dataProviderObjects.tableMetaData != null && isColumnMasterExist) {
+                mainColumn.setTableInterface(dataProviderObjects.tableMetaData);
 
-                Map<String, DataProviderJavaAbstract<?, ?, Long>> childColumnDataProviderJava = new HashMap<>();
+                childTableExpression.AddJoinColumn(JoinColumnModel.builder()
+                        .joinTypeEnum(JoinTypeEnum.LeftJoin)
+                        .toTable(dataProviderObjects.tableMetaData)
+                        .toColumn(mainColumn)
+                        .fromTable(tableMetaData)
+                        .fromColumn(columnPkExpression)
+                        .build());
+            }
+        }
 
-                dataProviderTableJavaAbstract.setSeparatorChar(keySeparator);
-                dataProviderTableJavaAbstract.setColumnExpression(childTableExpression);
-                dataProviderTableJavaAbstract.setMapColumnSelectedDataProviderJava(childColumnDataProviderJava);
-                dataProviderTableJavaAbstract.setCoreTableColumnDataProviderWithSerializerDTO(dataProviderObjects.coreTableColumnDataProviderDTO.getCoreTableColumnDataProviderWithSerializerDTO());
-                dataProviderTableJavaAbstract.setCoreTranslateLanguageDTO(dataProviderObjects.coreTranslateLanguageDTO);
+        Map<String, DataProviderJavaAbstract<?, ?, Long>> childColumnDataProviderJava = new HashMap<>();
 
-                if (dataProviderObjects.coreWindowTabFieldDTO != null) {
-                    dataProviderTableJavaAbstract.setKey(dataProviderObjects.coreWindowTabFieldDTO.getId());
-                }
+        dataProviderTableJavaAbstract.setSeparatorChar(keySeparator);
+        dataProviderTableJavaAbstract.setColumnExpression(childTableExpression);
+        dataProviderTableJavaAbstract.setMapColumnSelectedDataProviderJava(childColumnDataProviderJava);
+        dataProviderTableJavaAbstract.setCoreTableColumnDataProviderWithSerializerDTO(dataProviderObjects.coreTableColumnDataProviderDTO.getCoreTableColumnDataProviderWithSerializerDTO());
+        dataProviderTableJavaAbstract.setCoreTranslateLanguageDTO(dataProviderObjects.coreTranslateLanguageDTO);
 
-                ColumnExpressionPrepareFactory columnExpressionPrepareFactory = ColumnExpressionPrepareFactory.Instance();
+        if (dataProviderObjects.coreWindowTabFieldDTO != null) {
+            dataProviderTableJavaAbstract.setKey(dataProviderObjects.coreWindowTabFieldDTO.getId());
+        }
 
-                this.setColumnExpression(childTableExpression);
-                this.setDataProviderJavaAbstract(dataProviderTableJavaAbstract);
+        ColumnExpressionPrepareFactory columnExpressionPrepareFactory = ColumnExpressionPrepareFactory.Instance();
 
-                for (CoreTableColumnDTO coreTableColumnDTO : overRightColumnSelected) {
-                    ColumnExpressionPrepare<?, Long> columnExpressionPrepare = columnExpressionPrepareFactory.processColumnExpressionPrepare(
-                            dataProviderObjects.connectionMono,
-                            dataProviderObjects.userSecurity,
-                            dataProviderObjects.coreTranslateLanguageDTO,
-                            coreTableColumnDTO,
-                            null,
-                            tableMetaData,
-                            coreTableColumnDTO.getCoreTableColumnDataProviderDTO(),
-                            childTableExpression,
-                            dataProviderObjects.rootTableExpression,
-                            this
-                    );
-                    if (columnExpressionPrepare != null) {
-                        childColumnDataProviderJava.put(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare.getDataProviderJavaAbstract());
-                        childTableExpression.AddColumnExpression(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare.getColumnExpression());
-                        addColumnExpressionPrepareWithColumnIdMap(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare);
-                        addMapDataProviderJavaAbstract(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare.getDataProviderJavaAbstract());
-                    } else {
-                        System.out.println(" ColumnId : " + coreTableColumnDTO.getId());
+        this.setColumnExpression(childTableExpression);
+        this.setDataProviderJavaAbstract(dataProviderTableJavaAbstract);
+
+        for (CoreTableColumnDTO coreTableColumnDTO : overRightColumnSelected) {
+            ColumnExpressionPrepare<?, Long> columnExpressionPrepare = columnExpressionPrepareFactory.processColumnExpressionPrepare(
+                    dataProviderObjects.connectionMono,
+                    dataProviderObjects.userSecurity,
+                    dataProviderObjects.coreTranslateLanguageDTO,
+                    coreTableColumnDTO,
+                    null,
+                    tableMetaData,
+                    coreTableColumnDTO.getCoreTableColumnDataProviderDTO(),
+                    childTableExpression,
+                    dataProviderObjects.rootTableExpression,
+                    this
+            );
+            if (columnExpressionPrepare != null) {
+                childColumnDataProviderJava.put(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare.getDataProviderJavaAbstract());
+                childTableExpression.AddColumnExpression(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare.getColumnExpression());
+                addColumnExpressionPrepareWithColumnIdMap(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare);
+                addMapDataProviderJavaAbstract(columnExpressionPrepare.getColumnExpression().getID(), columnExpressionPrepare.getDataProviderJavaAbstract());
+            } else {
+                System.out.println(" ColumnId : " + coreTableColumnDTO.getId());
+            }
+        }
+    }
+
+    protected void processDefaultColumn(CoreTableDTO coreTableDTO, List<CoreTableColumnDTO> overRightColumnSelected, List<CoreTableColumnDTO> pkColumns, DataProviderObjects dataProviderObjects, boolean isColumnMasterExist) {
+        for (CoreTableColumnDTO column : coreTableDTO.getColumns()) {
+            if (column.isPk()) {
+                pkColumns.add(column);
+            } else {
+                if (!isColumnMasterExist) {
+                    overRightColumnSelected.add(column);
+                } else {
+                    if (!detectChain(dataProviderObjects, column)) {
+                        overRightColumnSelected.add(column);
                     }
                 }
             }
         }
     }
 
-    private boolean detectChain(DataProviderObjects dataProviderObjects, CoreTableColumnDTO coreTableColumnDTO) {
+    protected boolean detectChain(DataProviderObjects dataProviderObjects, CoreTableColumnDTO coreTableColumnDTO) {
         return Objects.equals(dataProviderObjects.coreTableColumnDTO.getId(), coreTableColumnDTO.getId());
     }
 
