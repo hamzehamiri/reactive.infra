@@ -3691,9 +3691,6 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 455	value	1	103	\N	6
 456	id	1	104	t	\N
 457	title	1	104	\N	6
-458	created_date	1	104	\N	6
-459	business_cartable_status_id	1	104	\N	6
-460	has_attachment	1	104	\N	6
 462	id	1	105	t	\N
 463	name	1	105	\N	6
 465	id	1	106	t	\N
@@ -3701,7 +3698,6 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 467	common_organization_user_id_recipient	1	106	\N	6
 468	subject	1	106	\N	6
 469	body	1	106	\N	6
-470	created_date	1	106	\N	6
 471	id	1	107	t	\N
 472	name	1	107	\N	6
 473	core_window_tab_id	1	107	\N	6
@@ -3711,12 +3707,16 @@ COPY hamzehschema.core_table_column (id, name, core_table_column_editor_id, core
 477	active_default	1	107	\N	6
 478	register_key_side	1	107	\N	6
 479	core_table_column_editor_id	1	108	\N	6
+470	created_date	6	106	\N	4
 461	business_cartable_folders_id	19	104	\N	28
 464	parent_id	19	105	\N	28
 480	id	1	109	t	\N
 481	core_table_column_dataprovider_tree_id	1	109	\N	6
 482	core_table_column_id	1	109	\N	6
 483	index	1	109	\N	6
+458	created_date	6	104	\N	4
+459	status	1	104	\N	6
+460	has_attachment	4	104	\N	19
 \.
 
 
@@ -5021,7 +5021,6 @@ COPY hamzehschema.core_window_tab_field (id, name, core_window_tab_id, core_tabl
 83	id	18	374	1	\N	t	1
 84	name	18	375	1	\N	t	2
 85	family	18	376	1	\N	t	3
-86	birth_date	18	377	6	\N	t	4
 87	sex	18	378	2	\N	t	5
 88	core_attachment	18	\N	7	25	t	6
 30	core_table_datasource_type_id	6	400	2	27	t	4
@@ -5143,9 +5142,7 @@ COPY hamzehschema.core_window_tab_field (id, name, core_window_tab_id, core_tabl
 203	core_workflow_action_id	1	436	1	\N	t	7
 204	id	50	456	1	\N	t	1
 205	title	50	457	1	\N	t	2
-206	created_date	50	458	1	\N	t	3
 207	business_cartable_status_id	50	459	1	\N	t	4
-208	has_attachment	50	460	1	\N	t	5
 209	business_cartable_folders_id	50	461	1	\N	t	6
 210	id	51	462	1	\N	t	1
 211	name	51	463	1	\N	t	2
@@ -5155,7 +5152,10 @@ COPY hamzehschema.core_window_tab_field (id, name, core_window_tab_id, core_tabl
 215	common_organization_user_id_recipient	52	467	1	\N	t	3
 216	subject	52	468	1	\N	t	4
 217	body	52	469	3	\N	t	5
-218	created_date	52	470	6	\N	t	6
+208	has_attachment	50	460	4	19	t	5
+86	birth_date	18	377	6	4	t	4
+206	created_date	50	458	6	4	t	3
+218	created_date	52	470	6	4	t	6
 \.
 
 
